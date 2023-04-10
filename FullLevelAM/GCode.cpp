@@ -28,86 +28,151 @@ string doubleToString(double number) {
 	return doubleToString(number, 1);
 }
 
-string appendIfNotNull(string text, string attribute, double value) {
+string appendIfNotNull(string attribute, double value) {
 	if (value != doubleNull) {
-		text += attribute + doubleToString(value);
+		return attribute + doubleToString(value);
 	}
-	return text;
+	return "";
 }
 
-void G00( double x, double y, double z, double f1) {
+void G00(double x, double y, double z, double f1) {
 	string text = "G00";
-	if (f1!=doubleNull) {
+	if (f1 != doubleNull) {
 		text += " P1";
 	}
-	text = appendIfNotNull(text, " X", x);
-	text = appendIfNotNull(text, " Y", y);
-	text = appendIfNotNull(text, " Z", z);
-	text = appendIfNotNull(text, " F1", f1);
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" F1", f1);
 	write(text);
 }
 
 void G74(double x, double y, double z, double r, double p, double q, double f, double e, double k) {
 	string text = "G74";
-	text += " P1";
-	text += " X" + doubleToString(x);
-	text += " Y" + doubleToString(y);
-	text += " Z" + doubleToString(z);
-	text += " R" + doubleToString(r);
-	text += " P" + doubleToString(p);
-	if (f != doubleNull) {
-		text += " Q" + doubleToString(q);
-	}
-	if (f != doubleNull) {
-		text += " F" + doubleToString(x);
-	}
-	text += " E" + doubleToString(y);
-	text += " K" + doubleToString(z);
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" P", p);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" E", e);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
-void G76() {
-	string text = "";
+void G76(double x, double y, double z, double r, double q, double p, double f, double k) {
+	string text = "G76";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" P", p);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
 void G80() {
-	string text = "";
+	string text = "G80";
 	write(text);
 }
 
-void G81() {
-	string text = "";
+void G81(double x, double y, double z, double r, double f, double f2, double k, double q, double d) {
+	string text = "G81";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" F2=", f);
+	text += appendIfNotNull(" K", k);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" D", d);
 	write(text);
 }
 
-void G82() {
-	string text = "";
+void G81_1(double z, double q, double r, double f) {
+	string text = "G81.1";
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" F", f);
 	write(text);
 }
 
-void G83() {
-	string text = "";
+void G82(double x, double y, double z, double r, double p, double f, double k) {
+	string text = "G82";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" P", p);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
-void G84() {
-	string text = "";
+void G83(double x, double y, double z, double r, double q, double f, double k) {
+	string text = "G83";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
-void G85() {
-	string text = "";
+void G84(double x, double y, double z, double r, double p, double q, double f, double e, double k) {
+	string text = "G84";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" P", p);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" E", e);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
-void G86() {
-	string text = "";
+void G85(double x, double y, double z, double r, double f, double k) {
+	string text = "G85";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
-void G87() {
-	string text = "";
+void G86(double x, double y, double z, double r, double f, double k) {
+	string text = "G86";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" K", k);
+	write(text);
+}
+
+void G87(double x, double y, double z, double r, double q, double p, double f, double e, double k) {
+	string text = "G84";
+	text += appendIfNotNull(" X", x);
+	text += appendIfNotNull(" Y", y);
+	text += appendIfNotNull(" Z", z);
+	text += appendIfNotNull(" R", r);
+	text += appendIfNotNull(" Q", q);
+	text += appendIfNotNull(" P", p);
+	text += appendIfNotNull(" F", f);
+	text += appendIfNotNull(" E", e);
+	text += appendIfNotNull(" K", k);
 	write(text);
 }
 
@@ -203,5 +268,5 @@ void G137_1() {
 
 // test
 int main() {
-	G00(true, 1, 2, 3, 1000);
+	G00(1, 2, 3, 1000);
 }
