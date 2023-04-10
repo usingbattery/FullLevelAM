@@ -7,13 +7,24 @@
 using namespace std;
 
 string fileName;
+std::stringstream ss;
 
 //½«textĞ´ÈëfileName.txt
 void write(string text) {
-	//cout << text<<endl;
+	cout << text<<endl;
 }
 
-void G00(bool isValueAbsolute, bool isAssignSpeed, double values[], int num, double speed) {
+string doubleToString(double number,int precision) {
+	ss.str("");
+	ss << std::setiosflags(std::ios::fixed) << std::setprecision(1) << number;
+	return ss.str();
+}
+
+string doubleToString(double number) {
+	return doubleToString(number, 1);
+}
+
+void G00(bool isValueAbsolute, bool isAssignSpeed, double axisValues[], int num, double speed) {
 	string text = "";
 	if (isValueAbsolute) {
 		text += "G90 ";
@@ -25,23 +36,18 @@ void G00(bool isValueAbsolute, bool isAssignSpeed, double values[], int num, dou
 	if (isAssignSpeed) {
 		text += " P1";
 	}
-	string axises[] = { "X","Y","Z" };
-	std::stringstream ss;
+	string axisNames[] = { "X","Y","Z" };
 	for (int i = 0; i < num; i++) {
 		text += " ";
-		ss << std::setiosflags(std::ios::fixed) << std::setprecision(1) << values[i];
-		text += axises[i] + ss.str();
-		ss.str("");
-		cout << text << endl;
+		text += axisNames[i] + doubleToString(axisValues[i]);
 	}
 	if (isAssignSpeed) {
-		ss << std::setiosflags(std::ios::fixed) << std::setprecision(1) << speed;
-		text += " F1=" + ss.str();
+		text += " F1=" + doubleToString(speed);
 	}
 	write(text);
 }
 
 int main() {
-	double values[] = { 1.0 , 2.0 , 3.0 };
-	G00(true, true, values, 3, 1000);
+	double axisValues[] = { 1.0 , 2.0 , 3.0 };
+	G00(true, true, axisValues, 3, 1000);
 }
