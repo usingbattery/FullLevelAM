@@ -1,10 +1,10 @@
 #include "GCode.h"
 using namespace gcode;
 
-
 int main() {
-    std::string filePath="~/Desktop/CLion/FullLevelAM/FullLevelAM/GCode.txt";
-    openFile(filePath);
+    std::string filePathIOS = "~/Desktop/CLion/FullLevelAM/FullLevelAM/GCode.txt";
+    std::string filePathWin = "GCode.txt";
+    openFile(filePathWin);
 //    write(doubleToString(12.123, 2));
     G00(1, 1, 1, 100);
     G01(1, 2, 3, 100);
