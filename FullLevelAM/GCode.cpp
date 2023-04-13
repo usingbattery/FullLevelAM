@@ -3,17 +3,36 @@
 #include <iomanip>
 #include <sstream>
 #include <stdio.h>
+#include <fstream>
 
 using namespace std;
 
 const double doubleNull = 999;
 
-string fileName;
+//avoid open and close each time write()
+ofstream outfile;
+
+//avoid created each time doubleToString()
 std::stringstream stringTem;
 
-//write text into fileName.txt
+//open file at begining
+void openFile(string filePath) {
+	outfile.open(filePath, ios::app);
+	if (!outfile)
+	{
+		cout << "打开文件失败" << endl;
+		exit(1);
+	}
+}
+
+//write text into filePath.txt
 void write(string text) {
-	cout << text << endl;
+	outfile << text << endl;
+}
+
+//close file at the end
+void closeFile() {
+	outfile.close();
 }
 
 //accurate doubleToString
@@ -43,7 +62,7 @@ void G00(double x, double y, double z, double f1) {
 	text += appendIfNotNull(" X", x);
 	text += appendIfNotNull(" Y", y);
 	text += appendIfNotNull(" Z", z);
-	text += appendIfNotNull(" F1", f1);
+	text += appendIfNotNull(" F1=", f1);
 	write(text);
 }
 
@@ -309,5 +328,8 @@ void G137_1(double x, double y, double i, double p, double j, double k) {
 
 // test
 int main() {
+	string filePath = "GCode.txt";
+	openFile(filePath);
 	G00(1, 2, 3, 1000);
+	closeFile();
 }

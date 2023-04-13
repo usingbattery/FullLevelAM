@@ -1,0 +1,4 @@
+after g00
+hello world
+G00 P1 X1.0 Y2.0 Z3.0 F1=1000.0
+after g00
