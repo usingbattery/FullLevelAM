@@ -18,15 +18,15 @@ std::stringstream stringTem;
 //open file at begining
 void openFile(string filePath) {
 	outfile.open(filePath, ios::app);
-	if (!outfile)
-	{
-		cout << "打开文件失败" << endl;
-		exit(1);
-	}
 }
 
 //write text into filePath.txt
 void write(string text) {
+	if (!outfile)
+	{
+		cout << "file not open!" << endl;
+		exit(1);
+	}
 	outfile << text << endl;
 }
 
