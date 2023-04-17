@@ -4,6 +4,7 @@
 
 #ifndef GCODE_GCODE_H
 #define GCODE_GCODE_H
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -11,6 +12,7 @@
 #include <fstream>
 
 namespace gcode {
+
 	const double doubleNull = DBL_MAX;
 
 	//avoid open and close each time write()
@@ -45,16 +47,15 @@ namespace gcode {
 		return stringTem.str();
 	}
 
+	std::string doubleToString(double number) {
+		return doubleToString(number, 1);
+	}
+	
 	std::string doubleToString(int number) {
 		stringTem.str("");
 		//        stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << number;
 		stringTem << std::setiosflags(std::ios::fixed) << number;
 		return stringTem.str();
-	}
-
-
-	std::string doubleToString(double number) {
-		return doubleToString(number, 1);
 	}
 
 	std::string appendIfNotNull(std::string attribute, double value) {
@@ -682,7 +683,5 @@ namespace gcode {
 		text += appendIfNotNull(" K", k);
 		write(text);
 	}
-
 }
-
 #endif //GCODE_GCODE_H

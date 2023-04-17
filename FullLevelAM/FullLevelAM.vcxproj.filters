@@ -23,9 +23,18 @@
     <ClInclude Include="GCode.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3D.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Point3D.h">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
