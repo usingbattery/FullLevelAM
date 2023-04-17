@@ -100,7 +100,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G024(double x1, double y1, double z1, double axial1, double axial2, double f, double x2, double y2, double z2, double axial3, double axial4) {
+	void G02_4(double x1, double y1, double z1, double axial1, double axial2, double f, double x2, double y2, double z2, double axial3, double axial4) {
 		std::string text1 = "G02.4";
 		text1 += appendIfNotNull(" X", x1);
 		text1 += appendIfNotNull(" Y", y1);
@@ -119,7 +119,7 @@ namespace gcode {
 		write(text2);
 	}
 
-	void G034(double x1, double y1, double z1, double axial1, double axial2, double f, double x2, double y2, double z2, double axial3, double axial4) {
+	void G03_4(double x1, double y1, double z1, double axial1, double axial2, double f, double x2, double y2, double z2, double axial3, double axial4) {
 		std::string text1 = "G03.4";
 		text1 += appendIfNotNull(" X", x1);
 		text1 += appendIfNotNull(" Y", y1);
@@ -212,7 +212,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G041(int p, int q) {
+	void G04_1(int p, int q) {
 		std::string text = "";
 		text += "G04.1";
 		text += appendIfNotNull(" P", p);
@@ -232,7 +232,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G051(int q, int e) {
+	void G05_1(int q, int e) {
 		std::string text = "";
 		text += "G05.1";
 		text += appendIfNotNull(" Q", q);
@@ -306,7 +306,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G109(int x, int y, int z) {
+	void G10_9(int x, int y, int z) {
 		std::string text = "";
 		text += "G10.9";
 		text += appendIfNotNull(" X", x);
@@ -315,7 +315,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G121(double x, double c) {
+	void G12_1(double x, double c) {
 		std::string text = "";
 		text += "G12.1";
 		text += appendIfNotNull(" X", x);
@@ -324,7 +324,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G131() {
+	void G13_1() {
 		write("G13.1");
 	}
 
@@ -412,7 +412,7 @@ namespace gcode {
 		write(text);
 	}
 
-	void G372(int k, double z, double r, double f, double p, double q) {
+	void G37_2(int k, double z, double r, double f, double p, double q) {
 		std::string text = "";
 		text += "G37.2";
 		text += appendIfNotNull(" K", k);
@@ -421,6 +421,176 @@ namespace gcode {
 		text += appendIfNotNull(" F", f);
 		text += appendIfNotNull(" P", p);
 		text += appendIfNotNull(" Q", q);
+		write(text);
+	}
+
+	void G50() {
+		std::string text = "G50";
+		text += ";";
+		write(text);
+	}
+
+	void G51(double x, double y, double z, double p) {
+		std::string text = "G51";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += appendIfNotNull(" P", p);
+		text += ";";
+		write(text);
+	}
+
+	void G52(double x, double y, double z) {
+		std::string text = "G52";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+
+	void G53(double x, double y, double z) {
+		std::string text = "G53";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+
+	void G54(double x, double y, double z) {
+		std::string text = "G54";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G55(double x, double y, double z) {
+		std::string text = "G55";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+
+	void G56(double x, double y, double z) {
+		std::string text = "G56";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+
+	void G57(double x, double y, double z) {
+		std::string text = "G57";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G58(double x, double y, double z) {
+		std::string text = "G58";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59(double x, double y, double z) {
+		std::string text = "G59";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_1(double x, double y, double z) {
+		std::string text = "G59.1";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_2(double x, double y, double z) {
+		std::string text = "G59.2";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_3(double x, double y, double z) {
+		std::string text = "G59.3";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_4(double x, double y, double z) {
+		std::string text = "G59.4";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_5(double x, double y, double z) {
+		std::string text = "G59.5";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_6(double x, double y, double z) {
+		std::string text = "G59.6";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_7(double x, double y, double z) {
+		std::string text = "G59.7";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_8(double x, double y, double z) {
+		std::string text = "G59.8";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G59_9(double x, double y, double z) {
+		std::string text = "G59.9";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" Z", z);
+		text += ";";
+		write(text);
+	}
+	void G68(double x, double y, double r) {
+		std::string text = "G68";
+		text += appendIfNotNull(" X", x);
+		text += appendIfNotNull(" Y", y);
+		text += appendIfNotNull(" R", r);
+		text += ";";
+		write(text);
+	}
+	void G69() {
+		std::string text = "G69";
+		text += ";";
 		write(text);
 	}
 
