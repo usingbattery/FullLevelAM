@@ -1,6 +1,10 @@
 #ifndef VECTOR3D
 #define VECTOR3D
 
+#include "Matrix3D.h"
+
+using namespace matrix3d;
+
 namespace vector3d {
 
 	class Vector3D {
@@ -11,60 +15,49 @@ namespace vector3d {
 		double dz ;
 		double dw ;
 
-		Vector3D(double dx=0, double  dy=0, double  dz=0, double  dw=0) {
-			this->dx = dx;
-			this->dy = dy;
-			this->dz = dz;
-			this->dw = dw;
-		}
+		Vector3D(double dx = 0, double  dy = 0, double  dz = 0, double  dw = 0);
 
-		std::string toString() {
-			std::string res = "Vector3D:";
-			std::stringstream stringTem;
-			int precision = 1;
-			stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(1) << dx;
-			res += stringTem.str() + ",";
-			stringTem.str("");
-			stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << dy;
-			res += stringTem.str() + ",";
-			stringTem.str("");
-			stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << dz;
-			res += stringTem.str();
-			return res;
-		}
+		std::string toString();
 
-		Vector3D clone() {
-			return Vector3D(this->dx, this->dy, this->dz, this->dw);
-		}
+		Vector3D clone();
 
-		void reverse() {
-			this->dx = -this->dx;
-			this->dy = -this->dy;
-			this->dz = -this->dz;
-		}
+		void reverse();
 
-		Vector3D reversed() {
-			return Vector3D(-this->dx, -this->dy, -this->dz);
-		}
+		Vector3D reversed();
 
-		double dotProduct(Vector3D vec) {
-			return this->dx * vec.dx + this->dy*vec.dy + this->dz*vec.dz;
-		}
+		double dotProduct(Vector3D vec);
 
-		Vector3D crossProduct(Vector3D vec) {
-			return Vector3D(
-				this->dy * vec.dz - this->dz * vec.dy,
-				this->dz * vec.dx - this->dx * vec.dz,
-				this->dx * vec.dy - this->dy * vec.dx);
-		}
+		Vector3D crossProduct(Vector3D vec);
 
-		double lengthSquare() {
-			return pow(this->dx, 2) + pow(this->dy, 2) + pow(this->dz, 2) + pow(this->dw, 2);
-		}
+		void amplify(double f);
 
-		double length() {
-			return sqrt(this->lengthSquare());
-		}
+		Vector3D amplified(double f);
+
+		double lengthSquare();
+
+		double length();
+
+		void normalize();
+
+		Vector3D normalized();
+
+		bool isZeroVector();
+
+		Vector3D multiplied(Matrix3D m);
+
+		bool isParallel(Vector3D other);
+
+		double getAngle(Vector3D vec);
+
+		Vector3D getOrthoVector2D();
+
+		double getAngle2D(Vector3D vec);
+
+		Vector3D operator+(Vector3D other);
+
+		Vector3D operator-(Vector3D other);
+
+		Vector3D operator*(Matrix3D m);
 	};
 };
 #endif //VECTOR3D
