@@ -20,9 +20,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GCode.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix3D.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -30,6 +27,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="File.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GCode.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,6 +47,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="File.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

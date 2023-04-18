@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="File.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="Point3D.cpp" />
     <ClCompile Include="Point3D.h" />
     <ClCompile Include="Vector3D.cpp" />
