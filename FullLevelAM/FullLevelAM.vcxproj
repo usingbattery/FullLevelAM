@@ -144,6 +144,7 @@
     <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="Point3D.cpp" />
     <ClCompile Include="Point3D.h" />
+    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
