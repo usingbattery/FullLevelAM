@@ -67,5 +67,8 @@
     <ClCompile Include="Ray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
