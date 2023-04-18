@@ -55,5 +55,8 @@
     <ClCompile Include="Matrix3D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
