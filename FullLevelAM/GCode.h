@@ -1,9 +1,4 @@
-//
-// Created by MBP on 2023/4/12.
-//
-
-#ifndef GCODE_GCODE_H
-#define GCODE_GCODE_H
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -854,4 +849,3 @@ namespace gcode {
 		write(text);
 	}
 }
-#endif //GCODE_GCODE_H
