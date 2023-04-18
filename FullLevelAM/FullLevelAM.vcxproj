@@ -135,6 +135,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Segment.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
