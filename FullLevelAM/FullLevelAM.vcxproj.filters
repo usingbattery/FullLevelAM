@@ -29,6 +29,9 @@
     <ClInclude Include="Vector3D.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +44,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Vector3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

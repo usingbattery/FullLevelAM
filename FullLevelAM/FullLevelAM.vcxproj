@@ -130,11 +130,13 @@
     <Text Include="GCode.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="File.h" />
     <ClInclude Include="GCode.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point3D.cpp" />
     <ClCompile Include="Point3D.h" />
