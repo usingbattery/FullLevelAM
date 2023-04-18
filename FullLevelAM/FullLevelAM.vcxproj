@@ -132,14 +132,21 @@
   <ItemGroup>
     <ClInclude Include="File.h" />
     <ClInclude Include="GCode.h" />
+    <ClInclude Include="Line.h" />
     <ClInclude Include="Matrix3D.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="Segment.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="File.cpp" />
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="Point3D.cpp" />
     <ClCompile Include="Point3D.h" />
+    <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Segment.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
