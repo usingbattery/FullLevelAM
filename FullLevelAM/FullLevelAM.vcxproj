@@ -134,6 +134,7 @@
     <ClInclude Include="GCode.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Matrix3D.h" />
+    <ClInclude Include="Ray.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
