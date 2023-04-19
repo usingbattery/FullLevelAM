@@ -4,7 +4,8 @@
 
 #ifndef GCODE_STLMODEL_H
 #define GCODE_STLMODEL_H
-#include "nsp.h"
+
+#include "Triangle.h"
 
 class StlModel {
 public:

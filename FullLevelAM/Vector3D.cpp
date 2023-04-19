@@ -6,8 +6,6 @@
 #include<math.h>
 #include "Vector3D.h"
 
-using namespace vector3d;
-
 Vector3D::Vector3D(double dx, double  dy, double  dz, double  dw) {
 	this->dx = dx;
 	this->dy = dy;
