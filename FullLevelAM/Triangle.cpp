@@ -5,9 +5,9 @@
 #include "Triangle.h"
 
 double Triangle::zMinPnt() {
-    return min({A.z, B.z, C.z});
+    return std::min({A.z, B.z, C.z});
 }
 
 double Triangle::zMaxPnt() {
-    return max({A.z, B.z, C.z});
+    return std::max({A.z, B.z, C.z});
 }

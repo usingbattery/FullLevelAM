@@ -4,13 +4,14 @@
 
 #ifndef GCODE_STLMODEL_H
 #define GCODE_STLMODEL_H
-#include "nsp.h"
+
+#include "Triangle.h"
 
 class StlModel {
 public:
     StlModel();
 
-    explicit StlModel(const std::vector<Triangle> &triangles);
+    StlModel(std::vector<Triangle> trs = std::vector<Triangle>());
 
     //获取STL模型中的面片数
     int getFacetNumber();
@@ -20,16 +21,20 @@ public:
     void readStlFile(std::string filepath);
     //从vtkSTLReader提取面片信息
     void extractFromVtkStlReader();
+
     //获取模型6个方向边界值极值
     std::vector<double> getBound();
-private:
+
     std::vector<Triangle> triangles;
+    std::vector<double> bound;
     double xMin = 0;
     double yMin = 0;
     double zMin = 0;
     double xMax = 0;
     double yMax = 0;
     double zMax = 0;
+private:
+
 };
 
 

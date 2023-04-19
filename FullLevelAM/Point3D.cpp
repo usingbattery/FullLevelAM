@@ -3,7 +3,6 @@
 #include <sstream>
 #include "Point3D.h"
 
-using namespace point3d;
 
 Point3D::Point3D(double x, double  y, double  z, double  w ) {
 	this->x = x;

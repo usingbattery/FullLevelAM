@@ -3,18 +3,20 @@
 //
 
 #include "Plane.h"
+#include "Line.h"
+
 std::vector<double> Plane::toFormula() {
-    std::vector<int>{N.dx, N.dy, N.dz, -N.dx * P.x - N.dy * P.y - N.dz * P.z};
+    std::vector<double>{N.dx, N.dy, N.dz, -N.dx * P.x - N.dy * P.y - N.dz * P.z};
 }
 
 Plane Plane::zPlane(double z) {
-    return Plane(point3D(0, 0, z), Vector3D(0, 0, 1.0));
+    return Plane(Point3D(0, 0, z), Vector3D(0, 0, 1.0));
 }
 
-Segment Plane::intersect(Plane pl){
+Line Plane::intersect(Plane pl){
     Vector3D dir = N.crossProduct(pl.N);
     if(dir.isZeroVector()){
-        return Segment();
+        return Line();
     }
     else{
         double x = 0, y = 0, z = 0;
@@ -35,9 +37,8 @@ Segment Plane::intersect(Plane pl){
             y = -(-A2 * D1 - A1 * D2) / (A1 * B1 - A1 * B2);
         }
         else{
-            return Segment();
+            return Line();
         }
         return Line(Point3D(x, y, z), dir.normalized());
     }
-
 }

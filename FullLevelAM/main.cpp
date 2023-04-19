@@ -1,9 +1,5 @@
 #include "GCode.h"
 #include "Point3D.h"
-
-using namespace gcode;
-using namespace point3d;
-
 int main() {
 
     Point3D p = Point3D(1, 2, 3, 4);

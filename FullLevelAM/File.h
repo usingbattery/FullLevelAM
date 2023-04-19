@@ -2,14 +2,12 @@
 
 #include <iostream>
 #include <fstream>
-
 class File {
 
 public:
 
 	//open file at begining
-	File(std::string filePath);
-
+	File(std::string filePath = "");
 	//write text into filePath.txt
 	void write(std::string text);
 
