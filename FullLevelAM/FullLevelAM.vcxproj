@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="File.cpp" />
     <ClCompile Include="fun.cpp" />
+    <ClCompile Include="GCode.cpp" />
     <ClCompile Include="GeomAlgo.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />

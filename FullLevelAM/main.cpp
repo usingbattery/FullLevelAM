@@ -1,9 +1,8 @@
 #include "GCode.h"
 #include "Point3D.h"
 int main() {
-
-    Point3D p = Point3D(1, 2, 3, 4);
-    std::cout << p.toString();
+    std::cout << "123" + '\n';
+    std::cout << "123" + '\n';
 
 //    std::string filePathIOS = "~/Desktop/CLion/FullLevelAM/FullLevelAM/GCode.txt";
 //    std::string filePathWin = "GCode.txt";

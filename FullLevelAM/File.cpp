@@ -14,7 +14,7 @@ void File::write(std::string text) {
 		std::cout << "file not open!" << std::endl;
 		exit(1);
 	}*/
-	outfile << text << std::endl;
+	outfile << text;
 }
 
 //close file at the end

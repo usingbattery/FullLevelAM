@@ -34,7 +34,7 @@ double distance(Point3D obj1, Segment obj2) {
     Point3D p = obj2.A;
     Point3D p1 = obj2.B;
     Vector3D v = obj2.direction().normalized();
-    l = obj2.length();
+    double l = obj2.length();
     double t = p.pointTo(q).dotProduct(v);
     if (t < 0) {
         return q.distance(p);
