@@ -11,33 +11,19 @@
 #include "Plane.h"
 #include "Ray.h"
 #include "Polyline.h"
+namespace nsp {
+    bool nearZero();
 
-bool nearZero(double x);
+    double distance();
 
-double distance(Point3D obj1,Line obj2);
+    Point3D intersectLineLine(Line line1, Line line2);
 
-double distance(Point3D obj1, Ray obj2);
+    Point3D intersectSegmentPlane(Segment seg, Plane plane);
 
-double distance(Point3D obj1, Segment obj2);
+    double intersect();
 
-double distance(Point3D obj1, Plane obj2);
+    bool pointOnRay(Point3D p, Ray ray);
 
-double distance(Line obj1, Line obj2);
-
-double distance(Line obj1, Plane obj2);
-
-double distance(Ray obj1, Plane obj2);
-
-double distance(Segment obj1, Plane obj2);
-
-Point3D intersectLineLine(Line line1, Line line2);
-
-Point3D intersectSegmentPlane(Segment seg, Plane plane);
-
-double intersect();
-
-bool pointOnRay(Point3D p, Ray ray);
-
-int pointInPolygon(Point3D p, Polyline polygon);
-
+    int pointInPolygon(Point3D p, Polyline polygon);
+}
 #endif //FULLLEVELAM_GEOMALGO_H

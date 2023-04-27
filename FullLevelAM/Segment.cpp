@@ -1,26 +1,36 @@
 #include"Segment.h"
+namespace nsp {
 
-//³õÊ¼»¯
-Segment::Segment(Point3D a, Point3D b) {
-	this->A = a.clone();
-	this->B = b.clone();
-}
+//ï¿½ï¿½Ê¼ï¿½ï¿½
+    Segment::Segment(Point3D a, Point3D b) {
+        this->A = a.clone();
+        this->B = b.clone();
+    }
 
-//¼ÆËãÏß¶Î³¤¶È
-double Segment::length() {
-	return A.distance(B);
-}
+//ï¿½ï¿½ï¿½ï¿½ï¿½ß¶Î³ï¿½ï¿½ï¿½
+    double Segment::length() {
+        return A.distance(B);
+    }
 
-//¼ÆËãÏß¶Î·½Ïò
-Vector3D Segment::direction() {
-	return A.pointTo(B);
-}
+//ï¿½ï¿½ï¿½ï¿½ï¿½ß¶Î·ï¿½ï¿½ï¿½
+    Vector3D Segment::direction() {
+        return A.pointTo(B);
+    }
 
 
-//½»»»Ïß¶ÎÁ½¸ö¶Ëµã
-void Segment::swap() {
-	Point3D temp;
-	temp = A;
-	A = B;
-	B = temp;
+//ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½
+    void Segment::swap() {
+        Point3D temp;
+        temp = A;
+        A = B;
+        B = temp;
+    }
+
+    bool Segment::operator==(Segment segment) {
+        return (A == segment.A && B == segment.A) || (B == segment.A && A == segment.B);
+    }
+
+    bool Segment::operator!=(Segment segment) {
+        return !this->operator==(segment);
+    }
 }
