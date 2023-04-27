@@ -7,10 +7,10 @@ public:
 	Point3D B;
 	Segment(Point3D a = Point3D(), Point3D b = Point3D());
 
-	void length();
+	double length();
 
 
-	void direction();
+	Vector3D direction();
 
 
 	void swap();
