@@ -7,13 +7,13 @@ Segment::Segment(Point3D a, Point3D b) {
 }
 
 //计算线段长度
-void Segment::length() {
-	A.distance(B);
+double Segment::length() {
+	return A.distance(B);
 }
 
 //计算线段方向
-void Segment::direction() {
-	A.pointTo(B);
+Vector3D Segment::direction() {
+	return A.pointTo(B);
 }
 
 
