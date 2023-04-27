@@ -41,6 +41,24 @@
     <ClInclude Include="Segment.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GeomAlgo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fun.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Polyline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StlModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +86,24 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Segment.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeomAlgo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fun.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Polyline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StlModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

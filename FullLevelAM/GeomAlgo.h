@@ -12,9 +12,23 @@
 #include "Ray.h"
 #include "Polyline.h"
 
-bool nearZero();
+bool nearZero(double x);
 
-double distance();
+double distance(Point3D obj1,Line obj2);
+
+double distance(Point3D obj1, Ray obj2);
+
+double distance(Point3D obj1, Segment obj2);
+
+double distance(Point3D obj1, Plane obj2);
+
+double distance(Line obj1, Line obj2);
+
+double distance(Line obj1, Plane obj2);
+
+double distance(Ray obj1, Plane obj2);
+
+double distance(Segment obj1, Plane obj2);
 
 Point3D intersectLineLine(Line line1, Line line2);
 
