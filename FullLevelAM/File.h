@@ -2,21 +2,39 @@
 
 #include <iostream>
 #include <fstream>
-class File {
 
-public:
+#define DEF clear()
+namespace nsp {
+    class File {
 
-	//open file at begining
-	File(std::string filePath = "");
+    public:
 
-	//write text into filePath.txt
-	void write(std::string text);
+        //open file at begining
+        File(std::string filepath = "C:\\CLion_txt\\text.txt");
 
-	//close file at the end
-	void closeFile();
+        virtual ~File();
 
-private:
+        //write text into filePath.txt
+        void write(std::string text);
 
-	//avoid open and close each time write()
-	std::ofstream outfile;
-};
+        //close file at the end
+        void closeFile();
+
+        //clear file
+        void clear();
+
+        //avoid open and close each time write()
+        std::ofstream outfile;
+
+        //read file
+        std::ifstream infile;
+
+        //path of file
+        std::string FilePath;
+
+
+    private:
+
+
+    };
+}

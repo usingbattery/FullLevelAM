@@ -1,7 +1,17 @@
 #include"Ray.h"
+namespace nsp {
 
-//³õÊ¼»¯
-Ray::Ray(Point3D p, Vector3D v) {
-	this->p = p.clone();
-	this->v = v.clone().normalized();
+//ï¿½ï¿½Ê¼ï¿½ï¿½
+    Ray::Ray(Point3D p, Vector3D v) {
+        this->p = p.clone();
+        this->v = v.clone().normalized();
+    }
+
+    bool Ray::operator==(Ray ray) {
+        return p == ray.p && v.isParallel(ray.v);
+    }
+
+    bool Ray::operator!=(Ray ray) {
+        return ! this->operator==(ray);
+    }
 }

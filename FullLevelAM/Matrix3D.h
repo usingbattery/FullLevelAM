@@ -1,33 +1,39 @@
 #pragma once
 #include<vector>
+namespace nsp {
 
-class Matrix3D {
+    class Matrix3D {
 
-public:
-	std::vector<std::vector<int>> a;
-	//���캯��������ά����res��ʼ��Ϊһ��4*4�ĵ�λ����
-	Matrix3D();
+    public:
+        std::vector<std::vector<int>> a;
 
-	//��res����λ��
-	void makeIdentical();
+        //?????????????????res?????????4*4???��????
+        Matrix3D();
 
-	//һ�����������һ������,nums�������ڽ��ܴ���ľ���
-	Matrix3D multiplied(Matrix3D& nums);
+        //??res????��??
+        void makeIdentical();
 
-	//����ƽ�ƾ���
-	Matrix3D creatTranslateMatrix(int dx, int dy, int dz);
+        //???????????????????,nums??????????????????
+        Matrix3D multiplied(Matrix3D &nums);
 
-	//�������ž���
-	Matrix3D creatScalMatrix(int sx, int sy, int sz);
+        //??????????
+        Matrix3D creatTranslateMatrix(int dx, int dy, int dz);
 
-	//������ת������δ����
+        //???????????
+        Matrix3D creatScalMatrix(int sx, int sy, int sz);
 
-
-	//�������
-	void add(Matrix3D& m);
+        //?????????????��????
 
 
-	//�������
-	void sub(Matrix3D& m);
+        //???????
+        void add(Matrix3D &m);
 
-};
+
+        //???????
+        void sub(Matrix3D &m);
+
+        bool operator==(Matrix3D matrix3D);
+
+        bool operator!=(Matrix3D matrix3D);
+    };
+}

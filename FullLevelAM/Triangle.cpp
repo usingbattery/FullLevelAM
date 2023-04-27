@@ -3,11 +3,22 @@
 //
 
 #include "Triangle.h"
+#include <algorithm>
+namespace nsp {
 
-double Triangle::zMinPnt() {
-    return std::min({A.z, B.z, C.z});
-}
+    double Triangle::zMinPnt() {
+        return std::min({A.z, B.z, C.z});
+    }
 
-double Triangle::zMaxPnt() {
-    return std::max({A.z, B.z, C.z});
+    double Triangle::zMaxPnt() {
+        return std::max({A.z, B.z, C.z});
+    }
+
+    bool Triangle::operator==(Triangle t) {
+        return A == t.A && B == t.B && C == t.C && N == t.N && zs == t.zs;
+    }
+
+    bool Triangle::operator!=(Triangle t) {
+        return !this->operator==(t);
+    }
 }

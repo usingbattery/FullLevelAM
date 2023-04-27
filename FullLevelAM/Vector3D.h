@@ -1,56 +1,62 @@
 #pragma once
 
 #include "Matrix3D.h"
+namespace nsp {
 
-class Vector3D {
+    class Vector3D {
 
-public:
-	double dx;
-	double dy;
-	double dz;
-	double dw;
+    public:
+        double dx;
+        double dy;
+        double dz;
+        double dw;
 
-	Vector3D(double dx = 0, double  dy = 0, double  dz = 0, double  dw = 0);
+        Vector3D(double dx = 0, double dy = 0, double dz = 0, double dw = 0);
 
-	std::string toString();
+        std::string toString();
 
-	Vector3D clone();
+        Vector3D clone();
 
-	void reverse();
+        void reverse();
 
-	Vector3D reversed();
+        Vector3D reversed();
 
-	double dotProduct(Vector3D vec);
+        double dotProduct(Vector3D vec);
 
-	Vector3D crossProduct(Vector3D vec);
+        Vector3D crossProduct(Vector3D vec);
 
-	void amplify(double f);
+        void amplify(double f);
 
-	Vector3D amplified(double f);
+        Vector3D amplified(double f);
 
-	double lengthSquare();
+        double lengthSquare();
 
-	double length();
+        double length();
 
-	void normalize();
+        void normalize();
 
-	Vector3D normalized();
+        Vector3D normalized();
 
-	bool isZeroVector();
+        bool isZeroVector();
 
-	Vector3D multiplied(Matrix3D m);
+        Vector3D multiplied(Matrix3D m);
 
-	bool isParallel(Vector3D other);
+        bool isParallel(Vector3D other);
 
-	double getAngle(Vector3D vec);
+        double getAngle(Vector3D vec);
 
-	Vector3D getOrthoVector2D();
+        Vector3D getOrthoVector2D();
 
-	double getAngle2D(Vector3D vec);
+        double getAngle2D(Vector3D vec);
 
-	Vector3D operator+(Vector3D other);
+        Vector3D operator+(Vector3D other);
 
-	Vector3D operator-(Vector3D other);
+        Vector3D operator-(Vector3D other);
 
-	Vector3D operator*(Matrix3D m);
-};
+        Vector3D operator*(Matrix3D m);
+
+        bool operator==(Vector3D vector3D);
+
+        bool operator!=(Vector3D vector3D);
+    };
+}
