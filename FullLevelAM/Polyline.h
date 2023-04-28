@@ -9,8 +9,8 @@
 namespace nsp {
 
     class Polyline {
-    public:
 
+    public:
 
         std::vector<Point3D> points;
 

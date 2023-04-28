@@ -7,7 +7,7 @@
 namespace nsp {
 
     std::vector<double> Plane::toFormula() {
-        std::vector<double>{N.dx, N.dy, N.dz, -N.dx * P.x - N.dy * P.y - N.dz * P.z};
+        return std::vector<double>{N.dx, N.dy, N.dz, -N.dx * P.x - N.dy * P.y - N.dz * P.z};
     }
 
     Plane Plane::zPlane(double z) {

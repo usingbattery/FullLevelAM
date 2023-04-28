@@ -1,18 +1,18 @@
 #include "File.h"
 #include "Point3D.h"
 using namespace nsp;
+
 int main() {
+	std::string filePathWin = "GCode.txt";
+	File stlFile(filePathWin);
+	std::string readLine;
+	bool hasLeft = true;
+	while (hasLeft) {
+		readLine = "";
+		hasLeft = stlFile.read(&readLine);
+		std::cout << "1,"+readLine << std::endl;
+	}
 
-    File tmp;
-
-    tmp.write("text1");
-    tmp.write("text2");
-    std::string s1, s2;
-//    std::string s2;
-    std::getline(tmp.infile, s1);
-    std::cout << s1 << std::endl;
-    std::getline(tmp.infile, s2);
-    std::cout << s2 << std::endl;
 //    tmp.clear();
 //    std::getline(tmp.infile, s);
 //    std::cout << s << std::endl;

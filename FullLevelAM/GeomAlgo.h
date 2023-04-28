@@ -13,6 +13,8 @@
 #include "Polyline.h"
 #include<tuple>
 
+//几何算法模块
+
 namespace nsp {
 
 	bool nearZero(double x);
