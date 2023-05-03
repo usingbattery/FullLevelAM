@@ -4,8 +4,8 @@ namespace nsp {
 
     class Ray {
     public:
-        Point3D p;
-        Vector3D v;
+        Point3D P;
+        Vector3D V;
 
         Ray(Point3D p, Vector3D v);
 

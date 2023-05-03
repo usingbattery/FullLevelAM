@@ -2,6 +2,7 @@
 // Created by MBP on 2023/4/18.
 //
 
+#include <cmath>
 #include "GeomAlgo.h"
 namespace nsp {
     bool nearZero(double x) {
@@ -18,9 +19,9 @@ namespace nsp {
     }
 
     double distance(Point3D obj1, Ray obj2) {
-        Point3D p = obj2.p;
+        Point3D p = obj2.P;
         Point3D q = obj1;
-        Vector3D v = obj2.v;
+        Vector3D v = obj2.V;
         double t = p.pointTo(q).dotProduct(v);
         if (t >= 0) {
             Point3D r = p + v.amplified(t);
@@ -78,8 +79,8 @@ namespace nsp {
     }
 
     double distance(Ray obj1, Plane obj2) {
-        if (obj1.v.dotProduct(obj2.N) == 0) {
-            return distance(obj1.p, obj2);
+        if (obj1.V.dotProduct(obj2.N) == 0) {
+            return distance(obj1.P, obj2);
         }
         else {
             return 0;

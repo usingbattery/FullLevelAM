@@ -6,7 +6,7 @@ using namespace nsp;
 
 int main() {
 
-	StlModel s("236.STL");//stl文件的路径
+	StlModel s("236.STL");//stl脦脛录镁碌脛脗路戮露
 	Layer l(s.getTriangles());
 
 	//    tmp.clear();

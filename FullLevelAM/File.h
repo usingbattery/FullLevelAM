@@ -19,7 +19,7 @@ namespace nsp {
         void write(std::string text);
 
         bool read(std::string *text);
-
+        
         //not a method
         //should realize in File()
         //void clear();
