@@ -21,5 +21,5 @@ namespace nsp {
 	//空间三角形和平面求交
 	Segment intersectTrianglePlane(Triangle triangle, Plane plane);
 
-#endif //GCODE_FUN_H
 }
+#endif //GCODE_FUN_H
