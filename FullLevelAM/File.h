@@ -19,7 +19,7 @@ namespace nsp {
         void write(std::string text);
 
         bool read(std::string *text);
-
+        File operator=(File f);
         //clear file
         void clear();
 

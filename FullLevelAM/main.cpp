@@ -5,8 +5,8 @@ using namespace nsp;
 
 int main() {
 
-	StlModel s("236.STL");//stl文件的路径
-
+//	StlModel s("236.STL");//stl锟侥硷拷锟斤拷路锟斤拷
+    std::cout << "1" << std::endl;
 	//    tmp.clear();
 	//    std::getline(tmp.infile, s);
 	//    std::cout << s << std::endl;

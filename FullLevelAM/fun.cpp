@@ -18,9 +18,10 @@ namespace nsp {
         Segment AB(triangle.A, triangle.B);
         Segment AC(triangle.A, triangle.C);
         Segment BC(triangle.B, triangle.C);
-        Point3D c1 = intersectSegmentPlane(AB, plane);
-        Point3D c2 = intersectSegmentPlane(AC, plane);
-        Point3D c3 = intersectSegmentPlane(BC, plane);
+
+        Point3D c1 = std::get<0>(intersectSegmentPlane(AB, plane));
+        Point3D c2 = std::get<0>(intersectSegmentPlane(AC, plane));
+        Point3D c3 = std::get<0>(intersectSegmentPlane(BC, plane));
         if(c1.isIdentical(Point3D())){
             if(c2.isIdentical(Point3D()) && c3.isIdentical(Point3D())){
                 if(c2.distance(c3) != 0.0){

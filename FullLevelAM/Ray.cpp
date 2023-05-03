@@ -3,12 +3,12 @@ namespace nsp {
 
 //��ʼ��
     Ray::Ray(Point3D p, Vector3D v) {
-        this->p = p.clone();
-        this->v = v.clone().normalized();
+        this->P = p.clone();
+        this->V = v.clone().normalized();
     }
 
     bool Ray::operator==(Ray ray) {
-        return p == ray.p && v.isParallel(ray.v);
+        return P == ray.P && V.isParallel(ray.V);
     }
 
     bool Ray::operator!=(Ray ray) {
