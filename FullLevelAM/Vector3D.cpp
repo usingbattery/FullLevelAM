@@ -18,7 +18,7 @@ namespace nsp {
         std::string res = "Vector3D:";
         std::stringstream stringTem;
         int precision = 1;
-        stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(1) << dx;
+        stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << dx;
         res += stringTem.str() + ",";
         stringTem.str("");
         stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << dy;

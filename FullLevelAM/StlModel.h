@@ -4,29 +4,28 @@
 
 #pragma once
 
+#include <map>
 #include "Triangle.h"
 #include "File.h"
 
 namespace nsp {
 
-    class StlModel {
+	class StlModel {
 
-    public:
+	public:
 
-        StlModel(std::string filepath = "C:\\CLion_txt\\text.txt");
+		StlModel(std::string filepath = "0.STL");
 
-        //读取STL文件，输入文件路径
-        void readStlFile(std::string filepath);
+		//获取STL模型中的面片数
+		int getFacetNumber();
 
-        //获取STL模型中的面片数
-        void initFacetNumber();
+		std::map<double,Triangle> triangles;
+		double bound[6];
 
-        std::vector<Triangle> triangles;
-        double bound[6];
-        int facetNumber;
+	private:
 
-    private:
+		//读取STL文件，输入文件路径
+		void readStlFile(std::string filepath);
 
-    };
-
+	};
 }

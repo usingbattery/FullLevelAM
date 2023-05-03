@@ -1,69 +1,81 @@
 //
 // Created by MBP on 2023/4/18.
 //
-
-#include "StlModel.h"
+#include <iostream>
+#include <string>
+#include <cstring>
 #include <algorithm>
+#include "StlModel.h"
+
 namespace nsp {
 
 	StlModel::StlModel(std::string filepath) {
 		readStlFile(filepath);
-		initFacetNumber();
 	}
 
-	void StlModel::readStlFile(std::string filepath) {
+	void readXYZ(File* stlFile, double* x, double* y, double* z);
+
+	void updateBound(double* bound, Point3D P[]);
+
+	void StlModel::readStlFile(std::string filePath) {
 
 		//prepare file
-		File stlFile = File(filepath);
+		File stlFile(filePath);
 		std::string text;
 		bool hasLeft = true;
 
 		//prepare triangle
 		Triangle triangle;
-		double dx = 0, dy = 0, dz = 0;
-		Point3D A, B, C;
+		double x=0, y=0, z=0;
+		Point3D P[3];
+		int pIndex = 0;
 		Vector3D N;
 
 		//start read
 		while (hasLeft) {
-			text = "";
 			hasLeft = stlFile.read(&text);
-			if (line.substr(0, 12) == "facet normal") {
-				std::vector<double> vec_tmp = getCoords(line);
-				dx = vec_tmp[0];
-				dy = vec_tmp[1];
-				dz = vec_tmp[2];
-				N = Vector3D(dx, dy, dz);
-				std::getline(f.infile, line);
-				A.x = getCoords(line)[0];
-				A.y = getCoords(line)[1];
-				A.z = getCoords(line)[2];
-
-				std::getline(f.infile, line);
-				B.x = getCoords(line)[0];
-				B.y = getCoords(line)[1];
-				B.z = getCoords(line)[2];
-
-				std::getline(f.infile, line);
-				C.x = getCoords(line)[0];
-				C.y = getCoords(line)[1];
-				C.z = getCoords(line)[2];
-				triangles.push_back(Triangle(A, B, C, N));
+			if (text == "normal") {
+				readXYZ(&stlFile, &x, &y, &z);
+				N = Vector3D(x, y, z);
+				pIndex = 0;
 			}
-			refreshBound(bound, triangle);
+			else if (text == "vertex") {
+				readXYZ(&stlFile, &x, &y, &z);
+				P[pIndex++] = Point3D(x, y, z);
+			}
+			else if (text == "endfacet") {
+				triangle = Triangle(P[0], P[1], P[2], N);
+				triangles[triangle.zMinPnt()] = triangle;
+				updateBound(bound,P);
+			}
+		}
+
+		std::map<double, Triangle>::iterator it;
+		for (it = triangles.begin(); it != triangles.end(); it++) {
+			std::cout << "¼ü=" << (it->first) << " Öµ=" << (it->second).A.toString() << std::endl;
 		}
 	}
 
-	void StlModel::initFacetNumber() {
-		facetNumber = triangles.size();
+	int StlModel::getFacetNumber() {
+		return triangles.size();
 	}
 
-	void refreshBound(double* bound, Triangle t) {
-		bound[0] = std::min({ bound[0], t.A.x, t.B.x, t.C.x });
-		bound[1] = std::min({ bound[1], t.A.y, t.B.y, t.C.y });
-		bound[2] = std::min({ bound[2], t.A.z, t.B.z, t.C.z });
-		bound[3] = std::max({ bound[3], t.A.x, t.B.x, t.C.x });
-		bound[4] = std::max({ bound[4], t.A.y, t.B.y, t.C.y });
-		bound[5] = std::max({ bound[5], t.A.z, t.B.z, t.C.z });
+	void readXYZ(File* stlFile, double* x, double* y, double* z) {
+		std::string text;
+		(*stlFile).read(&text);
+		*x = std::stod(text.c_str());
+		(*stlFile).read(&text);
+		*y = std::stod(text.c_str());
+		(*stlFile).read(&text);
+		*z = std::stod(text.c_str());
+	}
+
+	void updateBound(double* bound, Point3D P[]) {
+		bound[0] = std::min({ bound[0], P[0].x, P[1].x, P[2].x });
+		bound[1] = std::min({ bound[1], P[0].y, P[1].y, P[2].y });
+		bound[2] = std::min({ bound[2], P[0].z, P[1].z, P[2].z });
+		bound[3] = std::max({ bound[3], P[0].x, P[1].x, P[2].x });
+		bound[4] = std::max({ bound[4], P[0].y, P[1].y, P[2].y });
+		bound[5] = std::max({ bound[5], P[0].z, P[1].z, P[2].z });
 	}
 }

@@ -16,7 +16,7 @@ namespace nsp {
         std::string res = "Point3D:";
         std::stringstream stringTem;
         int precision = 1;
-        stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(1) << x;
+        stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << x;
         res += stringTem.str() + ",";
         stringTem.str("");
         stringTem << std::setiosflags(std::ios::fixed) << std::setprecision(precision) << y;

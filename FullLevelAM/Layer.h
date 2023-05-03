@@ -4,10 +4,15 @@
 
 #ifndef FULLLEVELAM_LAYER_H
 #define FULLLEVELAM_LAYER_H
+
 #include <vector>
 #include "Segment.h"
+#include "Triangle.h"
+
 namespace nsp {
+
     class Layer {
+
     public:
         //current layer
         int z = 0;
@@ -16,6 +21,10 @@ namespace nsp {
         //intersected segment in order
         std::vector<Segment> contours;
 
+        Layer(std::vector<Triangle> ts);
+
+    private:
+        Triangle* triangles;
     };
 }
 

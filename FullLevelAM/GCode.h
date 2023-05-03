@@ -16,7 +16,7 @@ namespace nsp {
 		const double doubleNull = DBL_MAX;
 
 		//avoid open and close each time write()
-		File *outfile;
+		File* outfile;
 
 		//avoid created each time doubleToString()
 		std::stringstream stringTem;

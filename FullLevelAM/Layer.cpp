@@ -4,5 +4,8 @@
 
 #include "Layer.h"
 namespace nsp {
-
+	
+	Layer::Layer(std::vector<Triangle> ts){
+		this->triangles=new Triangle[ts.size()];
+	}
 }
