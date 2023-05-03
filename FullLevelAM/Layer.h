@@ -6,6 +6,7 @@
 #define FULLLEVELAM_LAYER_H
 
 #include <vector>
+#include <map>
 #include "Segment.h"
 #include "Triangle.h"
 
@@ -21,10 +22,10 @@ namespace nsp {
         //intersected segment in order
         std::vector<Segment> contours;
 
-        Layer(std::vector<Triangle> ts);
+        Layer(std::multimap <double, Triangle> ts);
 
     private:
-        Triangle* triangles;
+        std::multimap <double, Triangle> triangles;
     };
 }
 

@@ -1,12 +1,14 @@
 #include "File.h"
 #include "Point3D.h"
 #include "StlModel.h"
+#include "Layer.h"
 using namespace nsp;
 
 int main() {
 
-//	StlModel s("236.STL");//stl�ļ���·��
-    std::cout << "1" << std::endl;
+	StlModel s("236.STL");//stlÎÄ¼þµÄÂ·¾¶
+	Layer l(s.getTriangles());
+
 	//    tmp.clear();
 	//    std::getline(tmp.infile, s);
 	//    std::cout << s << std::endl;

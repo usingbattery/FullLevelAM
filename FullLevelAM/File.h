@@ -10,7 +10,7 @@ namespace nsp {
     public:
 
         //open file at begining
-        File(std::string filepath = "null");
+        File(std::string filepath = "");
 
         //close file at the end
         ~File();
@@ -19,9 +19,10 @@ namespace nsp {
         void write(std::string text);
 
         bool read(std::string *text);
-        File operator=(File f);
-        //clear file
-        void clear();
+        
+        //not a method
+        //should realize in File()
+        //void clear();
 
     private:
 

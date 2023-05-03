@@ -16,16 +16,19 @@ namespace nsp {
 
 		StlModel(std::string filepath = "0.STL");
 
+		//获取STL模型中面片
+		std::multimap <double, Triangle> getTriangles();
+
 		//获取STL模型中的面片数
 		int getFacetNumber();
 
-		std::map<double,Triangle> triangles;
 		double bound[6];
 
 	private:
 
+		std::multimap <double, Triangle> triangles;
+
 		//读取STL文件，输入文件路径
 		void readStlFile(std::string filepath);
-
 	};
 }

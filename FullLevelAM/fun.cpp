@@ -14,7 +14,7 @@ namespace nsp {
         return Polyline();
     }
 
-    /*Segment intersectTrianglePlane(Triangle triangle, Plane plane) {
+    Segment intersectTrianglePlane(Triangle triangle, Plane plane) {
         Segment AB(triangle.A, triangle.B);
         Segment AC(triangle.A, triangle.C);
         Segment BC(triangle.B, triangle.C);
@@ -52,5 +52,5 @@ namespace nsp {
             }
         }
         return Segment(Point3D(), Point3D());
-    }*/
+    }
 }
