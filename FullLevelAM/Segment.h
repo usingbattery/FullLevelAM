@@ -5,6 +5,7 @@ namespace nsp {
     class Segment {
 
     public:
+
         Point3D A;
         Point3D B;
 

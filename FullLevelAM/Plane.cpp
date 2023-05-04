@@ -45,8 +45,6 @@ namespace nsp {
         }
     }
 
-
-
     bool Plane::operator==(Plane plane) {
         return P == plane.P && N == plane.N;
     }
