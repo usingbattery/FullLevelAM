@@ -13,7 +13,7 @@
 #include "Polyline.h"
 #include<tuple>
 
-//几何算法模块
+//Geometric algorithm module
 
 namespace nsp {
 
@@ -35,14 +35,17 @@ namespace nsp {
 
 	double distance(Segment obj1, Plane obj2);
 
-	//直线与直线相交，返回交点。因为是多返回值，所以采用tuple<>的结构返回，调用此函数时，请注意返回值的格式
-	//bool类型用于判断是否有交点，当返回的tuple里bool为false时，说明无交点，为true时，返回的p即为交点
+	//The line intersects with the line and returns the intersection point.
+	//Because it returns multiple values, a tuple<>structure is used to return. When calling this function, please pay attention to the format of the return value
+	
+	//The bool type is used to determine whether there are intersections
+	//When bool in the returned tuple is false, it indicates that there is no intersection point. When it is true, the returned p is the intersection point
 	std::tuple<Point3D, double, double, bool> intersectLineLine(Line, Line);
 
-	//计算线段和平面的交点并返回
+	//Calculate the intersection point of a line segment and a plane and return
 	std::tuple<Point3D, bool>  intersectSegmentPlane(Segment seg, Plane plane);
 
-	//实体求交计算
+	//Solid Intersection Calculation
 	std::tuple<Point3D, bool>  intersect(Line, Line);
 	std::tuple<Point3D, bool>  intersect(Segment, Segment);
 	std::tuple<Point3D, bool>  intersect(Line, Segment);

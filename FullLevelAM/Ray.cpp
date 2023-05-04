@@ -1,7 +1,7 @@
 #include"Ray.h"
 namespace nsp {
 
-//��ʼ��
+//Initialize Ray
     Ray::Ray(Point3D p, Vector3D v) {
         this->P = p.clone();
         this->V = v.clone().normalized();

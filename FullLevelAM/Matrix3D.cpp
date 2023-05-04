@@ -5,7 +5,7 @@ namespace nsp {
 		a = { {1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1} };
 	}
 
-	//将res矩阵单位化
+	//Unitize the res matrix
 	void Matrix3D::makeIdentical() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -20,7 +20,7 @@ namespace nsp {
 	}
 
 
-	//一个矩阵乘以另一个矩阵,nums矩阵用于接受传入的矩阵
+	//Multiply one matrix by another, nums matrix is used to accept incoming matrices
 	Matrix3D Matrix3D::multiplied(Matrix3D& nums) {
 		Matrix3D m;
 		for (int i = 0; i < 4; i++) {
@@ -35,7 +35,7 @@ namespace nsp {
 	}
 
 
-	//生成平移矩阵
+	//Generate translation matrix
 	Matrix3D Matrix3D::creatTranslateMatrix(int dx, int dy, int dz) {
 		Matrix3D m;
 		m.a[3][0] = dx;
@@ -45,7 +45,7 @@ namespace nsp {
 	}
 
 
-	//生成缩放矩阵
+	//Generate scaling matrix
 	Matrix3D Matrix3D::creatScalMatrix(int sx, int sy, int sz) {
 		Matrix3D m;
 		m.a[0][0] = sx;
@@ -54,9 +54,9 @@ namespace nsp {
 		return m;
 	}
 
-	//生成旋转矩阵，暂未开发
+	//Generate rotation matrix, not yet developed
 
-	//矩阵相加
+	//matrix addition
 	void Matrix3D::add(Matrix3D& m) {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -65,7 +65,7 @@ namespace nsp {
 		}
 	}
 
-	//矩阵相减
+	//Matrix subtraction
 	void Matrix3D::sub(Matrix3D& m) {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {

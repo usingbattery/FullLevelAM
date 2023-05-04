@@ -8,9 +8,9 @@ namespace nsp {
     class File {
 
     public:
-        //
+
         //open file at begining
-        File(std::string filepath = "");
+        File(std::string filepath = "null");
 
         //close file at the end
         ~File();
@@ -19,10 +19,9 @@ namespace nsp {
         void write(std::string text);
 
         bool read(std::string *text);
-        
-        //not a method
-        //should realize in File()
-        //void clear();
+        File operator=(File f);
+        //clear file
+        void clear();
 
     private:
 
