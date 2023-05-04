@@ -8,7 +8,7 @@ namespace nsp {
     class File {
 
     public:
-
+        //
         //open file at begining
         File(std::string filepath = "");
 
