@@ -45,14 +45,15 @@ namespace nsp {
 			}
 			else if (text == "endfacet") {
 				triangle = Triangle(P[0], P[1], P[2], N);
-				triangles.insert(std::pair<double, Triangle>{triangle.zMinPnt(), triangle});
+				triangles[triangle.zMinPnt()] = triangle;
 				updateBound(bound,P);
 			}
 		}
-	}
 
-	std::multimap <double, Triangle> StlModel::getTriangles(){
-		return triangles;
+		std::map<double, Triangle>::iterator it;
+		for (it = triangles.begin(); it != triangles.end(); it++) {
+			std::cout << "¼ü=" << (it->first) << " Öµ=" << (it->second).A.toString() << std::endl;
+		}
 	}
 
 	int StlModel::getFacetNumber() {

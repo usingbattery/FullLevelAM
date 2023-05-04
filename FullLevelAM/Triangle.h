@@ -19,13 +19,13 @@ namespace nsp {
 
         double zMaxPnt();
 
-        //三角行的三个顶点
+        //Three vertices of a triangular row
         Point3D A;
         Point3D B;
         Point3D C;
-        //三角的法向量
+        //Normal vector of triangle
         Vector3D N;
-        //存储面片包含的层高
+        //The layer height contained in the storage patch
         std::vector<int> zs;
 
         bool operator==(Triangle t);

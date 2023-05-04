@@ -31,11 +31,9 @@ namespace nsp {
         }
     }
 
-    //not a method
-    //should realize in File()
-    //void File::clear() {
-    //    std::fstream tmp_outfile;
-    //    tmp_outfile.open(FilePath, std::ios::out);
-    //    outfile.open(FilePath, std::ios::app);
-    //}
+    void File::clear() {
+        /*std::fstream tmp_outfile;
+        tmp_outfile.open(FilePath, std::ios::out);
+        outfile.open(FilePath, std::ios::app);*/
+    }
 }

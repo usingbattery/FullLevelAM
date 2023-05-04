@@ -1,7 +1,7 @@
 #include"Segment.h"
 namespace nsp {
 
-//��ʼ��
+//Initialize Segment
     Segment::Segment(Point3D a, Point3D b) {
         this->A = a.clone();
         this->B = b.clone();
@@ -12,18 +12,18 @@ namespace nsp {
         return res + A.toString() + B.toString();
     }
 
-//�����߶γ���
+//Distance from point A to point B
     double Segment::length() {
         return A.distance(B);
     }
 
-//�����߶η���
+//Direction vector from point A to point B
     Vector3D Segment::direction() {
         return A.pointTo(B);
     }
 
 
-//�����߶������˵�
+//Swap the two ends of a line segment
     void Segment::swap() {
         Point3D temp;
         temp = A;

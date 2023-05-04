@@ -18,52 +18,52 @@ namespace nsp {
 
         std::string toString();
 
-        //克隆一条多线段
+        //Clone a multi line segment
         Polyline clone();
 
-        //获取多线段中点的数量
+        //Obtain the number of midpoints in multiple line segments
         int count();
 
-        //在多线段末尾添加一个点
+        //Add a point at the end of a multiple line segment
         void addPoint(Point3D pt);
 
-        //在多线段起点前增加一个点
+        //Add a point before the starting point of multiple line segments
         void raddPoint(Point3D pt);
 
-        //根据点的序号移除一个点
+        //Remove a point based on its sequence number
         void removePoint(int index);
 
-        //根据点的序号获取一个点
+        //Obtain a point based on its serial number
         Point3D point(int index);
 
-        //获取起点
+        //Get starting point
         Point3D startPoint();
 
-        //获取终点
+        //Get endpoint
         Point3D endPoint();
 
-        //判断多线段是否闭合
+        //Determine whether multiple line segments are closed
         bool isClosed();
 
-        //对多段线的点序进行反向操作
+        //Reverse the point order of a polyline
         void reverse();
 
-        //获取多边形面积
+        //Obtain polygon area
         double getArea();
 
-        //将XY平面上的多边形调整成逆时针方向
+        //Adjust the polygons on the XY plane to counterclockwise direction
         void makeCCW();
 
-        //将XY平面上的多边形调整成顺时针方向
+        //Adjust the polygons on the XY plane to a clockwise direction
         void makeCW();
 
-        //判断多边形是否为逆时针方向
+        //Determine if the polygon is counterclockwise
         bool isCCW();
 
-        //根据一个向量平移多线段
+        //Translate multiple line segments based on a vector
         void translate(Vector3D vec);
 
-        //在多线段的开头或结尾添加一条线段
+        //Add a line segment at the beginning or end of a multiple line segment
         bool appendSegment(Segment seg);
 
     private:
