@@ -10,11 +10,11 @@ namespace nsp {
 
         Segment(Point3D a = Point3D(), Point3D b = Point3D());
 
+        std::string toString();
+
         double length();
 
-
         Vector3D direction();
-
 
         void swap();
 

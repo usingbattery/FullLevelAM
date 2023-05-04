@@ -14,8 +14,9 @@ namespace nsp {
 
         std::vector<Point3D> points;
 
-        Polyline() {
-        }
+        Polyline() {}
+
+        std::string toString();
 
         //克隆一条多线段
         Polyline clone();

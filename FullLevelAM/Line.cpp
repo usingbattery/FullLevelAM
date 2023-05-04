@@ -5,6 +5,11 @@ namespace nsp {
         this->v = v.clone().normalized();
     }
 
+    std::string Line::toString() {
+        std::string res = "Line:";
+        return res+p.toString()+v.toString();
+    }
+
     bool Line::operator==(Line line) {
         return p == line.p && v == line.v;
     }

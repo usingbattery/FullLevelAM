@@ -8,6 +8,8 @@ namespace nsp {
 
         Line(Point3D p = Point3D(), Vector3D v = Vector3D());
 
+        std::string toString();
+
         bool operator==(Line line);
 
         bool operator!=(Line line);

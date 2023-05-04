@@ -7,6 +7,11 @@ namespace nsp {
         this->B = b.clone();
     }
 
+    std::string Segment::toString() {
+        std::string res = "Segment:";
+        return res + A.toString() + B.toString();
+    }
+
 //�����߶γ���
     double Segment::length() {
         return A.distance(B);

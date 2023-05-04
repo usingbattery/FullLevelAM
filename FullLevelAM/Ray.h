@@ -9,6 +9,8 @@ namespace nsp {
 
         Ray(Point3D p, Vector3D v);
 
+        std::string toString();
+
         bool operator==(Ray ray);
 
         bool operator!=(Ray ray);

@@ -1,8 +1,27 @@
 #include"Matrix3D.h"
+#include <sstream>
+#include <iomanip>
 
 namespace nsp {
 	Matrix3D::Matrix3D() {
 		a = { {1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1} };
+	}
+
+	std::string Matrix3D::toString() {
+		std::string res = "Matrix3D:";
+		std::stringstream stringTem;
+		int precision = 1;
+		std::vector<int> b;
+		for (int i = 0; i < a.size(); i++) {
+			b = a[i];
+			for (int j = 0; j < b.size(); j++) {
+				stringTem.str("");
+				stringTem << std::setiosflags(std::ios::fixed) << b[j];
+				res += stringTem.str() + "\t";
+			}
+			res += '\n';
+		}
+		return res;
 	}
 
 	//将res矩阵单位化
