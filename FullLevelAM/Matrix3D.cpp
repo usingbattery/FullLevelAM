@@ -6,7 +6,7 @@ namespace nsp {
 	Matrix3D::Matrix3D() {
 		a = { {1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1} };
 	}
-
+  
 	std::string Matrix3D::toString() {
 		std::string res = "Matrix3D:";
 		std::stringstream stringTem;
@@ -24,7 +24,7 @@ namespace nsp {
 		return res;
 	}
 
-	//½«res¾ØÕóµ¥Î»»¯
+	//å°†resçŸ©é˜µå•ä½åŒ–
 	void Matrix3D::makeIdentical() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -39,7 +39,7 @@ namespace nsp {
 	}
 
 
-	//Ò»¸ö¾ØÕó³ËÒÔÁíÒ»¸ö¾ØÕó,nums¾ØÕóÓÃÓÚ½ÓÊÜ´«ÈëµÄ¾ØÕó
+	//Multiply one matrix by another, nums matrix is used to accept incoming matrices
 	Matrix3D Matrix3D::multiplied(Matrix3D& nums) {
 		Matrix3D m;
 		for (int i = 0; i < 4; i++) {
@@ -54,7 +54,7 @@ namespace nsp {
 	}
 
 
-	//Éú³ÉÆ½ÒÆ¾ØÕó
+	//Generate translation matrix
 	Matrix3D Matrix3D::creatTranslateMatrix(int dx, int dy, int dz) {
 		Matrix3D m;
 		m.a[3][0] = dx;
@@ -64,7 +64,7 @@ namespace nsp {
 	}
 
 
-	//Éú³ÉËõ·Å¾ØÕó
+	//Generate scaling matrix
 	Matrix3D Matrix3D::creatScalMatrix(int sx, int sy, int sz) {
 		Matrix3D m;
 		m.a[0][0] = sx;
@@ -73,9 +73,9 @@ namespace nsp {
 		return m;
 	}
 
-	//Éú³ÉĞı×ª¾ØÕó£¬ÔİÎ´¿ª·¢
+	//Generate rotation matrix, not yet developed
 
-	//¾ØÕóÏà¼Ó
+	//matrix addition
 	void Matrix3D::add(Matrix3D& m) {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -84,7 +84,7 @@ namespace nsp {
 		}
 	}
 
-	//¾ØÕóÏà¼õ
+	//Matrix subtraction
 	void Matrix3D::sub(Matrix3D& m) {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {

@@ -11,23 +11,24 @@ namespace nsp {
 	class Plane {
 
 	public:
-
 		Plane(Point3D p = Point3D(), Vector3D n = Vector3D()) : P(p), N(n) {}
 
 		std::string toString();
 
-		//获取标准直线方程Ax+By+Cz+D = 0的参数
+		//Obtain the parameters of the standard straight line equation Ax+By+Cz+D=0
 		std::vector<double> toFormula();
 
-		//返回3D点的z平面
+		std::string toString();
+
+		//Returns the z-plane of a 3D point
 		Plane zPlane(double z);
 
-		//返回两平面求交得到的线段
+		//Returns the line segment obtained by intersecting two planes
 		Line intersect(Plane pl);
 
-		//平面经过的点
+		//The point through which the plane passes
 		Point3D P;
-		//平面法向量
+		//Plane normal vector
 		Vector3D N;
 
 		bool operator==(Plane plane);

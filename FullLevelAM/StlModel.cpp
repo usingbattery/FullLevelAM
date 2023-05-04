@@ -49,9 +49,10 @@ namespace nsp {
 				updateBound(bound,P);
 			}
 		}
+		}
 	}
 
-	std::multimap <double, Triangle> StlModel::getTriangles(){
+	std::multimap <double, Triangle> StlModel::getTriangles() {
 		return triangles;
 	}
 
