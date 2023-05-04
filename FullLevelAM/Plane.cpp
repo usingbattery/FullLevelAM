@@ -6,6 +6,11 @@
 #include "Line.h"
 namespace nsp {
 
+    std::string Plane::toString() {
+        std::string res = "Plane:";
+        return res+P.toString()+N.toString();
+    }
+
     std::vector<double> Plane::toFormula() {
         return std::vector<double>{N.dx, N.dy, N.dz, -N.dx * P.x - N.dy * P.y - N.dz * P.z};
     }
