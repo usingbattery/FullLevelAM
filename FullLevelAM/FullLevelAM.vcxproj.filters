@@ -76,9 +76,6 @@
     <ClCompile Include="Point3D.h">
       <Filter>头文件</Filter>
     </ClCompile>
-    <ClCompile Include="Point3D.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -125,6 +122,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Layers.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Point3D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

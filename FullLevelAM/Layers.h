@@ -13,7 +13,7 @@ namespace nsp {
         Layer* layers;
 
     private:
-
+        
         int layersNum;
 
         void initLayers(double zMin, double zMax, double layerLength);

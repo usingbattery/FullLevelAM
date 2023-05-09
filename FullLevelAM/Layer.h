@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include "Plane.h"
 #include "Segment.h"
 #include "StlModel.h"

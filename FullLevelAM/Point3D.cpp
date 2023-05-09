@@ -43,16 +43,16 @@ namespace nsp {
 
     Point3D Point3D::translated(Vector3D vec) {
         return Point3D(
-                this->x += vec.dx,
-                this->y += vec.dy,
-                this->z += vec.dz);
+            this->x += vec.dx,
+            this->y += vec.dy,
+            this->z += vec.dz);
     }
 
     Point3D Point3D::multiplied(Matrix3D m) {
         return Point3D(
-                this->x * m.a[0][0] + this->y * m.a[1][0] + this->z * m.a[2][0] + this->w * m.a[3][0],
-                this->x * m.a[0][1] + this->y * m.a[1][1] + this->z * m.a[2][1] + this->w * m.a[3][1],
-                this->x * m.a[0][2] + this->y * m.a[1][2] + this->z * m.a[2][2] + this->w * m.a[3][2]);
+            this->x * m.a[0][0] + this->y * m.a[1][0] + this->z * m.a[2][0] + this->w * m.a[3][0],
+            this->x * m.a[0][1] + this->y * m.a[1][1] + this->z * m.a[2][1] + this->w * m.a[3][1],
+            this->x * m.a[0][2] + this->y * m.a[1][2] + this->z * m.a[2][2] + this->w * m.a[3][2]);
     }
 
     double Point3D::distanceSquare(Point3D other) {
@@ -96,7 +96,7 @@ namespace nsp {
         return this->isIdentical(p);
     }
 
-    bool Point3D::operator!=(const Point3D &p) {
+    bool Point3D::operator!=(const Point3D& p) {
         return !this->operator==(p);
     }
 
