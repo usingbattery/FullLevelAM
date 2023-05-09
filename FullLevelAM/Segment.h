@@ -19,6 +19,8 @@ namespace nsp {
 
         void swap();
 
+        bool isNull();
+
         bool operator==(Segment segment);
 
         bool operator!=(Segment segment);

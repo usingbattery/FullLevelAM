@@ -31,6 +31,10 @@ namespace nsp {
         B = temp;
     }
 
+    bool Segment::isNull() {
+        return length() == 0;
+    }
+
 	bool Segment::operator==(Segment segment) {
 		return (A == segment.A && B == segment.A) || (B == segment.A && A == segment.B);
 	}

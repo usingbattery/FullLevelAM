@@ -18,8 +18,6 @@ namespace nsp {
 		//Obtain the parameters of the standard straight line equation Ax+By+Cz+D=0
 		std::vector<double> toFormula();
 
-		std::string toString();
-
 		//Returns the z-plane of a 3D point
 		Plane zPlane(double z);
 

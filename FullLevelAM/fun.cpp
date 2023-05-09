@@ -4,6 +4,7 @@
 
 #include "fun.h"
 namespace nsp {
+
     void writePolyline(std::string path, Polyline polyline, bool clear_txt) {
 //        std::ofstream pl_outfile;
 //        pl_outfile.open(path, std::ios::app);
@@ -51,6 +52,6 @@ namespace nsp {
                 return Segment(c1, c2);
             }
         }
-        return Segment(Point3D(), Point3D());
+        return Segment();
     }
 }

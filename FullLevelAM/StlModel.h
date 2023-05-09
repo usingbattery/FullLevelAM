@@ -1,7 +1,3 @@
-//
-// Created by MBP on 2023/4/18.
-//
-
 #pragma once
 
 #include <map>
@@ -14,21 +10,22 @@ namespace nsp {
 
 	public:
 
-		StlModel(std::string filepath = "0.STL");
+		double bound[6];
 
-		std::multimap <double, Triangle> getTriangles();
+		std::multimap <double, Triangle> triangles;
+
+		StlModel(std::string filepath = "0.STL");
 
 		//Obtain the number of patches in the STL model
 		int getFacetNumber();
 
-		double bound[6];
-
 	private:
 
-		std::multimap <double, Triangle> triangles;
-
-		//Read the STL file and enter the file path
+		//Read the STL file 
 		void readStlFile(std::string filepath);
 
+		void readXYZ(File* stlFile, double* x, double* y, double* z);
+
+		void updateBound(Point3D P[]);
 	};
 }

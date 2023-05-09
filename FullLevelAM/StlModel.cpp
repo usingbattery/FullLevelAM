@@ -11,11 +11,14 @@ namespace nsp {
 
 	StlModel::StlModel(std::string filepath) {
 		readStlFile(filepath);
+		//int num = 0;
+		//std::multimap <double, Triangle>::iterator it;
+		//for (it = triangles.begin(); it != triangles.end(); it++) {
+		//	std::cout << "key= " << (it->first) << '\t' << "value= " << (it->second).A.toString() << std::endl;
+		//	num++;
+		//}
+		//std::cout << num;//480 for 236.STL
 	}
-
-	void readXYZ(File* stlFile, double* x, double* y, double* z);
-
-	void updateBound(double* bound, Point3D P[]);
 
 	void StlModel::readStlFile(std::string filePath) {
 
@@ -26,7 +29,7 @@ namespace nsp {
 
 		//prepare triangle
 		Triangle triangle;
-		double x=0, y=0, z=0;
+		double x = 0, y = 0, z = 0;
 		Point3D P[3];
 		int pIndex = 0;
 		Vector3D N;
@@ -41,26 +44,18 @@ namespace nsp {
 			}
 			else if (text == "vertex") {
 				readXYZ(&stlFile, &x, &y, &z);
-				P[pIndex++] = Point3D(x, y, z);
+				P[pIndex] = Point3D(x, y, z);
+				pIndex++;
 			}
 			else if (text == "endfacet") {
 				triangle = Triangle(P[0], P[1], P[2], N);
 				triangles.insert(std::pair<double, Triangle>{triangle.zMinPnt(), triangle});
-				updateBound(bound,P);
+				updateBound(P);
 			}
 		}
-		}
 	}
 
-	std::multimap <double, Triangle> StlModel::getTriangles() {
-		return triangles;
-	}
-
-	int StlModel::getFacetNumber() {
-		return triangles.size();
-	}
-
-	void readXYZ(File* stlFile, double* x, double* y, double* z) {
+	void StlModel::readXYZ(File* stlFile, double* x, double* y, double* z) {
 		std::string text;
 		(*stlFile).read(&text);
 		*x = std::stod(text.c_str());
@@ -70,7 +65,7 @@ namespace nsp {
 		*z = std::stod(text.c_str());
 	}
 
-	void updateBound(double* bound, Point3D P[]) {
+	void StlModel::updateBound(Point3D P[]) {
 		bound[0] = std::min({ bound[0], P[0].x, P[1].x, P[2].x });
 		bound[1] = std::min({ bound[1], P[0].y, P[1].y, P[2].y });
 		bound[2] = std::min({ bound[2], P[0].z, P[1].z, P[2].z });
@@ -78,4 +73,9 @@ namespace nsp {
 		bound[4] = std::max({ bound[4], P[0].y, P[1].y, P[2].y });
 		bound[5] = std::max({ bound[5], P[0].z, P[1].z, P[2].z });
 	}
+
+	int StlModel::getFacetNumber() {
+		return triangles.size();
+	}
+
 }

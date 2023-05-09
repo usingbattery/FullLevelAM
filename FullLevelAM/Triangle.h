@@ -6,6 +6,7 @@
 #define GCODE_TRIANGLE_H
 #include <vector>
 #include "Point3D.h"
+
 namespace nsp {
 
     class Triangle {

@@ -6,6 +6,7 @@
 #define GCODE_POLYLINE_H
 
 #include "Segment.h"
+
 namespace nsp {
 
     class Polyline {
