@@ -2,12 +2,39 @@
 #include "Point3D.h"
 #include "StlModel.h"
 #include "Layers.h"
+#include"VtkAdaptor.h"
 using namespace nsp;
 
+// 
+//
 int main() {
 
-	StlModel s("236.STL");
-	Layers ls(s);
+	VtkAdaptor vtkAdaptor;
+	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
+	vtkAdaptor.drawAxes();
+	vtkAdaptor.drawPoint(Point3D(10, 10, 10))->GetProperty()->SetColor(1,0,0);
+	vtkAdaptor.drawPoint(Point3D(50, 50, 50))->GetProperty()->SetColor(1, 0, 0);
+	Polyline polyline;
+	polyline.addPoint(Point3D(1, 1, 1));
+	polyline.addPoint(Point3D(50, 2, 10));
+	polyline.addPoint(Point3D(20, 10, 30));
+	polyline.addPoint(Point3D(50, 80, 50));
+	auto tp = vtkAdaptor.drawPolyline(polyline);
+	tp->GetProperty()->SetColor(0.1, 0.7, 0.7);
+	tp->GetProperty()->SetLineWidth(2);
+
+
+
+
+
+
+	vtkAdaptor.display();
+
+
+
+
+	/*StlModel s("236.STL");
+	Layers ls(s);*/
 
 	//    Point3D p = Point3D(1, 2, 3, 4);
 	//    std::cout << p.toString();
@@ -22,7 +49,7 @@ int main() {
 	//    closeFile();
 }
 
-////#include <vtkActor.h>
+//#include <vtkActor.h>
 //#include <vtkAreaPicker.h>
 //#include <vtkDataSetMapper.h>
 //#include <vtkDataSetSurfaceFilter.h>
