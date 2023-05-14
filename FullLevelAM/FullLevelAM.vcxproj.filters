@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\Geom">
+      <UniqueIdentifier>{d7acb750-a061-4e2d-9b1c-7688bf191c80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Geom">
+      <UniqueIdentifier>{4d6aae13-4772-4f6a-bab4-bf8ad0bf038c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="GCode.txt">
@@ -20,40 +26,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Matrix3D.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3D.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GCode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Segment.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GeomAlgo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="fun.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Polyline.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="StlModel.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Triangle.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="File.h">
@@ -68,51 +41,48 @@
     <ClInclude Include="Layers.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3D.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Polyline.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Segment.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="fun.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GeomAlgo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GCode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Point3D.h">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3D.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="File.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix3D.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Ray.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Segment.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GeomAlgo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Plane.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="fun.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Polyline.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="StlModel.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GCode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Layer.cpp">
@@ -124,7 +94,43 @@
     <ClCompile Include="Layers.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Point3D.h">
+      <Filter>头文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3D.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
     <ClCompile Include="Point3D.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Polyline.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3D.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="fun.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeomAlgo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GCode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

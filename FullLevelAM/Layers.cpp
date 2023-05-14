@@ -20,12 +20,9 @@ namespace nsp {
 
 	void Layers::intersectStlLayers(std::multimap <double, Triangle> triangles) {
 		std::multimap <double, Triangle>::iterator it = triangles.begin();
-		std::vector<Triangle> preTriangles;
-		Layer l;
+		std::vector<Triangle> trianglesTem;
 		for (int i = 0; i < layersNum; i++) {
-			l = layers[i];
-			preTriangles = l.intersectStlLayer(preTriangles, triangles, it);
-			l.intersectTriangleLayer(preTriangles);
+			trianglesTem = layers[i].intersectStlLayer(trianglesTem, triangles, it);
 		}
 	}
 }

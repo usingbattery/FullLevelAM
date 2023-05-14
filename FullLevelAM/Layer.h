@@ -13,7 +13,7 @@ namespace nsp {
         //current layer
         Plane plane;
         //intersected segment
-        std::vector<Segment> segmens;
+        std::vector<Segment> segments;
         //intersected segment in order
         std::vector<Segment> contours;
 
@@ -22,8 +22,6 @@ namespace nsp {
         void setPlane(Plane plane_);
 
         std::vector<Triangle> intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle> restTriangles, std::multimap <double, Triangle>::iterator it);
-
-        void intersectTriangleLayer(std::vector<Triangle> preTriangles);
 
     private:
 

@@ -12,8 +12,7 @@ namespace nsp {
 	StlModel::StlModel(std::string filepath) {
 		readStlFile(filepath);
 		//int num = 0;
-		//std::multimap <double, Triangle>::iterator it;
-		//for (it = triangles.begin(); it != triangles.end(); it++) {
+		//for (std::multimap <double, Triangle>::iterator it = triangles.begin(); it != triangles.end(); it++) {
 		//	std::cout << "key= " << (it->first) << '\t' << "value= " << (it->second).A.toString() << std::endl;
 		//	num++;
 		//}
@@ -77,5 +76,4 @@ namespace nsp {
 	int StlModel::getFacetNumber() {
 		return triangles.size();
 	}
-
 }
