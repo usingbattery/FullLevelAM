@@ -15,7 +15,7 @@
 namespace nsp {
 	//Save polygons to a text file
 	void writePolyline(std::string path, Polyline polyline, bool clear_txt = true);
-
+	 
 	//Reading Polygons from a Text File
 	Polyline readPolyline(std::string path);
 	//Intersection of Space Triangle and Plane

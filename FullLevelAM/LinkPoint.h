@@ -4,7 +4,7 @@ namespace nsp {
 	class LinkPoint
 	{
 	public:
-		LinkPoint(Point3D pnt3d, unsigned int digits = 7);
+		LinkPoint(Point3D pnt3d = Point3D(), unsigned int digits = 7);
 		double x;
 		double y;
 		double z;
