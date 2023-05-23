@@ -6,6 +6,9 @@
 
 namespace nsp {
 
+	// 曲面细分，4点三角，6点三角
+	// 5点模拟曲线
+
 	class StlModel {
 
 	public:

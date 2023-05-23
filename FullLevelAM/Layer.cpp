@@ -7,7 +7,7 @@ namespace nsp {
 		this->plane = plane;
 	}
 
-	std::vector<Triangle> Layer::intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle> restTriangles, std::multimap <double, Triangle>::iterator it) {
+	std::vector<Triangle> Layer::intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle> triangles, std::multimap <double, Triangle>::iterator it) {
 		std::vector<Triangle> curTriangles;
 		Segment segmentTem; 
 		for (std::vector<Triangle>::iterator it = preTriangles.begin(); it != preTriangles.end(); it++) {
@@ -20,7 +20,7 @@ namespace nsp {
 				continue;
 			}
 		}
-		for (; it != restTriangles.end(); it++) {
+		for (; it != triangles.end(); it++) {
 			segmentTem = intersectTrianglePlane(it->second, plane);
 			if (!segmentTem.isNull()) {
 				segments.push_back(segmentTem);
