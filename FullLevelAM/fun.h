@@ -11,6 +11,7 @@
 #include "Segment.h"
 #include "GeomAlgo.h"
 #include "Layer.h"
+#include "LinkPoint.h"
 namespace nsp {
 	//Save polygons to a text file
 	void writePolyline(std::string path, Polyline polyline, bool clear_txt = true);
@@ -19,6 +20,7 @@ namespace nsp {
 	Polyline readPolyline(std::string path);
 	//Intersection of Space Triangle and Plane
 	Segment intersectTrianglePlane(Triangle triangle, Plane plane);
-
+	//Define the comparison function for LinkPoint
+	int cmp_pntSmaller(const LinkPoint& lp1, const LinkPoint& lp2);
 }
 #endif //GCODE_FUN_H

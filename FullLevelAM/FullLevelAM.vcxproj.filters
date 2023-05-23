@@ -68,6 +68,12 @@
     <ClInclude Include="Vector3D.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LinkPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkSegs_dlook.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -125,6 +131,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Vector3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkPoint.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkSegs_dlook.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
