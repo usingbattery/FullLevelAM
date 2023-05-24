@@ -15,5 +15,7 @@ namespace nsp {
 			return Point3D(x, y, z);
 		}
 		double round(double d, unsigned int digits = 7);
+
+		bool operator==(LinkPoint lp);
 	};
 }
