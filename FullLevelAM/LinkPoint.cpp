@@ -13,4 +13,12 @@ namespace nsp {
 
 		return i + ((double)(int)(tmp_d * pow(10, digits) + res)) / (pow(10, digits));
 	}
+
+	bool LinkPoint::operator==(LinkPoint lp) {
+
+		if (this->x == lp.x && this->y == lp.y && this->z == lp.z) {
+			return true;
+		}
+		return false;
+	}
 }
