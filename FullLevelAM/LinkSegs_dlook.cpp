@@ -36,4 +36,46 @@ namespace nsp {
 		}
 		return LinkPoint();
 	}
+
+	//return next_LinkPoint
+	LinkPoint LinkSegs_dlook::findNextPnt(LinkPoint p, std::map<std::pair<double, double>, std::vector<LinkPoint>> dic) {
+		auto other = p.other;
+		std::pair<double, double> keys(other->x, other->y);
+		std::vector<LinkPoint> values;
+		values.push_back(other->toPoint3D());
+		dic[keys] = values;
+		LinkPoint difPnt;
+		for (auto iter = dic.begin(); iter != dic.end(); iter++) {
+			for (auto& c : iter->second) {
+				if (&c != other) {
+					difPnt = c;
+				}
+			}
+		}
+		return difPnt;
+	}
+
+	//
+	void LinkSegs_dlook::Link() {
+		std::map<std::pair<double, double>, std::vector<LinkPoint>> dic = createLpDic();
+		while (1) {
+			auto p = findUnusedPnt(dic);
+			if (p == LinkPoint())break;
+			auto poly = Polyline();
+			while (1) {
+				poly.addPoint(p.toPoint3D());
+				p.used = true;
+				p.other->used = true;
+				p = findNextPnt(p, dic);
+				if (poly.isClosed()) {
+					contours.push_back(poly);
+					break;
+				}
+				if (p == LinkPoint()) {
+					polys.push_back(poly);
+					break;
+				}
+			}
+		}
+	}
 }
