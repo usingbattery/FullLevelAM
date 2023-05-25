@@ -2,17 +2,33 @@
 #include "Point3D.h"
 #include "StlModel.h"
 #include "Layers.h"
-//#include"VtkAdaptor.h"
+#include "VtkAdaptor.h"
+#include "fun.h"
+#include "GeomAlgo.h"
 using namespace nsp;
 
 // 
 //
 int main() {
+	Plane plane(Point3D(1, 0, 0), Vector3D(1, 0, 0));
+	//Segment seg(Point3D(1, 0, 0), Point3D(0, 1, 0));
+	//auto p = intersectSegmentPlane(seg, plane);
+	///*Point3D p1(1, 0, 0);
+	//std::cout << p1.toString() << std::endl;*/
+	//if (p != nullptr) std::cout << p->toString() << std::endl;
+	//else std::cout << "suc" << std::endl;
 
-	//VtkAdaptor vtkAdaptor;
-	//vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
-	//vtkAdaptor.drawAxes();
-	//vtkAdaptor.drawPoint(Point3D(10, 10, 10))->GetProperty()->SetColor(1,0,0);
+	Triangle tri(Point3D(1, 0, 0), Point3D(-1, 0, 0), Point3D(0, 1, 0));
+	Segment sem = intersectTrianglePlane(tri, plane);
+	std::cout << sem.toString() << std::endl;
+
+	/*VtkAdaptor vtkAdaptor;
+	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
+	vtkAdaptor.drawAxes();
+	vtkAdaptor.drawStlModel("236.STL");
+	
+	vtkAdaptor.drawPoint(Point3D(0, 0, -30))->GetProperty()->SetColor(1,0,0);
+	vtkAdaptor.display();*/
 	//vtkAdaptor.drawPoint(Point3D(50, 50, 50))->GetProperty()->SetColor(1, 0, 0);
 	//Polyline polyline;
 	//polyline.addPoint(Point3D(1, 1, 1));
@@ -25,7 +41,7 @@ int main() {
 
 	//vtkAdaptor.display();
 
-	StlModel s("236.STL");
+	//StlModel s("236.STL");
 	/*std::multimap<double, Triangle>::iterator it = s.triangles.begin();
 	int i = 0;
 	while (it != s.triangles.end())
@@ -35,7 +51,7 @@ int main() {
 		i++;
 	}
 	std::cout << i;*/
-	Layers ls(s);
+	//Layers ls(s);
 	/*for (Segment segment : ls.layers[0].segments) {
 		std::cout << segment.toString() << std::endl;
 	}*/
