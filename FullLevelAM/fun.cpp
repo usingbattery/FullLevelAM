@@ -3,6 +3,7 @@
 //
 
 #include "fun.h"
+
 namespace nsp {
 
     void writePolyline(std::string path, Polyline polyline, bool clear_txt) {
@@ -19,37 +20,36 @@ namespace nsp {
         Segment AB(triangle.A, triangle.B);
         Segment AC(triangle.A, triangle.C);
         Segment BC(triangle.B, triangle.C);
-
-        Point3D c1 = std::get<0>(intersectSegmentPlane(AB, plane));
-        Point3D c2 = std::get<0>(intersectSegmentPlane(AC, plane));
-        Point3D c3 = std::get<0>(intersectSegmentPlane(BC, plane));
-        if(c1.isIdentical(Point3D())){
-            if(!c2.isIdentical(Point3D()) && !c3.isIdentical(Point3D())){
-                if(c2.distance(c3) != 0.0){
-                    return Segment(c2, c3);
-                }
+        std::shared_ptr<Point3D> c1 = intersectSegmentPlane(AB, plane);
+        std::shared_ptr<Point3D> c2 = intersectSegmentPlane(AC, plane);
+        std::shared_ptr<Point3D> c3 = intersectSegmentPlane(BC, plane);
+        if(c1 == nullptr){
+            if(c2 != nullptr && c3 != nullptr){
+                //if(c2->distance(*c3) != 0.0){
+                    return Segment(*c2, *c3);
+                //}
             }
         }
-        else if(c2.isIdentical(Point3D())){
-            if(!c1.isIdentical(Point3D()) && !c3.isIdentical(Point3D())){
-                if(c1.distance(c3) != 0.0){
-                    return Segment(c1, c3);
-                }
+        else if(c2 == nullptr){
+            if(c1 != nullptr && c3 != nullptr){
+                //if(c1->distance(*c3) != 0.0){
+                    return Segment(*c1, *c3);
+                //}
             }
         }
-        else if(c3.isIdentical(Point3D())){
-            if(!c1.isIdentical(Point3D()) && !c2.isIdentical(Point3D())){
-                if(c1.distance(c2) != 0.0){
-                    return Segment(c1, c2);
-                }
+        else if(c3 == nullptr){
+            if(c1 != nullptr && c2 != nullptr){
+                //if(c1->distance(*c2) != 0.0){
+                    return Segment(*c1, *c2);
+                //}
             }
         }
-        else if(!c1.isIdentical(Point3D()) && !c2.isIdentical(Point3D()) && !c3.isIdentical(Point3D())){
-            if(c1.isIdentical(c2)){
-                return Segment(c1, c3);
+        else if(c1 != nullptr && c2 != nullptr && c3 != nullptr){
+            if(c1->isIdentical(*c2)){
+                return Segment(*c1, *c3);
             }
             else{
-                return Segment(c1, c2);
+                return Segment(*c1, *c2);
             }
         }
         return Segment();

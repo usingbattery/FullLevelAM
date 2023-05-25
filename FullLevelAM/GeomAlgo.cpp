@@ -129,7 +129,7 @@ namespace nsp {
         return std::make_tuple(P1, 0, 0, false);
     }
 
-    Point3D* intersectSegmentPlane(Segment seg, Plane plane) {
+    std::shared_ptr<Point3D> intersectSegmentPlane(Segment seg, Plane plane) {
         Point3D A = seg.A;
         Point3D B = seg.B;
         Point3D P = plane.P;
@@ -147,7 +147,7 @@ namespace nsp {
                 A.y += V.dy;
                 A.z += V.dz;
                 A.w += V.dw;
-                Point3D* pt = &A;
+                std::shared_ptr<Point3D> pt = std::make_shared<Point3D>(A);
                 return pt;
             }
         }
@@ -210,7 +210,7 @@ namespace nsp {
         return std::make_tuple(P0, false);
     }
 
-    Point3D*  intersect(Segment obj1, Plane obj2) {
+    std::shared_ptr<Point3D>  intersect(Segment obj1, Plane obj2) {
         return intersectSegmentPlane(obj1, obj2);
 
     }
