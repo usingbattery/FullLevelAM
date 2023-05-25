@@ -6,6 +6,11 @@
 #include <algorithm>
 namespace nsp {
 
+    std::string Triangle::toString() {
+        std::string res = "Triangle:";
+        return res + A.toString() +" " + B.toString() + " " + C.toString();
+    }
+
     double Triangle::zMinPnt() {
         return std::min({A.z, B.z, C.z});
     }

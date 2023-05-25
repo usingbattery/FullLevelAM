@@ -12,10 +12,10 @@ namespace nsp {
 
         Layer* layers;
 
-    private:
-        
         int layersNum;
 
+    private:
+        
         void initLayers(double zMin, double zMax, double layerLength);
 
         void intersectStlLayers(std::multimap <double, Triangle> triangles);

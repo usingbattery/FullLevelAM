@@ -9,7 +9,7 @@ namespace nsp {
 
 	std::string Segment::toString() {
 		std::string res = "Segment:";
-		return res + A.toString() + B.toString();
+		return res + A.toString() +" " + B.toString();
 	}
 
 //�����߶γ���

@@ -21,7 +21,7 @@ namespace nsp {
 
         void setPlane(Plane plane_);
 
-        std::vector<Triangle> intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle> triangles, std::multimap <double, Triangle>::iterator it);
+        std::vector<Triangle> intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle>* triangles, std::multimap <double, Triangle>::iterator* it);
 
     private:
 
