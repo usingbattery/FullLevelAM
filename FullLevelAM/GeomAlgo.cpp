@@ -129,7 +129,7 @@ namespace nsp {
         return std::make_tuple(P1, 0, 0, false);
     }
 
-    std::tuple<Point3D, bool> intersectSegmentPlane(Segment seg, Plane plane) {
+    Point3D* intersectSegmentPlane(Segment seg, Plane plane) {
         Point3D A = seg.A;
         Point3D B = seg.B;
         Point3D P = plane.P;
@@ -137,7 +137,7 @@ namespace nsp {
         auto V = A.pointTo(B);
         auto PA = P.pointTo(A);
         if (V.dotProduct(N) == 0) {
-            return std::make_tuple(A, false);
+            return nullptr;
         }
         else {
             auto t = -(PA.dotProduct(N)) / V.dotProduct(N);
@@ -147,10 +147,11 @@ namespace nsp {
                 A.y += V.dy;
                 A.z += V.dz;
                 A.w += V.dw;
-                return std::make_tuple(A, true);
+                Point3D* pt = &A;
+                return pt;
             }
         }
-        return std::make_tuple(A, false);
+        return nullptr;
     }
 
     std::tuple<Point3D, bool> intersect(Line obj1, Line obj2) {
@@ -209,7 +210,7 @@ namespace nsp {
         return std::make_tuple(P0, false);
     }
 
-    std::tuple<Point3D, bool>  intersect(Segment obj1, Plane obj2) {
+    Point3D*  intersect(Segment obj1, Plane obj2) {
         return intersectSegmentPlane(obj1, obj2);
 
     }
