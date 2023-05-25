@@ -107,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +143,8 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Layers.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="LinkPoint.h" />
+    <ClInclude Include="LinkSegs_dlook.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Polyline.h" />
@@ -160,6 +163,8 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Layers.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LinkPoint.cpp" />
+    <ClCompile Include="LinkSegs_dlook.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="Plane.cpp" />
