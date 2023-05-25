@@ -2,39 +2,48 @@
 #include "Point3D.h"
 #include "StlModel.h"
 #include "Layers.h"
-#include "VtkAdaptor.h"
+//#include"VtkAdaptor.h"
 using namespace nsp;
 
 // 
 //
 int main() {
 
-	VtkAdaptor vtkAdaptor;
-	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
-	vtkAdaptor.drawAxes();
-	vtkAdaptor.drawPoint(Point3D(10, 10, 10))->GetProperty()->SetColor(1,0,0);
-	vtkAdaptor.drawPoint(Point3D(50, 50, 50))->GetProperty()->SetColor(1, 0, 0);
-	Polyline polyline;
-	polyline.addPoint(Point3D(1, 1, 1));
-	polyline.addPoint(Point3D(50, 2, 10));
-	polyline.addPoint(Point3D(20, 10, 30));
-	polyline.addPoint(Point3D(50, 80, 50));
-	auto tp = vtkAdaptor.drawPolyline(polyline);
-	tp->GetProperty()->SetColor(0.1, 0.7, 0.7);
-	tp->GetProperty()->SetLineWidth(2);
+	//VtkAdaptor vtkAdaptor;
+	//vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
+	//vtkAdaptor.drawAxes();
+	//vtkAdaptor.drawPoint(Point3D(10, 10, 10))->GetProperty()->SetColor(1,0,0);
+	//vtkAdaptor.drawPoint(Point3D(50, 50, 50))->GetProperty()->SetColor(1, 0, 0);
+	//Polyline polyline;
+	//polyline.addPoint(Point3D(1, 1, 1));
+	//polyline.addPoint(Point3D(50, 2, 10));
+	//polyline.addPoint(Point3D(20, 10, 30));
+	//polyline.addPoint(Point3D(50, 80, 50));
+	//auto tp = vtkAdaptor.drawPolyline(polyline);
+	//tp->GetProperty()->SetColor(0.1, 0.7, 0.7);
+	//tp->GetProperty()->SetLineWidth(2);
 
+	//vtkAdaptor.display();
 
-
-
-
-
-	vtkAdaptor.display();
-
-
-
-
-	/*StlModel s("236.STL");
-	Layers ls(s);*/
+	StlModel s("236.STL");
+	/*std::multimap<double, Triangle>::iterator it = s.triangles.begin();
+	int i = 0;
+	while (it != s.triangles.end())
+	{
+		std::cout << it->first << "\t" << it->second.A.toString() << std::endl;
+		it++;
+		i++;
+	}
+	std::cout << i;*/
+	Layers ls(s);
+	/*for (Segment segment : ls.layers[0].segments) {
+		std::cout << segment.toString() << std::endl;
+	}*/
+	//for (int i = 0; i < ls.layersNum; i++) {
+	//	for (Segment segment : ls.layers[i].segments) {
+	//		std::cout<<segment.toString()<< std::endl;
+	//	}
+	//}
 
 	//    Point3D p = Point3D(1, 2, 3, 4);
 	//    std::cout << p.toString();
