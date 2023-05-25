@@ -24,27 +24,27 @@ namespace nsp {
         Point3D c2 = std::get<0>(intersectSegmentPlane(AC, plane));
         Point3D c3 = std::get<0>(intersectSegmentPlane(BC, plane));
         if(c1.isIdentical(Point3D())){
-            if(c2.isIdentical(Point3D()) && c3.isIdentical(Point3D())){
+            if(!c2.isIdentical(Point3D()) && !c3.isIdentical(Point3D())){
                 if(c2.distance(c3) != 0.0){
                     return Segment(c2, c3);
                 }
             }
         }
         else if(c2.isIdentical(Point3D())){
-            if(c1.isIdentical(Point3D()) && c3.isIdentical(Point3D())){
+            if(!c1.isIdentical(Point3D()) && !c3.isIdentical(Point3D())){
                 if(c1.distance(c3) != 0.0){
                     return Segment(c1, c3);
                 }
             }
         }
         else if(c3.isIdentical(Point3D())){
-            if(c1.isIdentical(Point3D()) && c2.isIdentical(Point3D())){
+            if(!c1.isIdentical(Point3D()) && !c2.isIdentical(Point3D())){
                 if(c1.distance(c2) != 0.0){
                     return Segment(c1, c2);
                 }
             }
         }
-        else{
+        else if(!c1.isIdentical(Point3D()) && !c2.isIdentical(Point3D()) && !c3.isIdentical(Point3D())){
             if(c1.isIdentical(c2)){
                 return Segment(c1, c3);
             }
