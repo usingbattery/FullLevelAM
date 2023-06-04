@@ -31,9 +31,7 @@ int main() {
 	//Segment sem = intersectTrianglePlane(tri, plane);
 	//std::cout << sem.toString() << std::endl;
 
-	//VtkAdaptor vtkAdaptor;
-	//vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
-	//vtkAdaptor.drawAxes();
+	
 	//vtkAdaptor.drawStlModel("236.STL");
 	//
 	//vtkAdaptor.drawPoint(Point3D(0, 0, -30))->GetProperty()->SetColor(1,0,0);
@@ -50,7 +48,7 @@ int main() {
 
 	//vtkAdaptor.display();
 
-	StlModel s("236.STL");
+	
 	//std::multimap<double, Triangle>::iterator it = s.triangles.begin();
 	//int i = 0;
 	//while (it != s.triangles.end())
@@ -60,14 +58,19 @@ int main() {
 	//	i++;
 	//}
 	//std::cout << i;
-	Cutter c(s,2.0);
+	VtkAdaptor vtkAdaptor;
+	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
+	vtkAdaptor.drawAxes();
+	StlModel s("236.STL");
+	Cutter c(s,20);
 	for (int i = 0; i < c.layersNum; i++) {
 		std::cout << c.layers[i].plane.P.z << std::endl;
-		for (Segment segment : c.layers[i].segments) {
-			std::cout<<"\t"<<segment.toString() << std::endl;
+		for (Segment& segment : c.layers[i].segments) {
+			//std::cout<<"\t"<<segment.toString() << std::endl;
+			vtkAdaptor.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
 		}
 	}
-
+	vtkAdaptor.display();
 	//    Point3D p = Point3D(1, 2, 3, 4);
 	//    std::cout << p.toString();
 
