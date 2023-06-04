@@ -26,6 +26,9 @@ namespace nsp {
         if (C1.size() + C2.size() + C3.size() > 4) {
             return { AB, AC, BC };
         }
+        if (C1.size() == 2 && C2.size() == 0 && C3.size() == 0) return { AB };
+        if (C1.size() == 0 && C2.size() == 2 && C3.size() == 0) return { AC };
+        if (C1.size() == 0 && C2.size() == 0 && C3.size() == 2) return { AB };
         std::shared_ptr<Point3D> c1 = nullptr;
         if (!C1.empty()) c1 = C1[0];
         std::shared_ptr<Point3D> c2 = nullptr;
