@@ -22,9 +22,9 @@ namespace nsp {
 		}
 		for (; ( * it) != ( * triangles).end(); (*it)++) {
 			//<bug>
-			std::cout << plane.P.z << "\t";
+			//std::cout << plane.P.z << "\t";
 			segmentTem = intersectTrianglePlane(( * it)->second, plane);
-			std::cout << segmentTem.toString() << std::endl;
+			//std::cout << segmentTem.toString() << std::endl;
 			//</bug>
 			if (!segmentTem.isNull()) {
 				segments.push_back(segmentTem);
