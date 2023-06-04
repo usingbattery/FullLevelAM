@@ -1,9 +1,9 @@
-#include "Layers.h"
+#include "Cutter.h"
 #include "fun.h"
 
 namespace nsp {
 
-	Layers::Layers(StlModel stlModel, double layerHeight) {
+	Cutter::Cutter(StlModel stlModel, double layerHeight) {
 		initLayers(stlModel.bound[2], stlModel.bound[5], layerHeight);
 		/*for (int i = 0; i < layersNum; i++) {
 			std::cout << layers[i].plane.toString() << std::endl;
@@ -11,7 +11,7 @@ namespace nsp {
 		intersectStlLayers(stlModel.triangles);
 	}
 
-	void Layers::initLayers(double zMin, double zMax, double layerLength) {
+	void Cutter::initLayers(double zMin, double zMax, double layerLength) {
 		layersNum = (int)((zMax - zMin) / layerLength)+1;
 		layers = new Layer[layersNum];
 		double zTem = zMin;
@@ -21,7 +21,7 @@ namespace nsp {
 		}
 	}
 
-	void Layers::intersectStlLayers(std::multimap <double, Triangle> triangles) {
+	void Cutter::intersectStlLayers(std::multimap <double, Triangle> triangles) {
 		std::multimap <double, Triangle>::iterator it = triangles.begin();
 		std::vector<Triangle> trianglesTem;
 		for (int i = 0; i < layersNum; i++) {

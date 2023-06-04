@@ -4,11 +4,11 @@
 
 namespace nsp {
 
-    class Layers {
+    class Cutter {
 
     public:
 
-        Layers(StlModel stlModel, double layerHeight = 1);
+        Cutter(StlModel stlModel, double layerHeight = 1);
 
         Layer* layers;
 

@@ -1,7 +1,7 @@
 #include "File.h"
 #include "Point3D.h"
 #include "StlModel.h"
-#include "Layers.h"
+#include "Cutter.h"
 #include "VtkAdaptor.h"
 #include "fun.h"
 #include "GeomAlgo.h"
@@ -60,8 +60,8 @@ int main() {
 	//	i++;
 	//}
 	//std::cout << i;
-	Layers ls(s,2.0);
-	for (int i = 0; i < ls.layersNum; i++) {
+	Cutter c(s,2.0);
+	for (int i = 0; i < c.layersNum; i++) {
 		std::cout << ls.layers[i].plane.P.z << std::endl;
 		for (Segment segment : ls.layers[i].segments) {
 			std::cout<<"\t"<<segment.toString() << std::endl;
