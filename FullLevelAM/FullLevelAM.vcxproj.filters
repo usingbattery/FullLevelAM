@@ -32,7 +32,7 @@
     <ClInclude Include="VtkAdaptor.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Layers.h">
+    <ClInclude Include="Cutter.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="fun.h">
@@ -91,7 +91,7 @@
     <ClCompile Include="VtkAdaptor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Layers.cpp">
+    <ClCompile Include="Cutter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="fun.cpp">

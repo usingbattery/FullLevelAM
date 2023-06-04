@@ -62,8 +62,8 @@ int main() {
 	//std::cout << i;
 	Cutter c(s,2.0);
 	for (int i = 0; i < c.layersNum; i++) {
-		std::cout << ls.layers[i].plane.P.z << std::endl;
-		for (Segment segment : ls.layers[i].segments) {
+		std::cout << c.layers[i].plane.P.z << std::endl;
+		for (Segment segment : c.layers[i].segments) {
 			std::cout<<"\t"<<segment.toString() << std::endl;
 		}
 	}

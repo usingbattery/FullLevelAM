@@ -141,7 +141,7 @@
     <ClInclude Include="GCode.h" />
     <ClInclude Include="GeomAlgo.h" />
     <ClInclude Include="Layer.h" />
-    <ClInclude Include="Layers.h" />
+    <ClInclude Include="Cutter.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LinkPoint.h" />
     <ClInclude Include="LinkSegs_dlook.h" />
@@ -161,7 +161,7 @@
     <ClCompile Include="GCode.cpp" />
     <ClCompile Include="GeomAlgo.cpp" />
     <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="Layers.cpp" />
+    <ClCompile Include="Cutter.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LinkPoint.cpp" />
     <ClCompile Include="LinkSegs_dlook.cpp" />
