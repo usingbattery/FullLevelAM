@@ -9,7 +9,7 @@
 
 namespace nsp {
 
-    const double epsilon = 1.4916681462400413e-154;// min value
+    const double epsilon = 1.4916681462400413e-10;// min value
     const double epsilonSquare = DBL_MIN;// min value^2 = 2.2250738585072014e-308
 
     class Point3D {

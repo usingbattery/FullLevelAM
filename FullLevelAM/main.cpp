@@ -10,6 +10,15 @@ using namespace nsp;
 // 
 //
 int main() {
+
+	//std::vector<Segment> segmentsTem;
+	//segmentsTem = intersectTrianglePlane(Triangle(Point3D(1, 0, 0), Point3D(0, 1, 0), Point3D(-1, 0, 0), Vector3D(0, 0, 1)), Plane(Point3D(0, 0, 0), Vector3D(0, 0, 1)));
+	//std::cout << segmentsTem.size() << std::endl;
+	//for (Segment segment : segmentsTem) {
+	//	std::cout << "\t" << segment.toString() << std::endl;
+	//}
+	//exit(0);
+
 	//Plane plane(Point3D(1, 0, 0), Vector3D(1, 0, 0));
 	//Segment seg(Point3D(1, 0, 0), Point3D(0, 1, 0));
 	//auto p = intersectSegmentPlane(seg, plane);

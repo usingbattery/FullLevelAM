@@ -132,7 +132,9 @@ namespace nsp {
     std::vector<std::shared_ptr<Point3D>> intersectSegmentPlane(Segment seg, Plane plane) {
         Point3D A = seg.A;
         Point3D B = seg.B;
-        if (distance(A, plane) == 0.0 && distance(B, plane) == 0.0) {
+        double a = distance(A, plane);
+        double b = distance(B, plane);
+        if (nearZero(distance(A, plane)) && nearZero(distance(B, plane))) {
             std::shared_ptr<Point3D> pt_A = std::make_shared<Point3D>(A);
             std::shared_ptr<Point3D> pt_B = std::make_shared<Point3D>(B);
             return { pt_A,pt_B };

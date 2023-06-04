@@ -12,7 +12,7 @@ namespace nsp {
 		std::vector<Segment> segmentsTem;
 		for (std::vector<Triangle>::iterator it = preTriangles.begin(); it != preTriangles.end(); it++) {
 			segmentsTem = intersectTrianglePlane(*it, plane);
-			if (segmentsTem.size()>0) {
+			if (segmentsTem.size() > 0) {
 				for (Segment segment : segmentsTem) {
 					segments.push_back(segment);
 				}
@@ -22,10 +22,10 @@ namespace nsp {
 				continue;
 			}
 		}
-		for (; ( * it) != ( * triangles).end(); (*it)++) {
+		for (; (*it) != (*triangles).end(); (*it)++) {
 			//<bug>
 			//std::cout << plane.P.z << "\t";
-			segmentsTem = intersectTrianglePlane(( * it)->second, plane);
+			segmentsTem = intersectTrianglePlane((*it)->second, plane);
 			//std::cout << segmentTem.toString() << std::endl;
 			//</bug>
 			if (segmentsTem.size() > 0) {
