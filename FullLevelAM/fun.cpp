@@ -16,7 +16,7 @@ namespace nsp {
         return Polyline();
     }
 
-    Segment intersectTrianglePlane(Triangle triangle, Plane plane) {
+    std::vector<Segment> intersectTrianglePlane(Triangle triangle, Plane plane) {
         Segment AB(triangle.A, triangle.B);
         Segment AC(triangle.A, triangle.C);
         Segment BC(triangle.B, triangle.C);
@@ -26,33 +26,33 @@ namespace nsp {
         if(c1 == nullptr){
             if(c2 != nullptr && c3 != nullptr){
                 //if(c2->distance(*c3) != 0.0){
-                    return Segment(*c2, *c3);
+                return { Segment(*c2, *c3) };
                 //}
             }
         }
         else if(c2 == nullptr){
             if(c1 != nullptr && c3 != nullptr){
                 //if(c1->distance(*c3) != 0.0){
-                    return Segment(*c1, *c3);
+                return { Segment(*c1, *c3) };
                 //}
             }
         }
         else if(c3 == nullptr){
             if(c1 != nullptr && c2 != nullptr){
                 //if(c1->distance(*c2) != 0.0){
-                    return Segment(*c1, *c2);
+                return { Segment(*c1, *c2) };
                 //}
             }
         }
         else if(c1 != nullptr && c2 != nullptr && c3 != nullptr){
             if(c1->isIdentical(*c2)){
-                return Segment(*c1, *c3);
+                return { Segment(*c1, *c3) };
             }
             else{
-                return Segment(*c1, *c2);
+                return { Segment(*c1, *c2) };
             }
         }
-        return Segment();
+        return { Segment() };
     }
 
     int cmp_pntSmaller(const LinkPoint& lp1, const LinkPoint& lp2) {
