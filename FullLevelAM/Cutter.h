@@ -16,8 +16,8 @@ namespace nsp {
 
     private:
         
-        void initLayers(double zMin, double zMax, double layerLength);
+        void init(double zMin, double zMax, double layerLength);
 
-        void intersectStlLayers(std::multimap <double, Triangle> triangles);
+        void Cut(std::multimap <double, Triangle> triangles);
     };
 }
