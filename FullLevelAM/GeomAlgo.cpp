@@ -129,15 +129,20 @@ namespace nsp {
         return std::make_tuple(P1, 0, 0, false);
     }
 
-    std::shared_ptr<Point3D> intersectSegmentPlane(Segment seg, Plane plane) {
+    std::vector<std::shared_ptr<Point3D>> intersectSegmentPlane(Segment seg, Plane plane) {
         Point3D A = seg.A;
         Point3D B = seg.B;
+        if (distance(A, plane) == 0.0 && distance(B, plane) == 0.0) {
+            std::shared_ptr<Point3D> pt_A = std::make_shared<Point3D>(A);
+            std::shared_ptr<Point3D> pt_B = std::make_shared<Point3D>(B);
+            return { pt_A,pt_B };
+        }
         Point3D P = plane.P;
         Vector3D N = plane.N;
         auto V = A.pointTo(B);
         auto PA = P.pointTo(A);
         if (V.dotProduct(N) == 0) {
-            return nullptr;
+            return {};
         }
         else {
             auto t = -(PA.dotProduct(N)) / V.dotProduct(N);
@@ -148,10 +153,10 @@ namespace nsp {
                 A.z += V.dz;
                 A.w += V.dw;
                 std::shared_ptr<Point3D> pt = std::make_shared<Point3D>(A);
-                return pt;
+                return { pt };
             }
         }
-        return nullptr;
+        return {};
     }
 
     std::tuple<Point3D, bool> intersect(Line obj1, Line obj2) {
