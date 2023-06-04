@@ -215,7 +215,7 @@ namespace nsp {
         return std::make_tuple(P0, false);
     }
 
-    std::shared_ptr<Point3D>  intersect(Segment obj1, Plane obj2) {
+    std::vector<std::shared_ptr<Point3D>>  intersect(Segment obj1, Plane obj2) {
         return intersectSegmentPlane(obj1, obj2);
 
     }
