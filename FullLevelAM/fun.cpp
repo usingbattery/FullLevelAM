@@ -20,9 +20,15 @@ namespace nsp {
         Segment AB(triangle.A, triangle.B);
         Segment AC(triangle.A, triangle.C);
         Segment BC(triangle.B, triangle.C);
-        std::shared_ptr<Point3D> c1 = intersectSegmentPlane(AB, plane);
-        std::shared_ptr<Point3D> c2 = intersectSegmentPlane(AC, plane);
-        std::shared_ptr<Point3D> c3 = intersectSegmentPlane(BC, plane);
+        std::vector<std::shared_ptr<Point3D>> C1 = intersectSegmentPlane(AB, plane);
+        std::vector<std::shared_ptr<Point3D>> C2 = intersectSegmentPlane(AC, plane);
+        std::vector<std::shared_ptr<Point3D>> C3 = intersectSegmentPlane(BC, plane);
+        if (C1.size() + C2.size() + C3.size() > 4) {
+            return { AB, AC, BC };
+        }
+        std::shared_ptr<Point3D> c1 = C1.front();
+        std::shared_ptr<Point3D> c2 = C2.front();
+        std::shared_ptr<Point3D> c3 = C2.front();
         if(c1 == nullptr){
             if(c2 != nullptr && c3 != nullptr){
                 //if(c2->distance(*c3) != 0.0){
