@@ -60,7 +60,7 @@ int main() {
 	//	i++;
 	//}
 	//std::cout << i;
-	Layers ls(s);
+	Layers ls(s,2.0);
 	for (int i = 0; i < ls.layersNum; i++) {
 		std::cout << ls.layers[i].plane.P.z << std::endl;
 		for (Segment segment : ls.layers[i].segments) {

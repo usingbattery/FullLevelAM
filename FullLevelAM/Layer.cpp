@@ -11,7 +11,7 @@ namespace nsp {
 		std::vector<Triangle> curTriangles;
 		std::vector<Segment> segmentsTem;
 		for (std::vector<Triangle>::iterator it = preTriangles.begin(); it != preTriangles.end(); it++) {
-			segmentsTem = intersectTrianglePlane(*it, plane);
+			segmentsTem = intersectTrianglePlane(*it, this->plane);
 			if (segmentsTem.size() > 0) {
 				for (Segment segment : segmentsTem) {
 					segments.push_back(segment);
@@ -23,9 +23,12 @@ namespace nsp {
 			}
 		}
 		for (; (*it) != (*triangles).end(); (*it)++) {
+			if((*it)->first>this->plane.P.z) {
+				break;
+			}
 			//<bug>
 			//std::cout << plane.P.z << "\t";
-			segmentsTem = intersectTrianglePlane((*it)->second, plane);
+			segmentsTem = intersectTrianglePlane((*it)->second, this->plane);
 			//std::cout << segmentTem.toString() << std::endl;
 			//</bug>
 			if (segmentsTem.size() > 0) {
@@ -33,9 +36,6 @@ namespace nsp {
 					segments.push_back(segment);
 				}
 				curTriangles.push_back((*it)->second);
-			}
-			else {
-				break;
 			}
 		}
 		return curTriangles;
