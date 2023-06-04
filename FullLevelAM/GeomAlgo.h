@@ -43,7 +43,7 @@ namespace nsp {
 	std::tuple<Point3D, double, double, bool> intersectLineLine(Line, Line);
 
 	//Calculate the intersection point of a line segment and a plane and return
-	std::shared_ptr<Point3D>  intersectSegmentPlane(Segment seg, Plane plane);
+	std::vector<std::shared_ptr<Point3D>>  intersectSegmentPlane(Segment seg, Plane plane);
 
 	//Solid Intersection Calculation
 	std::tuple<Point3D, bool>  intersect(Line, Line);
