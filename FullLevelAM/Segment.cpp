@@ -32,7 +32,7 @@ namespace nsp {
     }
 
     bool Segment::isNull() {
-        return length() == 0;
+        return A.isIdentical(Point3D()) && B.isIdentical(Point3D());
     }
 
 	bool Segment::operator==(Segment segment) {

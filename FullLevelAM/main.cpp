@@ -55,7 +55,7 @@ int main() {
 	for (int i = 0; i < ls.layersNum; i++) {
 		std::cout << ls.layers[i].plane.P.z << std::endl;
 		for (Segment segment : ls.layers[i].segments) {
-			std::cout << "\t" << segment.toString() << std::endl;
+			std::cout<<"\t"<<segment.toString() << std::endl;
 		}
 	}
 
