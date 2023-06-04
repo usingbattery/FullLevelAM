@@ -10,7 +10,7 @@ using namespace nsp;
 // 
 //
 int main() {
-	Plane plane(Point3D(1, 0, 0), Vector3D(1, 0, 0));
+	/*Plane plane(Point3D(1, 0, 0), Vector3D(1, 0, 0));*/
 	//Segment seg(Point3D(1, 0, 0), Point3D(0, 1, 0));
 	//auto p = intersectSegmentPlane(seg, plane);
 	///*Point3D p1(1, 0, 0);
@@ -18,17 +18,23 @@ int main() {
 	//if (p != nullptr) std::cout << p->toString() << std::endl;
 	//else std::cout << "suc" << std::endl;
 
-	Triangle tri(Point3D(1, 0, 0), Point3D(-1, 0, 0), Point3D(0, 1, 0));
+	/*Triangle tri(Point3D(1, 0, 0), Point3D(-1, 0, 0), Point3D(0, 1, 0));
 	Segment sem = intersectTrianglePlane(tri, plane);
-	std::cout << sem.toString() << std::endl;
+	std::cout << sem.toString() << std::endl;*/
 
-	/*VtkAdaptor vtkAdaptor;
+
+
+	VtkAdaptor vtkAdaptor;
 	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
 	vtkAdaptor.drawAxes();
 	vtkAdaptor.drawStlModel("236.STL");
 	
-	vtkAdaptor.drawPoint(Point3D(0, 0, -30))->GetProperty()->SetColor(1,0,0);
-	vtkAdaptor.display();*/
+	vtkAdaptor.drawPoint(Point3D(0, 0, 4))->GetProperty()->SetColor(0, 0, 0);
+	vtkAdaptor.drawPoint(Point3D(0, 0, 200))->GetProperty()->SetColor(0, 0, 0);
+	vtkAdaptor.display();
+
+
+
 	//vtkAdaptor.drawPoint(Point3D(50, 50, 50))->GetProperty()->SetColor(1, 0, 0);
 	//Polyline polyline;
 	//polyline.addPoint(Point3D(1, 1, 1));
