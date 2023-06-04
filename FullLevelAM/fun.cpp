@@ -26,9 +26,12 @@ namespace nsp {
         if (C1.size() + C2.size() + C3.size() > 4) {
             return { AB, AC, BC };
         }
-        std::shared_ptr<Point3D> c1 = C1.front();
-        std::shared_ptr<Point3D> c2 = C2.front();
-        std::shared_ptr<Point3D> c3 = C2.front();
+        std::shared_ptr<Point3D> c1 = nullptr;
+        if (!C1.empty()) c1 = C1[0];
+        std::shared_ptr<Point3D> c2 = nullptr;
+        if (!C2.empty()) c2 = C2[0];
+        std::shared_ptr<Point3D> c3 = nullptr;
+        if (!C3.empty()) c3 = C3[0];
         if(c1 == nullptr){
             if(c2 != nullptr && c3 != nullptr){
                 //if(c2->distance(*c3) != 0.0){
@@ -58,7 +61,7 @@ namespace nsp {
                 return { Segment(*c1, *c2) };
             }
         }
-        return { Segment() };
+        return { };
     }
 
     int cmp_pntSmaller(const LinkPoint& lp1, const LinkPoint& lp2) {
