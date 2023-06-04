@@ -9,11 +9,13 @@ namespace nsp {
 
 	std::vector<Triangle> Layer::intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle>* triangles, std::multimap <double, Triangle>::iterator* it) {
 		std::vector<Triangle> curTriangles;
-		Segment segmentTem;
+		std::vector<Segment> segmentsTem;
 		for (std::vector<Triangle>::iterator it = preTriangles.begin(); it != preTriangles.end(); it++) {
-			segmentTem = intersectTrianglePlane(*it, plane);
-			if (!segmentTem.isNull()) {
-				segments.push_back(segmentTem);
+			segmentsTem = intersectTrianglePlane(*it, plane);
+			if (segmentsTem.size()>0) {
+				for (Segment segment : segmentsTem) {
+					segments.push_back(segment);
+				}
 				curTriangles.push_back(*it);
 			}
 			else {
@@ -23,11 +25,13 @@ namespace nsp {
 		for (; ( * it) != ( * triangles).end(); (*it)++) {
 			//<bug>
 			//std::cout << plane.P.z << "\t";
-			segmentTem = intersectTrianglePlane(( * it)->second, plane);
+			segmentsTem = intersectTrianglePlane(( * it)->second, plane);
 			//std::cout << segmentTem.toString() << std::endl;
 			//</bug>
-			if (!segmentTem.isNull()) {
-				segments.push_back(segmentTem);
+			if (segmentsTem.size() > 0) {
+				for (Segment segment : segmentsTem) {
+					segments.push_back(segment);
+				}
 				curTriangles.push_back((*it)->second);
 			}
 			else {
