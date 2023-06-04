@@ -50,7 +50,7 @@ namespace nsp {
 	std::tuple<Point3D, bool>  intersect(Segment, Segment);
 	std::tuple<Point3D, bool>  intersect(Line, Segment);
 	std::tuple<Point3D, bool>  intersect(Line, Plane);
-	std::shared_ptr<Point3D>  intersect(Segment, Plane);
+	std::vector<std::shared_ptr<Point3D>>  intersect(Segment, Plane);
 
 
 	bool pointOnRay(Point3D p, Ray ray);
