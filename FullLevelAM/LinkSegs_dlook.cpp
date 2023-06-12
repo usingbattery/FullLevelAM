@@ -58,11 +58,17 @@ namespace nsp {
 	//
 	void LinkSegs_dlook::Link() {
 		std::map<std::pair<double, double>, std::vector<LinkPoint>> dic = createLpDic();
+		int i = 0;
 		while (1) {
+			std::cout << i;
 			auto p = findUnusedPnt(dic);
-			if (p == LinkPoint())break;
+			if (p == LinkPoint()) {
+				break;
+			}
 			auto poly = Polyline();
+			int j = 1;
 			while (1) {
+				std::cout << j;
 				poly.addPoint(p.toPoint3D());
 				p.used = true;
 				p.other->used = true;

@@ -1,6 +1,7 @@
 #include "Cutter.h"
 #include "fun.h"
 #include<algorithm>
+#include"LinkSegs_dlook.h"
 
 namespace nsp {
 
@@ -13,6 +14,11 @@ namespace nsp {
 			std::cout << layers[i].plane.toString() << std::endl;
 		}*/
 		Cut(stlModel.triangles);
+		for (int i = 0; i < layersNum; i++) {
+			LinkSegs_dlook link = LinkSegs_dlook(layers[i].segments);
+			link.Link();
+			layers[i].segments = link.segs;
+		}
 	}
 
 	void Cutter::init(double* heights, int heightNum) {
@@ -27,6 +33,7 @@ namespace nsp {
 		std::multimap <double, Triangle>::iterator it = triangles.begin();
 		std::vector<Triangle> trianglesTem;
 		for (int i = 0; i < layersNum; i++) {
+			//push segment into layer.segments, and return trianglesTem;
 			trianglesTem = layers[i].intersectStlLayer(trianglesTem, &triangles, &it);
 			//std::cout << it->second.toString() << std::endl;
 			/*for (Triangle t : trianglesTem) {

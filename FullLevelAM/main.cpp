@@ -14,8 +14,8 @@ int main() {
 	//vtkAdaptor.drawAxes();
 
 	StlModel s("236.STL");
-	double heights[3] = { 3.0,1.0,2.0 };
-	Cutter c(s, heights, 3);
+	double heights[1] = { 1 };
+	Cutter c(s, heights, sizeof(heights)/sizeof(heights[0]));
 
 	for (int i = 0; i < c.layersNum; i++) {
 		std::cout << c.layers[i].plane.P.z << std::endl;
@@ -26,8 +26,8 @@ int main() {
 	}
 	//vtkAdaptor.display();
 
-	//    Point3D p = Point3D(1, 2, 3, 4);
-	//    std::cout << p.t//std::vector<Segment> segmentsTem;
+	//Point3D p = Point3D(1, 2, 3, 4);
+	//std::cout << p.t//std::vector<Segment> segmentsTem;
 	//segmentsTem = intersectTrianglePlane(Triangle(Point3D(1, 0, 0), Point3D(0, 1, 0), Point3D(-1, 0, 0), Vector3D(0, 0, 1)), Plane(Point3D(0, 0, 0), Vector3D(0, 0, 1)));
 	//std::cout << segmentsTem.size() << std::endl;
 	//for (Segment segment : segmentsTem) {
