@@ -7,11 +7,27 @@
 #include "GeomAlgo.h"
 using namespace nsp;
 
-// 
-//
 int main() {
 
-	//std::vector<Segment> segmentsTem;
+	//VtkAdaptor vtkAdaptor;
+	//vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
+	//vtkAdaptor.drawAxes();
+
+	StlModel s("236.STL");
+	double heights[3] = { 3.0,1.0,2.0 };
+	Cutter c(s, heights, 3);
+
+	for (int i = 0; i < c.layersNum; i++) {
+		std::cout << c.layers[i].plane.P.z << std::endl;
+		for (Segment& segment : c.layers[i].segments) {
+			std::cout << "\t" << segment.toString() << std::endl;
+			//vtkAdaptor.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
+		}
+	}
+	//vtkAdaptor.display();
+
+	//    Point3D p = Point3D(1, 2, 3, 4);
+	//    std::cout << p.t//std::vector<Segment> segmentsTem;
 	//segmentsTem = intersectTrianglePlane(Triangle(Point3D(1, 0, 0), Point3D(0, 1, 0), Point3D(-1, 0, 0), Vector3D(0, 0, 1)), Plane(Point3D(0, 0, 0), Vector3D(0, 0, 1)));
 	//std::cout << segmentsTem.size() << std::endl;
 	//for (Segment segment : segmentsTem) {
@@ -31,7 +47,7 @@ int main() {
 	//Segment sem = intersectTrianglePlane(tri, plane);
 	//std::cout << sem.toString() << std::endl;
 
-	
+
 	//vtkAdaptor.drawStlModel("236.STL");
 	//
 	//vtkAdaptor.drawPoint(Point3D(0, 0, -30))->GetProperty()->SetColor(1,0,0);
@@ -48,7 +64,7 @@ int main() {
 
 	//vtkAdaptor.display();
 
-	
+
 	//std::multimap<double, Triangle>::iterator it = s.triangles.begin();
 	//int i = 0;
 	//while (it != s.triangles.end())
@@ -57,22 +73,7 @@ int main() {
 	//	it++;
 	//	i++;
 	//}
-	//std::cout << i;
-	VtkAdaptor vtkAdaptor;
-	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
-	vtkAdaptor.drawAxes();
-	StlModel s("236.STL");
-	Cutter c(s,20);
-	for (int i = 0; i < c.layersNum; i++) {
-		std::cout << c.layers[i].plane.P.z << std::endl;
-		for (Segment& segment : c.layers[i].segments) {
-			//std::cout<<"\t"<<segment.toString() << std::endl;
-			vtkAdaptor.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
-		}
-	}
-	vtkAdaptor.display();
-	//    Point3D p = Point3D(1, 2, 3, 4);
-	//    std::cout << p.toString();
+	//std::cout << i;oString();
 
 	//    std::string filePathIOS = "~/Desktop/CLion/FullLevelAM/FullLevelAM/GCode.txt";
 	//    std::string filePathWin = "GCode.txt";

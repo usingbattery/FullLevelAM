@@ -8,15 +8,15 @@ namespace nsp {
 
     public:
 
-        Cutter(StlModel stlModel, double layerHeight = 1);
+        Cutter(StlModel stlModel, double* heights, int heightNum, bool isSorted = false);
 
         Layer* layers;
 
         int layersNum;
 
     private:
-        
-        void init(double zMin, double zMax, double layerLength);
+
+        void init(double* heights, int heightNum);
 
         void Cut(std::multimap <double, Triangle> triangles);
     };
