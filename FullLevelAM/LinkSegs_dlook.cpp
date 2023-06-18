@@ -1,4 +1,5 @@
 #include "LinkSegs_dlook.h"
+
 namespace nsp {
 
 	LinkSegs_dlook::LinkSegs_dlook(std::vector<Segment> segments) {

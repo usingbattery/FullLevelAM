@@ -1,11 +1,11 @@
 #include "LinkPoint.h"
+
 namespace nsp {
 
 	LinkPoint::LinkPoint(Point3D pnt3d, unsigned int digits) {
 		x = round(pnt3d.x, digits);
 		y = round(pnt3d.y, digits);
 		z = round(pnt3d.z, digits);
-
 	}
 
 	double LinkPoint::round(double d, unsigned int digits) {
