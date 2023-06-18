@@ -4,6 +4,7 @@ namespace nsp {
 
 	LinkSegs_dlook::LinkSegs_dlook(std::vector<Segment> segments) {
 		segs = segments;
+		link();
 	}
 
 	std::map<std::pair<double, double>, std::vector<LinkPoint>> LinkSegs_dlook::createLpDic() {
@@ -58,6 +59,7 @@ namespace nsp {
 
 	//
 	void LinkSegs_dlook::link() {
+		std::cout << 0;
 		std::map<std::pair<double, double>, std::vector<LinkPoint>> dic = createLpDic();
 		while (1) {
 			auto p = findUnusedPnt(dic);
@@ -80,5 +82,6 @@ namespace nsp {
 				}
 			}
 		}
+		std::cout << 1;
 	}
 }
