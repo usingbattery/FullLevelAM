@@ -15,7 +15,7 @@ int main() {
 
 	StlModel s("zdd-asc.STL");
 	double heights[3] = { 1.0,2.0,4.0 };
-	Cutter c(s, heights, sizeof(heights)/sizeof(heights[0]));
+	Cutter c(s, heights, sizeof(heights) / sizeof(heights[0]));
 
 	for (int i = 0; i < c.layersNum; i++) {
 		std::cout << c.layers[i].plane.P.z << std::endl;

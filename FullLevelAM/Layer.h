@@ -19,7 +19,7 @@ namespace nsp {
 
         Layer() {}
 
-        void setPlane(Plane plane_);
+        void setPlane(Plane plane);
 
         std::vector<Triangle> intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle>* triangles, std::multimap <double, Triangle>::iterator* it);
 
