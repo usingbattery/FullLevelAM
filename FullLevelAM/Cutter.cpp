@@ -14,11 +14,11 @@ namespace nsp {
 			std::cout << layers[i].plane.toString() << std::endl;
 		}*/
 		Cut(stlModel.triangles);
-		for (int i = 0; i < layersNum; i++) {
+		/*for (int i = 0; i < layersNum; i++) {
 			LinkSegs_dlook link = LinkSegs_dlook(layers[i].segments);
 			link.Link();
 			layers[i].segments = link.segs;
-		}
+		}*/
 	}
 
 	void Cutter::init(double* heights, int heightNum) {

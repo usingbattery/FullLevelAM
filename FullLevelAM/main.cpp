@@ -13,13 +13,13 @@ int main() {
 	//vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
 	//vtkAdaptor.drawAxes();
 
-	StlModel s("236.STL");
-	double heights[1] = { 1 };
+	StlModel s("zdd-asc.STL");
+	double heights[3] = { 1.0,2.0,4.0 };
 	Cutter c(s, heights, sizeof(heights)/sizeof(heights[0]));
 
 	for (int i = 0; i < c.layersNum; i++) {
 		std::cout << c.layers[i].plane.P.z << std::endl;
-		for (Segment& segment : c.layers[i].segments) {
+		for (Segment segment : c.layers[i].segments) {
 			std::cout << "\t" << segment.toString() << std::endl;
 			//vtkAdaptor.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
 		}

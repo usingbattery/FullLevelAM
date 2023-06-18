@@ -21,7 +21,7 @@ namespace nsp {
         outfile << text;
     }
 
-    //write text into filePath.txt
+    //read text and return hasLeft
     bool File::read(std::string *text) {
         if (infile >> *text) {
             return true;
