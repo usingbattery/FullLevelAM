@@ -1,7 +1,3 @@
-//
-// Created by MBP on 2023/4/18.
-//
-
 #include "Polyline.h"
 
 #include"Polyline.h"

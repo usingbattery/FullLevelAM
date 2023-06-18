@@ -1,9 +1,6 @@
-//
-// Created by MBP on 2023/4/18.
-//
-
 #include "Plane.h"
 #include "Line.h"
+
 namespace nsp {
 
     std::string Plane::toString() {

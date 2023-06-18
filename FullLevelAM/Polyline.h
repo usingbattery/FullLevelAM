@@ -1,9 +1,4 @@
-//
-// Created by MBP on 2023/4/18.
-//
-
-#ifndef GCODE_POLYLINE_H
-#define GCODE_POLYLINE_H
+#pragma once
 
 #include "Segment.h"
 
@@ -72,4 +67,3 @@ namespace nsp {
     };
 
 }
-#endif //GCODE_POLYLINE_H

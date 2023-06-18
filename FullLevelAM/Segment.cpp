@@ -1,4 +1,5 @@
 #include"Segment.h"
+
 namespace nsp {
 
 //��ʼ��

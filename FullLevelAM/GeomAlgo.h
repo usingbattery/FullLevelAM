@@ -1,9 +1,4 @@
-//
-// Created by MBP on 2023/4/18.
-//
-
-#ifndef FULLLEVELAM_GEOMALGO_H
-#define FULLLEVELAM_GEOMALGO_H
+#pragma once
 
 #include "Point3D.h"
 #include "Line.h"
@@ -37,7 +32,7 @@ namespace nsp {
 
 	//The line intersects with the line and returns the intersection point.
 	//Because it returns multiple values, a tuple<>structure is used to return. When calling this function, please pay attention to the format of the return value
-	
+
 	//The bool type is used to determine whether there are intersections
 	//When bool in the returned tuple is false, it indicates that there is no intersection point. When it is true, the returned p is the intersection point
 	std::tuple<Point3D, double, double, bool> intersectLineLine(Line, Line);
@@ -52,13 +47,8 @@ namespace nsp {
 	std::tuple<Point3D, bool>  intersect(Line, Plane);
 	std::vector<std::shared_ptr<Point3D>>  intersect(Segment, Plane);
 
-
 	bool pointOnRay(Point3D p, Ray ray);
 
 	int pointInPolygon(Point3D p, Polyline polygon);
 
-
 }
-
-
-#endif //FULLLEVELAM_GEOMALGO_H

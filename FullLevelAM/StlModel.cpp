@@ -1,6 +1,3 @@
-//
-// Created by MBP on 2023/4/18.
-//
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -11,12 +8,6 @@ namespace nsp {
 
 	StlModel::StlModel(std::string filepath) {
 		readStlFile(filepath);
-		//int num = 0;
-		//for (std::multimap <double, Triangle>::iterator it = triangles.begin(); it != triangles.end(); it++) {
-		//	std::cout << "key= " << (it->first) << '\t' << "value= " << (it->second).A.toString() << std::endl;
-		//	num++;
-		//}
-		//std::cout << num;//480 for 236.STL
 	}
 
 	void StlModel::readStlFile(std::string filePath) {
@@ -48,7 +39,7 @@ namespace nsp {
 			}
 			else if (text == "endfacet") {
 				triangle = Triangle(P[0], P[1], P[2], N);
-				triangles.insert(std::pair<double, Triangle>{triangle.zMinPnt(), triangle});
+				triangles.push_back(triangle);
 				updateBound(P);
 			}
 		}

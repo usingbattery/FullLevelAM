@@ -1,26 +1,33 @@
 #pragma once
 
 #include "Layer.h"
+#include "CutTriangle.h"
 
 namespace nsp {
 
-    class Cutter {
+	class Cutter {
 
-    public:
+	public:
 
-        Cutter(StlModel stlModel, double distance);
-        Cutter(StlModel stlModel, int layersNum);
-        Cutter(StlModel stlModel, double* heights, int heightNum, bool isSorted = false);
+		Cutter(StlModel stlModel, double distance = 1.0);
+		Cutter(StlModel stlModel, int layersNum);
+		Cutter(StlModel stlModel, std::vector<double> heights, bool isSorted = false);
 
-        Layer* layers;
+		std::vector<Layer> layers;
 
-        int layersNum;
+	private:
 
-    private:
+		std::vector <CutTriangle> trianglesZmin;
+		std::vector <CutTriangle> trianglesZmax;
 
-        void init(double zMin, double zMax, double distance);
-        void init(double* heights, int heightNum);
+		std::vector<double> creatHeights(double zMin, double zMax, int layersNum, double distance);
 
-        void Cut(std::multimap <double, Triangle> triangles);
-    };
+		void initLayers(std::vector<double>heights);
+
+		void initTriangles(std::vector<Triangle>* triangles);
+
+		void cut();
+
+		void link();
+	};
 }

@@ -136,8 +136,9 @@
     <Text Include="GCode.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CutTriangle.h" />
     <ClInclude Include="File.h" />
-    <ClInclude Include="fun.h" />
+    <ClInclude Include="Fun.h" />
     <ClInclude Include="GCode.h" />
     <ClInclude Include="GeomAlgo.h" />
     <ClInclude Include="Layer.h" />
@@ -157,7 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="File.cpp" />
-    <ClCompile Include="fun.cpp" />
+    <ClCompile Include="Fun.cpp" />
     <ClCompile Include="GCode.cpp" />
     <ClCompile Include="GeomAlgo.cpp" />
     <ClCompile Include="Layer.cpp" />

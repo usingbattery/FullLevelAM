@@ -3,6 +3,7 @@
 #include <iomanip>
 
 namespace nsp {
+
 	Matrix3D::Matrix3D() {
 		a = { {1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1} };
 	}

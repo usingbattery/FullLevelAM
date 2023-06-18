@@ -1,11 +1,8 @@
-//
-// Created by MBP on 2023/4/18.
-//
+#pragma once
 
-#ifndef FULLLEVELAM_PLANE_H
-#define FULLLEVELAM_PLANE_H
 #include <vector>
 #include "Line.h"
+
 namespace nsp {
 
 	class Plane {
@@ -19,7 +16,7 @@ namespace nsp {
 		std::vector<double> toFormula();
 
 		//Returns the z-plane of a 3D point
-		Plane zPlane(double z);
+		static Plane zPlane(double z);
 
 		//Returns the line segment obtained by intersecting two planes
 		Line intersect(Plane pl);
@@ -37,4 +34,3 @@ namespace nsp {
 
 	};
 }
-#endif //GCODE_PLANE_H

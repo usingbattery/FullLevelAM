@@ -5,31 +5,31 @@
 
 namespace nsp {
 
-    class File {
+	class File {
 
-    public:
+	public:
 
-        //open file at begining
-        File(std::string filepath = "");
+		//open file at begining
+		File(std::string filepath = "");
 
-        //close file at the end
-        ~File();
+		//close file at the end
+		~File();
 
-        //write text into filePath.txt
-        void write(std::string text);
+		//write text into filePath.txt
+		void write(std::string text);
 
-        bool read(std::string *text);
+		bool read(std::string* text);
 
-        //not a method
-        //should realize in File()
-        //void clear();
+		//not a method
+		//should realize in File()
+		//void clear();
 
-    private:
+	private:
 
-        //avoid open and close each time write()
-        std::ofstream outfile;
+		//avoid open and close each time write()
+		std::ofstream outfile;
 
-        //read file
-        std::ifstream infile;
-    };
+		//read file
+		std::ifstream infile;
+	};
 }

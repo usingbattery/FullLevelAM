@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Matrix3D.h"
+
 namespace nsp {
 
     class Vector3D {

@@ -1,9 +1,13 @@
 #pragma once
+
 #include"Point3D.h"
+
 namespace nsp {
 
     class Ray {
+
     public:
+
         Point3D P;
         Vector3D V;
 

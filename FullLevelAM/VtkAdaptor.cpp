@@ -1,9 +1,4 @@
-//
-// Created by MBP on 2023/4/20.
-//
-
 #include "VtkAdaptor.h"
-
 
 VtkAdaptor::VtkAdaptor(double r, double g, double b) {
 	renderer->SetBackground(r, g, b);
@@ -14,7 +9,6 @@ VtkAdaptor::VtkAdaptor(double r, double g, double b) {
 		vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New();
 	interactor->SetInteractorStyle(style);
 	interactor->Initialize();
-
 }
 
 void VtkAdaptor::display() {
@@ -25,7 +19,7 @@ void VtkAdaptor::setBackgroundColor(double r, double g, double b) {
 	renderer->SetBackground(r, g, b);
 }
 
-vtkNew<vtkAxesActor> VtkAdaptor::drawAxes(double length , int shaftType, double cylinderRadius , double coneRadius ) {
+vtkNew<vtkAxesActor> VtkAdaptor::drawAxes(double length, int shaftType, double cylinderRadius, double coneRadius) {
 	vtkNew<vtkAxesActor> axes;
 	axes->SetTotalLength(length, length, length);
 	axes->SetShaftType(shaftType);
@@ -41,7 +35,6 @@ vtkNew<vtkAxesActor> VtkAdaptor::drawAxes(double length , int shaftType, double 
 //	return actor;
 //}
 
-
 //template<typename T>
 //vtkNew<vtkActor>& VtkAdaptor::drawPdSrc( T& PdSrc) {
 //	vtkNew<vtkPolyDataMapper> mapper;
@@ -49,7 +42,6 @@ vtkNew<vtkAxesActor> VtkAdaptor::drawAxes(double length , int shaftType, double 
 //	vtkNew<vtkActor> actor;
 //	actor->SetMapper(mapper);
 //	return drawActor(actor);
-//
 
 vtkNew<vtkActor> VtkAdaptor::drawStlModel(const char* stlFilePath) {
 	vtkNew<vtkSTLReader> reader;
@@ -65,7 +57,6 @@ vtkNew<vtkActor> VtkAdaptor::drawStlModel(const char* stlFilePath) {
 void VtkAdaptor::removeActor(vtkNew<vtkActor>& actor) {
 	renderer->RemoveActor(actor);
 }
-
 
 vtkNew<vtkActor> VtkAdaptor::drawPoint(nsp::Point3D point, double radius) {
 	vtkNew<vtkSphereSource> src;

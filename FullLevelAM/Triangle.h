@@ -1,15 +1,12 @@
-//
-// Created by MBP on 2023/4/18.
-//
+#pragma once
 
-#ifndef GCODE_TRIANGLE_H
-#define GCODE_TRIANGLE_H
 #include <vector>
 #include "Point3D.h"
 
 namespace nsp {
 
     class Triangle {
+
     public:
 
         Triangle() {}
@@ -38,5 +35,3 @@ namespace nsp {
 
     };
 }
-
-#endif //GCODE_TRIANGLE_H

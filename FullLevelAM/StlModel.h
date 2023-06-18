@@ -6,16 +6,13 @@
 
 namespace nsp {
 
-	// 曲面细分，4点三角，6点三角
-	// 5点模拟曲线
-
 	class StlModel {
 
 	public:
 
 		double bound[6];
 
-		std::multimap <double, Triangle> triangles;
+		std::vector<Triangle> triangles;
 
 		StlModel(std::string filepath = "0.STL");
 

@@ -1,10 +1,13 @@
 #pragma once
+
 #include "Point3D.h"
+
 namespace nsp {
-	class LinkPoint{
+
+	class LinkPoint {
 
 	public:
-		
+
 		LinkPoint(Point3D pnt3d = Point3D(), unsigned int digits = 7);
 
 		double x;

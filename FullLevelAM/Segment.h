@@ -1,5 +1,7 @@
 #pragma once
+
 #include"Point3D.h"
+
 namespace nsp {
 
     class Segment {

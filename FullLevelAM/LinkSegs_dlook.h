@@ -1,17 +1,23 @@
 #pragma once
+
 #include "Segment.h"
 #include <map>
 #include "LinkPoint.h"
 #include "Polyline.h"
+
 namespace nsp {
-	class LinkSegs_dlook{
+
+	class LinkSegs_dlook {
 
 	public:
+
 		LinkSegs_dlook(std::vector<Segment> segments);
 
 		std::vector<Segment> segs;
 		std::vector<Polyline> contours;
 		std::vector<Polyline> polys;
+
+	private:
 
 		std::map<std::pair<double, double>, std::vector<LinkPoint>> createLpDic();
 
@@ -19,6 +25,6 @@ namespace nsp {
 
 		LinkPoint findNextPnt(LinkPoint p, std::map<std::pair<double, double>, std::vector<LinkPoint>> dic);
 
-		void Link();
+		void link();
 	};
 }

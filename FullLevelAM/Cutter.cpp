@@ -1,63 +1,84 @@
 #include "Cutter.h"
-#include "fun.h"
 #include<algorithm>
 #include"LinkSegs_dlook.h"
 
 namespace nsp {
 
 	Cutter::Cutter(StlModel stlModel, double distance) {
-		init(stlModel.bound[2], stlModel.bound[5], distance);
-		Cut(stlModel.triangles);
+		int layersNum = (stlModel.bound[5] - stlModel.bound[2]) / distance;
+		std::vector<double> heights = creatHeights(stlModel.bound[2], stlModel.bound[5], layersNum, distance);
+		this->Cutter::Cutter(stlModel, heights, true);
 	}
 
 	Cutter::Cutter(StlModel stlModel, int layersNum) {
 		double distance = ((stlModel.bound[5] - stlModel.bound[2]) / layersNum);
-		init(stlModel.bound[2], stlModel.bound[5], distance);
-		Cut(stlModel.triangles);
+		std::vector<double> heights = creatHeights(stlModel.bound[2], stlModel.bound[5], layersNum, distance);
+		this->Cutter::Cutter(stlModel, heights, true);
 	}
 
-	Cutter::Cutter(StlModel stlModel, double* heights, int heightNum, bool isSorted) {
+	Cutter::Cutter(StlModel stlModel, std::vector<double> heights, bool isSorted) {
 		if (!isSorted) {
-			std::sort(heights, heights + heightNum);
+			std::cout << "Cutter.cpp£ºÉÐÎ´¿ª·¢ÂÒÐòÊÊÅäÆ÷£¡";
 		}
-		init(heights, heightNum);
-		/*for (int i = 0; i < layersNum; i++) {
-			std::cout << layers[i].plane.toString() << std::endl;
-		}*/
-		Cut(stlModel.triangles);
-		/*for (int i = 0; i < layersNum; i++) {
+		initLayers(heights);
+		//for (Layer layer : layers) {
+		//	std::cout << layer.plane.P.z << std::endl;
+		//}
+		initTriangles(&stlModel.triangles);
+		Triangle tem = *(trianglesZmin[0].triangle);
+		cut();
+		//link();
+	}
+
+	std::vector<double> Cutter::creatHeights(double zmin, double zmax, int layersNum, double distance) {
+		std::vector<double>heights(layersNum);
+		for (double height = zmin; height < zmax; height += distance) {
+			heights.push_back(height);
+		}
+		return heights;
+	}
+
+	void Cutter::initLayers(std::vector<double> heights) {
+		layers.reserve(heights.size());
+		//std::cout << layers.size() << std::endl;
+		for (int i = 0; i < heights.size(); i++) {
+			layers.push_back(Layer(Plane::zPlane(heights[i])));
+		}
+	}
+
+	void Cutter::initTriangles(std::vector<Triangle> *triangles) {
+		std::multimap<double, Triangle*> trianglesZmin_;
+		std::multimap<double, Triangle*> trianglesZmax_;
+		for (int i = 0; i < (*triangles) .size(); i++) {
+			trianglesZmin_.insert(std::pair<double, Triangle*>{(*triangles)[i].zMinPnt(), & ((*triangles)[i])});
+			trianglesZmax_.insert(std::pair<double, Triangle*>{(*triangles)[i].zMaxPnt(), & ((*triangles)[i])});
+		}
+		trianglesZmin.reserve(trianglesZmin_.size());
+		trianglesZmax.reserve(trianglesZmax_.size());
+		std::multimap<double, Triangle*>::iterator it0 = trianglesZmin_.begin();
+		for (int i = 0; i < trianglesZmin_.size(); i++) {
+			trianglesZmin.push_back({ i, it0->first, it0->second });
+			it0++;
+		}
+		std::multimap<double, Triangle*>::iterator it1 = trianglesZmax_.end();
+		for (int i = 0; i < trianglesZmax_.size(); i++) {
+			it1--;
+			trianglesZmax.push_back({ i, it1->first, it1->second });
+		}
+	}
+
+	void Cutter::cut() {
+		layers[0].moveUp(&(layers[0]), &trianglesZmin);
+		for (int i = 1; i < layers.size(); i++) {
+			layers[i].moveUp(&(layers[i - 1]), &trianglesZmin);
+		}
+	}
+
+	void Cutter::link() {
+		for (int i = 0; i < layers.size(); i++) {
 			LinkSegs_dlook link = LinkSegs_dlook(layers[i].segments);
-			link.Link();
-			layers[i].segments = link.segs;
-		}*/
-	}
-
-	void Cutter::init(double zMin, double zMax, double distance) {
-		layersNum = 0;
-		for (double height = zMin; height < zMax; height+= distance) {
-			layers[layersNum].setPlane(Plane(Point3D(0, 0, height), Vector3D(0, 0, 1)));
-			layersNum++;
+			layers[i].contours = link.segs;
 		}
 	}
 
-	void Cutter::init(double* heights, int heightNum) {
-		layersNum = heightNum;
-		layers = new Layer[layersNum];
-		for (int i = 0; i < layersNum; i++) {
-			layers[i].setPlane(Plane(Point3D(0, 0, heights[i]), Vector3D(0, 0, 1)));
-		}
-	}
-
-	void Cutter::Cut(std::multimap <double, Triangle> triangles) {
-		std::multimap <double, Triangle>::iterator it = triangles.begin();
-		std::vector<Triangle> trianglesTem;
-		for (int i = 0; i < layersNum; i++) {
-			//push segment into layer.segments, and return trianglesTem;
-			trianglesTem = layers[i].intersectStlLayer(trianglesTem, &triangles, &it);
-			//std::cout << it->second.toString() << std::endl;
-			/*for (Triangle t : trianglesTem) {
-				std::cout << t.A.toString() << std::endl;
-			}*/
-		}
-	}
 }

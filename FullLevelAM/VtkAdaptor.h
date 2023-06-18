@@ -1,6 +1,4 @@
-#ifndef FULLLEVELAM_VTKADAPTOR_H
-#define FULLLEVELAM_VTKADAPTOR_H
-
+#pragma once
 
 #include"Point3D.h"
 #include"Segment.h"
@@ -54,6 +52,3 @@ public:
 	vtkNew<vtkActor> drawPolyline(nsp::Polyline polyline);
 	
 };
-
-
-#endif //FULLLEVELAM_VTKADAPTOR_H

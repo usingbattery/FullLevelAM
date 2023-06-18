@@ -3,27 +3,30 @@
 #include "Plane.h"
 #include "Segment.h"
 #include "StlModel.h"
+#include "CutTriangle.h"
 
 namespace nsp {
 
-    class Layer {
+	class Layer {
 
-    public:
+	public:
 
-        //current layer
-        Plane plane;
-        //intersected segment
-        std::vector<Segment> segments;
-        //intersected segment in order
-        std::vector<Segment> contours;
+		//current layer
+		Plane plane;
+		//intersected triangles
+		std::vector<CutTriangle*> triangles;
+		//intersected segment
+		std::vector<Segment> segments;
+		//intersected segment in order
+		std::vector<Segment> contours;
 
-        Layer() {}
+		Layer(Plane plane) :plane(plane) {};
 
-        void setPlane(Plane plane);
+		void moveUp(Layer* preLayer, std::vector <CutTriangle>* trianglesZmin, double height = 0);
 
-        std::vector<Triangle> intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle>* triangles, std::multimap <double, Triangle>::iterator* it);
+		void moveDown(Layer* preLayer, std::vector <CutTriangle>* trianglesZmax, double height = 0);
 
-    private:
+	private:
 
-    };
+	};
 }
