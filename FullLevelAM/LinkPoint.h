@@ -13,6 +13,7 @@ namespace nsp {
 		double x;
 		double y;
 		double z;
+		// the other LinkPoint within a segment
 		LinkPoint* other = nullptr;
 		bool used = false;
 		int index = 0;

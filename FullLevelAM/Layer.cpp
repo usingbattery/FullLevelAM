@@ -3,73 +3,52 @@
 
 namespace nsp {
 
-	void Layer::moveUp(Layer* preLayer, std::vector <CutTriangle>* trianglesZmin, double height) {
+	void Layer::moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height) {
 		this->plane.P.z += height;
 		std::vector<Segment> segmentsTem;
 		int border = -1;
-		double highest = DBL_MIN;
-		for (CutTriangle* preTriangle : preLayer->triangles) {
+		for (SortedTriangle* preTriangle : preLayer->triangles) {
 			segmentsTem = intersectTrianglePlane(*(preTriangle->triangle), this->plane);
-			if (segmentsTem.size() > 0) {
-				for (const Segment& segment : segmentsTem) {
-					segments.push_back(segment);
-				}
-				this->triangles.push_back(preTriangle);
-			}
-			else {
-				continue;
-			}
-			if (preTriangle->z > highest) {
-				highest = preTriangle->z;
-				border = preTriangle->index;
+			record(&segmentsTem, preTriangle);
+			if (preTriangle->iMin > border) {
+				border = preTriangle->iMin;
 			}
 		}
 		for (int i = border + 1; i < (*trianglesZmin).size(); i++) {
-			if ((*trianglesZmin)[i].z > this->plane.P.z) {
+			if ((*trianglesZmin)[i].triangle->zMinPnt() > this->plane.P.z) {
 				break;
 			}
 			segmentsTem = intersectTrianglePlane(*((*trianglesZmin)[i].triangle), this->plane);
-			if (segmentsTem.size() > 0) {
-				for (const Segment& segment : segmentsTem) {
-					segments.push_back(segment);
-				}
-				this->triangles.push_back(&((*trianglesZmin)[i]));
-			}
+			record(&segmentsTem, &((*trianglesZmin)[i]));
 		}
 	}
 
-	void Layer::moveDown(Layer* preLayer, std::vector <CutTriangle>* trianglesZmax, double height) {
+	void Layer::moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height) {
 		this->plane.P.z -= height;
 		std::vector<Segment> segmentsTem;
-		int border = (*trianglesZmax).size();
-		double lowest = DBL_MAX;
-		for (CutTriangle* preTriangle : preLayer->triangles) {
+		int border = -1;
+		for (SortedTriangle* preTriangle : preLayer->triangles) {
 			segmentsTem = intersectTrianglePlane(*(preTriangle->triangle), this->plane);
-			if (segmentsTem.size() > 0) {
-				for (const Segment& segment : segmentsTem) {
-					segments.push_back(segment);
-				}
-				this->triangles.push_back(preTriangle);
-			}
-			else {
-				continue;
-			}
-			if (preTriangle->z < lowest) {
-				lowest = preTriangle->z;
-				border = preTriangle->index;
+			record(&segmentsTem, preTriangle);
+			if (preTriangle->jMax > border) {
+				border = preTriangle->jMax;
 			}
 		}
 		for (int i = border + 1; i < (*trianglesZmax).size(); i++) {
-			if ((*trianglesZmax)[i].z < this->plane.P.z) {
+			if ((*trianglesZmax)[i].triangle->zMaxPnt() < this->plane.P.z) {
 				break;
 			}
 			segmentsTem = intersectTrianglePlane(*((*trianglesZmax)[i].triangle), this->plane);
-			if (segmentsTem.size() > 0) {
-				for (const Segment& segment : segmentsTem) {
-					segments.push_back(segment);
-				}
-				this->triangles.push_back(&((*trianglesZmax)[i]));
+			record(&segmentsTem, &((*trianglesZmax)[i]));
+		}
+	}
+
+	void Layer::record(std::vector<Segment>* segmentsTem, SortedTriangle* triangleTem) {
+		if ((*segmentsTem).size() > 0) {
+			for (int i = 0; i < (*segmentsTem).size(); i++) {
+				segments.push_back((*segmentsTem)[i]);
 			}
+			this->triangles.push_back(triangleTem);
 		}
 	}
 }

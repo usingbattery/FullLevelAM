@@ -3,9 +3,14 @@
 #include "Plane.h"
 #include "Segment.h"
 #include "StlModel.h"
-#include "CutTriangle.h"
 
 namespace nsp {
+
+	struct SortedTriangle {
+		Triangle* triangle;
+		int iMin;
+		int jMax;
+	};
 
 	class Layer {
 
@@ -14,7 +19,7 @@ namespace nsp {
 		//current layer
 		Plane plane;
 		//intersected triangles
-		std::vector<CutTriangle*> triangles;
+		std::vector<SortedTriangle*> triangles;
 		//intersected segment
 		std::vector<Segment> segments;
 		//intersected segment in order
@@ -22,11 +27,12 @@ namespace nsp {
 
 		Layer(Plane plane) :plane(plane) {};
 
-		void moveUp(Layer* preLayer, std::vector <CutTriangle>* trianglesZmin, double height = 0);
+		void moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height = 0);
 
-		void moveDown(Layer* preLayer, std::vector <CutTriangle>* trianglesZmax, double height = 0);
+		void moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height = 0);
 
 	private:
 
+		void record(std::vector<Segment>* segmentsTem, SortedTriangle* triangleTem);
 	};
 }

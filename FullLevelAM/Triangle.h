@@ -25,8 +25,6 @@ namespace nsp {
         Point3D C;
         //Normal vector of triangle
         Vector3D N;
-        //The layer height contained in the storage patch
-        std::vector<int> zs;
 
         bool operator==(Triangle t);
 

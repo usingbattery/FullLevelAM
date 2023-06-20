@@ -9,8 +9,8 @@
 
 namespace nsp {
 
-    const double epsilon = 1e-10;// small value
-    const double epsilonSquare = 1e-100;
+    const double epsilon = DBL_EPSILON;
+    const double epsilonSquare = epsilon* epsilon;
 
     class Point3D {
 

@@ -136,7 +136,6 @@
     <Text Include="GCode.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CutTriangle.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Fun.h" />
     <ClInclude Include="GCode.h" />

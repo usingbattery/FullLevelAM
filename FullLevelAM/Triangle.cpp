@@ -17,7 +17,7 @@ namespace nsp {
     }
 
     bool Triangle::operator==(Triangle t) {
-        return A == t.A && B == t.B && C == t.C && N == t.N && zs == t.zs;
+        return A == t.A && B == t.B && C == t.C && N == t.N;
     }
 
     bool Triangle::operator!=(Triangle t) {
