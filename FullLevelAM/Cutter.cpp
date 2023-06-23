@@ -24,27 +24,27 @@ namespace nsp {
 			sortZmax.insert(std::pair<double, Triangle*>{(*triangles)[i].zMaxPnt(), & ((*triangles)[i])});
 		}
 		//record
-		std::multimap<double, Triangle*>::iterator it0 = sortZmin.begin();
 		std::map<Triangle*, int> iMins;
+		std::multimap<double, Triangle*>::iterator it0 = sortZmin.begin();
 		for (int i = 0; i < sortZmin.size(); i++) {
 			iMins.insert(std::pair<Triangle*, int>{it0->second, i});
 			it0++;
 		}
+		std::map<Triangle*, int> jMaxs;
 		std::multimap<double, Triangle*>::iterator it1 = sortZmax.begin();
-		std::map<Triangle*,int> jMaxs;
-		for (int j = sortZmax.size() - 1; j>=0; j--) {
+		for (int j = sortZmax.size() - 1; j >= 0; j--) {
 			jMaxs.insert(std::pair<Triangle*, int>{it1->second, j});
 			it1++;
 		}
 		//cat
-		trianglesZmin.resize(sortZmin.size());
-		trianglesZmax.resize(sortZmax.size());
-		for (std::map<Triangle*, int>::iterator it2 = iMins.begin(); it2!=iMins.end(); it2++) {
-			Triangle* triangle= it2->first;
+		zMinLowToHigh.resize(sortZmin.size());
+		zMaxHighToLow.resize(sortZmax.size());
+		for (std::map<Triangle*, int>::iterator it2 = iMins.begin(); it2 != iMins.end(); it2++) {
+			Triangle* triangle = it2->first;
 			int iMin = it2->second;
 			int jMax = jMaxs[triangle];
-			trianglesZmin[iMin] = { triangle,iMin,jMax };
-			trianglesZmax[jMax] = { triangle,iMin,jMax };
+			zMinLowToHigh[iMin] = { triangle,iMin,jMax };
+			zMaxHighToLow[jMax] = { triangle,iMin,jMax };
 		}
 	}
 
@@ -57,23 +57,17 @@ namespace nsp {
 	}
 
 	void Cutter::sortLayers() {
-		std::multimap<double, Layer*> sortedLayers_;
 		for (int i = 0; i < layers.size(); i++) {
-			sortedLayers_.insert(std::pair<double, Layer*>{layers[i].plane.P.z, & layers[i]});
-		}
-		sortedLayers.reserve(layers.size());
-		for (std::multimap<double, Layer*>::iterator it = sortedLayers_.begin(); it != sortedLayers_.end(); it++) {
-			sortedLayers.push_back(it->second);
+			sortedLayers.insert(std::pair<double, Layer*>{layers[i].plane.P.z, & layers[i]});
 		}
 	}
 
 	void Cutter::cut() {
-		(*sortedLayers[0]).moveUp(sortedLayers[0], &trianglesZmin);
-		for (int i = 1; i < sortedLayers.size(); i++) {
-			if (i == sortedLayers.size() - 1) {
-				int a = 1;
-			}
-			(*sortedLayers[i]).moveUp(sortedLayers[i - 1], &trianglesZmin);
+		std::multimap<double, Layer*>::iterator it = sortedLayers.begin();
+		Layer* preLayer = it->second;//any layer whose triangles.size()==0;
+		for (; it != sortedLayers.end(); it++) {
+			(*(it->second)).moveUp(preLayer, &zMinLowToHigh);
+			preLayer = it->second;//step by step
 		}
 	}
 }

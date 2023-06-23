@@ -14,9 +14,9 @@ namespace nsp {
 
 	private:
 
-		std::vector <SortedTriangle> trianglesZmin;
-		std::vector <SortedTriangle> trianglesZmax;
-		std::vector<Layer*> sortedLayers;
+		std::vector<SortedTriangle> zMinLowToHigh;
+		std::vector<SortedTriangle> zMaxHighToLow;
+		std::multimap<double, Layer*> sortedLayers;
 
 		void sortTriangles(std::vector<Triangle>* triangles);
 

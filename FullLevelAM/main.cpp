@@ -26,9 +26,9 @@ int main() {
 	
 	for (int i = 0; i < c.layers.size(); i++) {
 		std::cout << c.layers[i].plane.P.z << std::endl;
-		for (int j = 0; j < c.layers[i].segments.size();j++) {
-			std::cout << "\t" << c.layers[i].segments[j].toString() << std::endl;
-		}
+		//for (int j = 0; j < c.layers[i].segments.size();j++) {
+		//	std::cout << "\t" << c.layers[i].segments[j].toString() << std::endl;
+		//}
 	}
 
 	//VtkAdaptor vtkAdaptor;
