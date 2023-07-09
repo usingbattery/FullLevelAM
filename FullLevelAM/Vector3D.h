@@ -10,9 +10,8 @@ namespace nsp {
         double dx;
         double dy;
         double dz;
-        double dw;
 
-        Vector3D(double dx = 0, double dy = 0, double dz = 0, double dw = 0);
+        Vector3D(double dx = 0, double dy = 0, double dz = 0);
 
         std::string toString();
 

@@ -20,9 +20,9 @@ namespace nsp {
 
 		void sortTriangles(std::vector<Triangle>* triangles);
 
-		void initLayers(std::vector<double>heights);
+		void initLayers(int layerSize);
 
-		void sortLayers();
+		void sortLayers(std::vector<double> heights);
 
 		void cut();
 	};

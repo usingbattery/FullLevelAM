@@ -137,14 +137,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File.h" />
-    <ClInclude Include="Fun.h" />
     <ClInclude Include="GCode.h" />
     <ClInclude Include="GeomAlgo.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Cutter.h" />
     <ClInclude Include="Line.h" />
-    <ClInclude Include="LinkPoint.h" />
-    <ClInclude Include="LinkSegs_dlook.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Polyline.h" />
@@ -157,14 +154,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="File.cpp" />
-    <ClCompile Include="Fun.cpp" />
     <ClCompile Include="GCode.cpp" />
     <ClCompile Include="GeomAlgo.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Cutter.cpp" />
     <ClCompile Include="Line.cpp" />
-    <ClCompile Include="LinkPoint.cpp" />
-    <ClCompile Include="LinkSegs_dlook.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="Plane.cpp" />

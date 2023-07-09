@@ -19,19 +19,23 @@ namespace nsp {
 		//current layer
 		Plane plane;
 		//intersected triangles
-		std::vector<SortedTriangle*> triangles;
+		//std::vector<SortedTriangle*> triangles;
+		std::vector<int> zMinTriangles;
+		std::vector<int> zMaxTriangles;
 		//intersected segment
 		std::vector<Segment> segments;
 		//intersected segment in order
 		std::vector<Segment> contours;
 
-		Layer(Plane plane) :plane(plane) {};
+		Layer(Plane plane=Plane()) :plane(plane) {};
 
-		void moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height = 0);
+		void moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height);
 
-		void moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height = 0);
+		void moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height);
 
 	private:
+
+		void reInit(double height);
 
 		void record(std::vector<Segment>* segmentsTem, SortedTriangle* triangleTem);
 	};

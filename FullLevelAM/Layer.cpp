@@ -4,11 +4,12 @@
 namespace nsp {
 
 	void Layer::moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height) {
-		this->plane.P.z += height;
+		std::vector<SortedTriangle*> preTriangles= preLayer->triangles;
+		reInit(height);
 		std::vector<Segment> segmentsTem;
 		int border = -1;
-		for (SortedTriangle* preTriangle : preLayer->triangles) {
-			segmentsTem = intersectTrianglePlane(*(preTriangle->triangle), this->plane);
+		for (SortedTriangle* preTriangle : preTriangles) {
+			segmentsTem = intersect(*(preTriangle->triangle), this->plane);
 			record(&segmentsTem, preTriangle);
 			if (preTriangle->iMin > border) {
 				border = preTriangle->iMin;
@@ -18,17 +19,18 @@ namespace nsp {
 			if ((*trianglesZmin)[i].triangle->zMinPnt() > this->plane.P.z) {
 				break;
 			}
-			segmentsTem = intersectTrianglePlane(*((*trianglesZmin)[i].triangle), this->plane);
+			segmentsTem = intersect(*((*trianglesZmin)[i].triangle), this->plane);
 			record(&segmentsTem, &((*trianglesZmin)[i]));
 		}
 	}
 
 	void Layer::moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height) {
-		this->plane.P.z -= height;
+		std::vector<SortedTriangle*> preTriangles = preLayer->triangles;
+		reInit(height);
 		std::vector<Segment> segmentsTem;
 		int border = -1;
-		for (SortedTriangle* preTriangle : preLayer->triangles) {
-			segmentsTem = intersectTrianglePlane(*(preTriangle->triangle), this->plane);
+		for (SortedTriangle* preTriangle : preTriangles) {
+			segmentsTem = intersect(*(preTriangle->triangle), this->plane);
 			record(&segmentsTem, preTriangle);
 			if (preTriangle->jMax > border) {
 				border = preTriangle->jMax;
@@ -38,9 +40,16 @@ namespace nsp {
 			if ((*trianglesZmax)[i].triangle->zMaxPnt() < this->plane.P.z) {
 				break;
 			}
-			segmentsTem = intersectTrianglePlane(*((*trianglesZmax)[i].triangle), this->plane);
+			segmentsTem = intersect(*((*trianglesZmax)[i].triangle), this->plane);
 			record(&segmentsTem, &((*trianglesZmax)[i]));
 		}
+	}
+
+	void Layer::reInit(double height) {
+		this->plane.P.z=height;
+		this->triangles.clear();
+		this->segments.clear();
+		this->contours.clear();
 	}
 
 	void Layer::record(std::vector<Segment>* segmentsTem, SortedTriangle* triangleTem) {

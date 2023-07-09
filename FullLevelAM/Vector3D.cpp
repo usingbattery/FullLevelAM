@@ -5,13 +5,14 @@
 #include <iomanip>
 #include<math.h>
 #include "Vector3D.h"
+#include "Point3D.h"
+
 namespace nsp {
 
-    Vector3D::Vector3D(double dx, double dy, double dz, double dw) {
+    Vector3D::Vector3D(double dx, double dy, double dz) {
         this->dx = dx;
         this->dy = dy;
         this->dz = dz;
-        this->dw = dw;
     }
 
     std::string Vector3D::toString() {
@@ -30,7 +31,7 @@ namespace nsp {
     }
 
     Vector3D Vector3D::clone() {
-        return Vector3D(this->dx, this->dy, this->dz, this->dw);
+        return Vector3D(this->dx, this->dy, this->dz);
     }
 
     void Vector3D::reverse() {
@@ -65,7 +66,7 @@ namespace nsp {
     }
 
     double Vector3D::lengthSquare() {
-        return pow(this->dx, 2) + pow(this->dy, 2) + pow(this->dz, 2) + pow(this->dw, 2);
+        return pow(this->dx, 2) + pow(this->dy, 2) + pow(this->dz, 2);
     }
 
     double Vector3D::length() {
@@ -74,6 +75,9 @@ namespace nsp {
 
     void Vector3D::normalize() {
         double len = this->length();
+        if (len == 0) {
+            len = 1;
+        }
         this->dx = this->dx / len;
         this->dy = this->dy / len;
         this->dz = this->dz / len;
@@ -81,6 +85,9 @@ namespace nsp {
 
     Vector3D Vector3D::normalized() {
         double len = this->length();
+        if (len == 0) {
+            len = 1;
+        }
         return Vector3D(
                 this->dx = this->dx / len,
                 this->dy = this->dy / len,
@@ -88,14 +95,14 @@ namespace nsp {
     }
 
     bool Vector3D::isZeroVector() {
-        return this->lengthSquare() == 0.0;
+        return this->lengthSquare() == epsilonSquare;
     }
 
     Vector3D Vector3D::multiplied(Matrix3D m) {
         return Vector3D(
-                this->dx * m.a[0][0] + this->dy * m.a[1][0] + this->dz * m.a[2][0] + this->dw * m.a[3][0],
-                this->dx * m.a[0][1] + this->dy * m.a[1][1] + this->dz * m.a[2][1] + this->dw * m.a[3][1],
-                this->dx * m.a[0][2] + this->dy * m.a[1][2] + this->dz * m.a[2][2] + this->dw * m.a[3][2]);
+                this->dx * m.a[0][0] + this->dy * m.a[1][0] + this->dz * m.a[2][0],
+                this->dx * m.a[0][1] + this->dy * m.a[1][1] + this->dz * m.a[2][1],
+                this->dx * m.a[0][2] + this->dy * m.a[1][2] + this->dz * m.a[2][2]);
     }
 
     bool Vector3D::isParallel(Vector3D other) {

@@ -11,7 +11,7 @@ namespace nsp {
         Point3D P;
         Vector3D V;
 
-        Ray(Point3D p, Vector3D v);
+        Ray(Point3D p= Point3D(), Vector3D v = Vector3D());
 
         std::string toString();
 

@@ -94,7 +94,7 @@ namespace nsp {
 		}
 	}
 
-	std::tuple<Point3D, double, double, bool> intersect(Line line1, Line line2) {
+	std::tuple<Point3D, double, double, bool> intersectLineLine(Line line1, Line line2) {
 		Point3D P1 = line1.p;
 		Vector3D V1 = line1.v;
 		Point3D P2 = line2.p;
@@ -108,6 +108,7 @@ namespace nsp {
 			P1.x += V1.dx;
 			P1.y += V1.dy;
 			P1.z += V1.dz;
+			P1.w += V1.dw;
 			return std::make_tuple(P1, t1, t2, true);
 		}
 		else {
@@ -119,56 +120,14 @@ namespace nsp {
 				P1.x += V1.dx;
 				P1.y += V1.dy;
 				P1.z += V1.dz;
+				P1.w += V1.dw;
 				return std::make_tuple(P1, t1, t2, true);
 			}
 		}
 		return std::make_tuple(P1, 0, 0, false);
 	}
 
-	std::tuple<Point3D, bool>  intersect(Segment obj1, Segment obj2) {
-		auto line1 = Line(obj1.A, obj1.direction());
-		auto line2 = Line(obj2.A, obj2.direction());
-		auto result = intersect(line1, line2);
-		if (std::get<3>(result)) {
-			if (std::get<1>(result) >= 0 && std::get<1>(result) <= obj1.length()) {
-				if (std::get<2>(result) >= 0 && std::get<2>(result) <= obj2.length()) {
-					return std::make_tuple(std::get<0>(result), true);
-				}
-			}
-		}
-		return std::make_tuple(std::get<0>(result), false);
-	}
-
-	std::tuple<Point3D, bool>  intersect(Line obj1, Segment obj2) {
-		auto line1 = obj1;
-		auto line2 = Line(obj2.A, obj2.direction());
-		auto result = intersect(line1, line2);
-		if (std::get<3>(result)) {
-			if (std::get<2>(result) >= 0 && std::get<2>(result) <= obj2.length()) {
-				return std::make_tuple(std::get<0>(result), true);
-			}
-		}
-		return std::make_tuple(std::get<0>(result), false);
-	}
-
-	std::tuple<Point3D, bool>  intersect(Line obj1, Plane obj2) {
-		auto P0 = obj1.p;
-		auto V = obj1.v;
-		auto P1 = obj2.P;
-		auto N = obj2.N;
-		auto dotPro = V.dotProduct(N);
-		if (dotPro != 0) {
-			auto t = P0.pointTo(P1).dotProduct(N) / dotPro;
-			V = V.amplified(t);
-			P0.x += V.dx;
-			P0.y += V.dy;
-			P0.z += V.dz;
-			return std::make_tuple(P0, true);
-		}
-		return std::make_tuple(P0, false);
-	}
-
-	std::vector<std::shared_ptr<Point3D>>  intersect(Segment seg, Plane plane) {
+	std::vector<std::shared_ptr<Point3D>> intersectSegmentPlane(Segment seg, Plane plane) {
 		Point3D A = seg.A;
 		Point3D B = seg.B;
 		if (nearZero(distance(A, plane)) && nearZero(distance(B, plane))) {
@@ -190,6 +149,7 @@ namespace nsp {
 				A.x += V.dx;
 				A.y += V.dy;
 				A.z += V.dz;
+				A.w += V.dw;
 				std::shared_ptr<Point3D> pt = std::make_shared<Point3D>(A);
 				return { pt };
 			}
@@ -197,54 +157,72 @@ namespace nsp {
 		return {};
 	}
 
-	std::vector<Segment> intersect(Triangle triangle, Plane plane) {
-		Segment AB(triangle.A, triangle.B);
-		Segment AC(triangle.A, triangle.C);
-		Segment BC(triangle.B, triangle.C);
-		std::vector<std::shared_ptr<Point3D>> C1 = intersect(AB, plane);
-		std::vector<std::shared_ptr<Point3D>> C2 = intersect(AC, plane);
-		std::vector<std::shared_ptr<Point3D>> C3 = intersect(BC, plane);
-		if (C1.size() + C2.size() + C3.size() > 4) {
-			return { AB, AC, BC };
+	std::tuple<Point3D, bool> intersect(Line obj1, Line obj2) {
+		auto result = intersectLineLine(obj1, obj2);
+		bool is_exit = std::get<3>(result);
+		Point3D p = std::get<0>(result);
+		if (is_exit) {
+			return std::make_tuple(p, is_exit);
 		}
-		if (C1.size() == 2 && C2.size() == 0 && C3.size() == 0) return { AB };
-		if (C1.size() == 0 && C2.size() == 2 && C3.size() == 0) return { AC };
-		if (C1.size() == 0 && C2.size() == 0 && C3.size() == 2) return { AB };
-		std::shared_ptr<Point3D> c1 = nullptr;
-		if (!C1.empty()) c1 = C1[0];
-		std::shared_ptr<Point3D> c2 = nullptr;
-		if (!C2.empty()) c2 = C2[0];
-		std::shared_ptr<Point3D> c3 = nullptr;
-		if (!C3.empty()) c3 = C3[0];
-		if (c1 == nullptr) {
-			if (c2 != nullptr && c3 != nullptr) {
-				//if(c2->distance(*c3) != 0.0){
-				return { Segment(*c2, *c3) };
-				//}
+		else {
+			return std::make_tuple(p, false);
+		}
+	}
+
+	std::tuple<Point3D, bool>  intersect(Segment obj1, Segment obj2) {
+		auto line1 = Line(obj1.A, obj1.direction());
+		auto line2 = Line(obj2.A, obj2.direction());
+		auto result = intersectLineLine(line1, line2);
+		if (std::get<3>(result)) {
+			if (std::get<1>(result) >= 0 && std::get<1>(result) <= obj1.length()) {
+				if (std::get<2>(result) >= 0 && std::get<2>(result) <= obj2.length()) {
+					return std::make_tuple(std::get<0>(result), true);
+				}
 			}
 		}
-		else if (c2 == nullptr) {
-			if (c1 != nullptr && c3 != nullptr) {
-				//if(c1->distance(*c3) != 0.0){
-				return { Segment(*c1, *c3) };
-				//}
+		return std::make_tuple(std::get<0>(result), false);
+	}
+
+	std::tuple<Point3D, bool>  intersect(Line obj1, Segment obj2) {
+		auto line1 = obj1;
+		auto line2 = Line(obj2.A, obj2.direction());
+		auto result = intersectLineLine(line1, line2);
+		if (std::get<3>(result)) {
+			if (std::get<2>(result) >= 0 && std::get<2>(result) <= obj2.length()) {
+				return std::make_tuple(std::get<0>(result), true);
 			}
 		}
-		else if (c3 == nullptr) {
-			if (c1 != nullptr && c2 != nullptr) {
-				//if(c1->distance(*c2) != 0.0){
-				return { Segment(*c1, *c2) };
-				//}
-			}
+		return std::make_tuple(std::get<0>(result), false);
+	}
+
+	std::tuple<Point3D, bool>  intersect(Line obj1, Plane obj2) {
+		auto P0 = obj1.p;
+		auto V = obj1.v;
+		auto P1 = obj2.P;
+		auto N = obj2.N;
+		auto dotPro = V.dotProduct(N);
+		if (dotPro != 0) {
+			auto t = P0.pointTo(P1).dotProduct(N) / dotPro;
+			V = V.amplified(t);
+			P0.x += V.dx;
+			P0.y += V.dy;
+			P0.z += V.dz;
+			P0.w += V.dw;
+			return std::make_tuple(P0, true);
 		}
-		else if (c1 != nullptr && c2 != nullptr && c3 != nullptr) {
-			if (c1->isIdentical(*c2)) {
-				return { Segment(*c1, *c3) };
-			}
-			else {
-				return { Segment(*c1, *c2) };
-			}
-		}
-		return { };
+		return std::make_tuple(P0, false);
+	}
+
+	std::vector<std::shared_ptr<Point3D>>  intersect(Segment obj1, Plane obj2) {
+		return intersectSegmentPlane(obj1, obj2);
+
+	}
+
+	bool pointOnRay(Point3D p, Ray ray) {
+		return false;
+	}
+
+	int pointInPolygon(Point3D p, Polyline polygon) {
+		return 0;
 	}
 }

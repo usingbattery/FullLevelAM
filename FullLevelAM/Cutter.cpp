@@ -7,11 +7,11 @@ namespace nsp {
 	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights) {
 		sortTriangles(&((*stlModel).triangles));
 		//Triangle tem = *(trianglesZmin[0].triangle);
-		initLayers(heights);
+		initLayers(heights.size());
 		//for (Layer layer : layers) {
 		//	std::cout << layer.plane.P.z << std::endl;
 		//}
-		sortLayers();
+		sortLayers(heights);
 		cut();
 	}
 
@@ -23,7 +23,7 @@ namespace nsp {
 			sortZmin.insert(std::pair<double, Triangle*>{(*triangles)[i].zMinPnt(), & ((*triangles)[i])});
 			sortZmax.insert(std::pair<double, Triangle*>{(*triangles)[i].zMaxPnt(), & ((*triangles)[i])});
 		}
-		//record
+		//list
 		std::map<Triangle*, int> iMins;
 		std::multimap<double, Triangle*>::iterator it0 = sortZmin.begin();
 		for (int i = 0; i < sortZmin.size(); i++) {
@@ -48,26 +48,26 @@ namespace nsp {
 		}
 	}
 
-	void Cutter::initLayers(std::vector<double> heights) {
-		layers.reserve(heights.size());
-		//std::cout << layers.size() << std::endl;
-		for (int i = 0; i < heights.size(); i++) {
-			layers.push_back(Layer(Plane::zPlane(heights[i])));
+	void Cutter::initLayers(int layerSize) {
+		layers.reserve(layerSize);
+		for (int i = 0; i < layerSize; i++) {
+			layers.push_back(Layer(Plane::zPlane(0)));
 		}
+		//std::cout << layers.size() << std::endl;
 	}
 
-	void Cutter::sortLayers() {
+	void Cutter::sortLayers(std::vector<double> heights) {
 		for (int i = 0; i < layers.size(); i++) {
-			sortedLayers.insert(std::pair<double, Layer*>{layers[i].plane.P.z, & layers[i]});
+			sortedLayers.insert(std::pair<double, Layer*>{heights[i], & layers[i]});
 		}
 	}
 
 	void Cutter::cut() {
 		std::multimap<double, Layer*>::iterator it = sortedLayers.begin();
-		Layer* preLayer = it->second;//any layer whose triangles.size()==0;
+		Layer* preLayer = it->second;//init preLayer as any layer whose triangles.size()==0;
 		for (; it != sortedLayers.end(); it++) {
-			(*(it->second)).moveUp(preLayer, &zMinLowToHigh);
-			preLayer = it->second;//step by step
+			(*(it->second)).moveUp(preLayer, &zMinLowToHigh, it->first);
+			preLayer = it->second;//step forward
 		}
 	}
 }

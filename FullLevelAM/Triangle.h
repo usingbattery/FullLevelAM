@@ -11,7 +11,7 @@ namespace nsp {
 
         Triangle() {}
 
-        Triangle(Point3D a, Point3D b, Point3D c, Vector3D vec_3d = Vector3D(0, 0, 0)) : A(a), B(b), C(c), N(vec_3d) {}
+        Triangle(Point3D a, Point3D b, Point3D c, Vector3D vec_3d = Vector3D()) : A(a), B(b), C(c), N(vec_3d) {}
 
         std::string toString();
 

@@ -8,6 +8,7 @@ namespace nsp {
 	class Plane {
 
 	public:
+
 		Plane(Point3D p = Point3D(), Vector3D n = Vector3D()) : P(p), N(n) {}
 
 		std::string toString();

@@ -5,11 +5,10 @@
 
 namespace nsp {
 
-    Point3D::Point3D(double x, double y, double z, double w) {
+    Point3D::Point3D(double x, double y, double z) {
         this->x = x;
         this->y = y;
         this->z = z;
-        this->w = w;
     }
 
     std::string Point3D::toString() {
@@ -28,7 +27,7 @@ namespace nsp {
     }
 
     Point3D Point3D::clone() {
-        return Point3D(this->x, this->y, this->z, this->w);
+        return Point3D(this->x, this->y, this->z);
     }
 
     Vector3D Point3D::pointTo(Point3D other) {
@@ -50,9 +49,9 @@ namespace nsp {
 
     Point3D Point3D::multiplied(Matrix3D m) {
         return Point3D(
-            this->x * m.a[0][0] + this->y * m.a[1][0] + this->z * m.a[2][0] + this->w * m.a[3][0],
-            this->x * m.a[0][1] + this->y * m.a[1][1] + this->z * m.a[2][1] + this->w * m.a[3][1],
-            this->x * m.a[0][2] + this->y * m.a[1][2] + this->z * m.a[2][2] + this->w * m.a[3][2]);
+            this->x * m.a[0][0] + this->y * m.a[1][0] + this->z * m.a[2][0],
+            this->x * m.a[0][1] + this->y * m.a[1][1] + this->z * m.a[2][1],
+            this->x * m.a[0][2] + this->y * m.a[1][2] + this->z * m.a[2][2]);
     }
 
     double Point3D::distanceSquare(Point3D other) {
@@ -67,8 +66,8 @@ namespace nsp {
         return Point3D((other.x + this->x) / 2, (other.y + this->y) / 2, (other.z + this->z) / 2);
     }
 
-    bool Point3D::isCoincide(Point3D other, double dis2) {
-        return this->pointTo(other).lengthSquare() < dis2;
+    bool Point3D::isCoincide(Point3D other) {
+        return this->pointTo(other).lengthSquare() < epsilonSquare;
     }
 
     bool Point3D::isIdentical(Point3D other) {

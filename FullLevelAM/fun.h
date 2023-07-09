@@ -10,9 +10,6 @@
 
 namespace nsp {
 
-	//Intersection of Space Triangle and Plane
-	std::vector<Segment> intersectTrianglePlane(Triangle triangle, Plane plane);
-
 	//Define the comparison function for LinkPoint
 	int cmp_pntSmaller(const LinkPoint& lp1, const LinkPoint& lp2);
 }

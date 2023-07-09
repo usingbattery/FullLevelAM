@@ -19,9 +19,8 @@ namespace nsp {
         double x;
         double y;
         double z;
-        double w;
 
-        Point3D(double x = 0, double y = 0, double z = 0, double w = 1);
+        Point3D(double x = 0, double y = 0, double z = 0);
 
         std::string toString();
 
@@ -41,7 +40,7 @@ namespace nsp {
 
         Point3D middle(Point3D other);
 
-        bool isCoincide(Point3D other, double dis2 = epsilonSquare);
+        bool isCoincide(Point3D other);
 
         bool isIdentical(Point3D other);
 
