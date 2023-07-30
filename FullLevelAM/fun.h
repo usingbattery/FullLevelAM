@@ -6,7 +6,6 @@
 #include "Segment.h"
 #include "GeomAlgo.h"
 #include "Layer.h"
-#include "LinkPoint.h"
 
 namespace nsp {
 

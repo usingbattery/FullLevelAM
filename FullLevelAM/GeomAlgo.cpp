@@ -198,6 +198,9 @@ namespace nsp {
 	}
 
 	std::vector<Segment> intersect(Triangle triangle, Plane plane) {
+		if (plane.P.z < triangle.zMinPnt() || plane.P.z > triangle.zMaxPnt()) {
+			return { };
+		}
 		Segment AB(triangle.A, triangle.B);
 		Segment AC(triangle.A, triangle.C);
 		Segment BC(triangle.B, triangle.C);
@@ -247,4 +250,5 @@ namespace nsp {
 		}
 		return { };
 	}
+
 }

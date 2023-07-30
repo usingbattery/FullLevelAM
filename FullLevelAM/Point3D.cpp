@@ -67,7 +67,7 @@ namespace nsp {
     }
 
     bool Point3D::isCoincide(Point3D other) {
-        return this->pointTo(other).lengthSquare() < epsilonSquare;
+        return this->pointTo(other).lengthSquare() < epsilon;
     }
 
     bool Point3D::isIdentical(Point3D other) {

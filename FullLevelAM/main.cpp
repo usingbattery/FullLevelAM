@@ -5,39 +5,55 @@
 #include "VtkAdaptor.h"
 #include "fun.h"
 #include "GeomAlgo.h"
-#include "LinkSegs_dlook.h"
+#include "LinkSegs.h"
 
 using namespace nsp;
 
 int main() {
 
-	//LinkSegs_dlook l(std::vector<Segment>{
-	//	Segment(Point3D(0, 0, 1), Point3D(0, 1, 1)),
-	//		Segment(Point3D(0, 1, 1), Point3D(1, 0, 1)),
-	//		Segment(Point3D(1, 0, 1), Point3D(0, 0, 1))
-	//});
-
 	StlModel s("zdd-asc.STL");
-	std::vector<double> heights = {100,120,140,90,80};
-	//for (double h = s.bound[2]; h < s.bound[5]; h += 20) {
-	//	heights.push_back(h);
-	//}
-	Cutter c(&s, heights);
-	
-	for (Layer& layer:c.layers) {
-		std::cout << layer.plane.P.z << std::endl;
-		for (int j = 0; j<3 && j < layer.segments.size();j++) {
-			std::cout << "\t" << layer.segments[j].toString() << std::endl;
-		}
+	std::vector<double> heights /*= {0,100,200}*/;
+	for (double h = s.bound[2]+1; h < s.bound[5]; h += 10) {
+		heights.push_back(h);
 	}
+	Cutter c(&s, heights);
+
+	//for (Layer& layer:c.layers) {
+	//	std::cout << layer.plane.P.z << std::endl;
+	//	for (int j = 0; j<3 && j < layer.segments.size();j++) {
+	//		std::cout << "\t" << layer.segments[j].toString() << std::endl;
+	//	}
+	//	std::cout << "\t" << "..." << std::endl;
+	//}
 
 	VtkAdaptor vtkAdaptor;
 	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
 	vtkAdaptor.drawAxes();
+	int r = 1;
+	int g = 0;
+	int b = 0;
+	int t;
 	for (int i = 0; i < c.layers.size(); i++) {
-		for (const Segment& segment : c.layers[i].segments) {
-			vtkAdaptor.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
+		for (const Polyline& polyline : c.layers[i].contours) {
+			vtkAdaptor.drawPolyline(polyline)->GetProperty()->SetColor(r, g, b);
+			t = b;
+			b = g;
+			g = r;
+			r = t;
 		}
 	}
 	vtkAdaptor.display();
+
+	//Layer clone = c.layers[1].clone();
+	//c.layers[1].moveUp(&clone, &(c.zMinLowToHigh), 150);
+
+	//VtkAdaptor vtkAdaptor1;
+	//vtkAdaptor1.setBackgroundColor(0.95, 0.95, 0.95);
+	//vtkAdaptor1.drawAxes();
+	//for (int i = 0; i < c.layers.size(); i++) {
+	//	for (const Segment& segment : c.layers[i].segments) {
+	//		vtkAdaptor1.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
+	//	}
+	//}
+	//vtkAdaptor1.display();
 }

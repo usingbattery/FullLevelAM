@@ -1,18 +1,17 @@
 #include "Cutter.h"
 #include<algorithm>
-#include"LinkSegs_dlook.h"
 
 namespace nsp {
 
 	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights) {
 		sortTriangles(&((*stlModel).triangles));
-		//Triangle tem = *(trianglesZmin[0].triangle);
 		initLayers(heights.size());
 		//for (Layer layer : layers) {
 		//	std::cout << layer.plane.P.z << std::endl;
 		//}
 		sortLayers(heights);
 		cut();
+		link();
 	}
 
 	void Cutter::sortTriangles(std::vector<Triangle>* triangles) {
@@ -68,6 +67,13 @@ namespace nsp {
 		for (; it != sortedLayers.end(); it++) {
 			(*(it->second)).moveUp(preLayer, &zMinLowToHigh, it->first);
 			preLayer = it->second;//step forward
+		}
+	}
+
+	void Cutter::link() {
+		for (int i = 0; i < layers.size();i++) {
+			//std::cout << layer.plane.P.z << std::endl;
+			layers[i].link();
 		}
 	}
 }

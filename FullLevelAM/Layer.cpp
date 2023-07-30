@@ -45,6 +45,12 @@ namespace nsp {
 		}
 	}
 
+	Layer Layer::clone() {
+		Layer clone;
+		clone.triangles = std::vector<SortedTriangle*>(this->triangles);
+		return clone;
+	}
+
 	void Layer::reInit(double height) {
 		this->plane.P.z=height;
 		this->triangles.clear();
@@ -59,5 +65,9 @@ namespace nsp {
 			}
 			this->triangles.push_back(triangleTem);
 		}
+	}
+
+	void Layer::link() {
+		this->contours = linkSegs(this->segments);
 	}
 }

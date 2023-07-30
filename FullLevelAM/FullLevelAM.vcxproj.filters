@@ -71,6 +71,12 @@
     <ClInclude Include="Vector3D.h">
       <Filter>头文件\Geom</Filter>
     </ClInclude>
+    <ClInclude Include="LinkSegs.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -125,6 +131,9 @@
       <Filter>源文件\Geom</Filter>
     </ClCompile>
     <ClCompile Include="Vector3D.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkSegs.cpp">
       <Filter>源文件\Geom</Filter>
     </ClCompile>
   </ItemGroup>

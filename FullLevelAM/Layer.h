@@ -3,6 +3,7 @@
 #include "Plane.h"
 #include "Segment.h"
 #include "StlModel.h"
+#include "LinkSegs.h"
 
 namespace nsp {
 
@@ -19,19 +20,21 @@ namespace nsp {
 		//current layer
 		Plane plane;
 		//intersected triangles
-		//std::vector<SortedTriangle*> triangles;
-		std::vector<int> zMinTriangles;
-		std::vector<int> zMaxTriangles;
+		std::vector<SortedTriangle*> triangles;
 		//intersected segment
 		std::vector<Segment> segments;
-		//intersected segment in order
-		std::vector<Segment> contours;
+		//intersected one or several Polyline
+		std::vector<Polyline> contours;
 
 		Layer(Plane plane=Plane()) :plane(plane) {};
 
 		void moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height);
 
 		void moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height);
+
+		Layer clone();
+
+		void link();
 
 	private:
 

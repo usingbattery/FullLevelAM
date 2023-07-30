@@ -34,20 +34,14 @@ public:
 
 	/*template<typename T>
 	vtkNew<vtkActor>& drawPdSrc(T& Pdsrc);*/
-	
 
 	vtkNew<vtkActor> drawStlModel(const char* stlFilePath);
 	
-
 	void removeActor(vtkNew<vtkActor>& actor);
 		
-
 	vtkNew<vtkActor> drawPoint(nsp::Point3D point, double radius = 2.0);
-		
-	
 
 	vtkNew<vtkActor> drawSegment(nsp::Segment seg);
-		
 
 	vtkNew<vtkActor> drawPolyline(nsp::Polyline polyline);
 	

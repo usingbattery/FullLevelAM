@@ -46,5 +46,4 @@ namespace nsp {
 	//Intersection of Space Triangle and Plane
 	std::vector<Segment> intersect(Triangle triangle, Plane plane);
 
-	std::vector<Polyline> link(std::vector<Segment>);
 }

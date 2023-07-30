@@ -40,8 +40,10 @@ namespace nsp {
 
         Point3D middle(Point3D other);
 
+        //nearly same
         bool isCoincide(Point3D other);
 
+        //absolutly same
         bool isIdentical(Point3D other);
 
         Point3D operator+(Vector3D vec);
