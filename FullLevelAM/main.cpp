@@ -3,7 +3,6 @@
 #include "StlModel.h"
 #include "Cutter.h"
 #include "VtkAdaptor.h"
-#include "fun.h"
 #include "GeomAlgo.h"
 #include "LinkSegs.h"
 

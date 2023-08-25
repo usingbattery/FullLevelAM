@@ -1,5 +1,5 @@
 #include "Layer.h"
-#include "Fun.h"
+#include "GeomAlgo.h"
 
 namespace nsp {
 
