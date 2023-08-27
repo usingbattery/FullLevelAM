@@ -5,6 +5,10 @@
 namespace nsp {
 
 	std::vector<Polyline> linkSegs(std::vector<Segment> segments) {
+		std::vector<Polyline> polylines;
+		if (segments.size() == 0) {
+			return polylines;
+		}
 		std::vector<LinkPoint> linkPoints(2 * segments.size());
 		int i = 0;
 		for (const Segment& segment : segments) {
@@ -14,7 +18,6 @@ namespace nsp {
 			linkPoints[i + 1].other = &linkPoints[i];
 			i += 2;
 		}
-		std::vector<Polyline> polylines;
 		Polyline polyline;
 		LinkPoint* begin = &(linkPoints[0]);
 		LinkPoint* end = (*begin).other;
@@ -56,7 +59,6 @@ namespace nsp {
 			}
 		}
 		polylines.push_back(polyline);
-		polyline = Polyline();
 		return polylines;
 
 		//std::sort(linkPoints.begin(), linkPoints.end());

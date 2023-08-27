@@ -10,7 +10,7 @@ using namespace nsp;
 
 int main() {
 
-	StlModel s("zdd-asc.STL");
+	StlModel s("236.STL");
 	std::vector<double> heights /*= {0,100,200}*/;
 	for (double h = s.bound[2]+1; h < s.bound[5]; h += 10) {
 		heights.push_back(h);

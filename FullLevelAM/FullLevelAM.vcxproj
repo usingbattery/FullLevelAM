@@ -142,7 +142,6 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Cutter.h" />
     <ClInclude Include="Line.h" />
-    <ClInclude Include="LinkPoint.h" />
     <ClInclude Include="LinkSegs.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Plane.h" />
