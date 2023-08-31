@@ -12,7 +12,7 @@ int main() {
 
 	StlModel s("236.STL");
 	std::vector<double> heights /*= {0,100,200}*/;
-	for (double h = s.bound[2]+1; h < s.bound[5]; h += 10) {
+	for (double h = s.bound[2] + 1; h < s.bound[5]; h += 10) {
 		heights.push_back(h);
 	}
 	Cutter c(&s, heights);
@@ -35,10 +35,10 @@ int main() {
 	for (int i = 0; i < c.layers.size(); i++) {
 		for (const Polyline& polyline : c.layers[i].contours) {
 			vtkAdaptor.drawPolyline(polyline)->GetProperty()->SetColor(r, g, b);
-			t = b;
-			b = g;
-			g = r;
-			r = t;
+			//t = b;
+			//b = g;
+			//g = r;
+			//r = t;
 		}
 	}
 	vtkAdaptor.display();

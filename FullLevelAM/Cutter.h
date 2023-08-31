@@ -8,12 +8,15 @@ namespace nsp {
 
 	public:
 
-		Cutter(StlModel* stlModel, std::vector<double> heights);
-
 		std::vector<Layer> layers;
 
 		std::vector<SortedTriangle> zMinLowToHigh;
 		std::vector<SortedTriangle> zMaxHighToLow;
+
+		Cutter(StlModel* stlModel, std::vector<double> heights);
+
+		int curLayerIndex;
+		void forward();
 
 	private:
 
@@ -21,7 +24,7 @@ namespace nsp {
 
 		void sortTriangles(std::vector<Triangle>* triangles);
 
-		void initLayers(int layerSize);
+		void initLayers(std::vector<double> heights);
 
 		void sortLayers(std::vector<double> heights);
 

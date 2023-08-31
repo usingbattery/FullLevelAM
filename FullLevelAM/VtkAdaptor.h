@@ -18,7 +18,7 @@ VTK_MODULE_INIT(vtkInteractionStyle);
 #include <vtkLineSource.h>
 #include <vtkPoints.h>
 #include <vtkNew.h>
-#include<vtkProperty.h>
+#include <vtkProperty.h>
 
 class VtkAdaptor {
 public:

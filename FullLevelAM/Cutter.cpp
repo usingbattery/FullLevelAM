@@ -5,13 +5,13 @@ namespace nsp {
 
 	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights) {
 		sortTriangles(&((*stlModel).triangles));
-		initLayers(heights.size());
+		initLayers(heights);
 		//for (Layer layer : layers) {
 		//	std::cout << layer.plane.P.z << std::endl;
 		//}
-		sortLayers(heights);
-		cut();
-		link();
+		//sortLayers(heights);
+		//cut();
+		//link();
 	}
 
 	void Cutter::sortTriangles(std::vector<Triangle>* triangles) {
@@ -47,11 +47,12 @@ namespace nsp {
 		}
 	}
 
-	void Cutter::initLayers(int layerSize) {
-		layers.reserve(layerSize);
-		for (int i = 0; i < layerSize; i++) {
-			layers.push_back(Layer(Plane::zPlane(0)));
+	void Cutter::initLayers(std::vector<double> heights) {
+		layers.reserve(heights.size());
+		for (int i = 0; i < heights.size(); i++) {
+			layers.push_back(Layer(Plane::zPlane(heights[i])));
 		}
+		curLayerIndex = 0;
 		//std::cout << layers.size() << std::endl;
 	}
 
@@ -71,9 +72,21 @@ namespace nsp {
 	}
 
 	void Cutter::link() {
-		for (int i = 0; i < layers.size();i++) {
+		for (int i = 0; i < layers.size(); i++) {
 			//std::cout << layer.plane.P.z << std::endl;
 			layers[i].link();
 		}
+	}
+
+	void Cutter::forward() {
+		Layer* preLayer = nullptr;
+		if (curLayerIndex == 0) {
+			preLayer = &(layers[0]);
+		}
+		else {
+			preLayer = &(layers[curLayerIndex - 1]);
+		}
+		layers[curLayerIndex].moveUp(preLayer, &zMinLowToHigh, layers[curLayerIndex].plane.P.z);
+		layers[curLayerIndex].link();
 	}
 }
