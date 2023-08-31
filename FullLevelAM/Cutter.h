@@ -13,7 +13,7 @@ namespace nsp {
 
 		Cutter(StlModel* stlModel, std::vector<double> heights);
 
-		void forward();
+		bool forward();
 
 	private:
 

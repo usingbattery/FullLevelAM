@@ -78,7 +78,10 @@ namespace nsp {
 		}
 	}
 
-	void Cutter::forward() {
+	bool Cutter::forward() {
+		if (curLayerIndex >= layers.size()) {
+			return false;
+		}
 		Layer* preLayer = nullptr;
 		if (curLayerIndex == 0) {
 			preLayer = &(layers[0]);
@@ -88,5 +91,6 @@ namespace nsp {
 		}
 		layers[curLayerIndex].moveUp(preLayer, &zMinLowToHigh, layers[curLayerIndex].plane.P.z);
 		layers[curLayerIndex].link();
+		return true;
 	}
 }
