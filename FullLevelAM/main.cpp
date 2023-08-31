@@ -44,7 +44,6 @@ int main() {
 	vtkAdaptor.display();
 
 	//Layer clone = c.layers[1].clone();
-	//c.layers[1].moveUp(&clone, &(c.zMinLowToHigh), 150);
 
 	//VtkAdaptor vtkAdaptor1;
 	//vtkAdaptor1.setBackgroundColor(0.95, 0.95, 0.95);

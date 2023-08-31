@@ -10,15 +10,17 @@ namespace nsp {
 
 		std::vector<Layer> layers;
 
-		std::vector<SortedTriangle> zMinLowToHigh;
-		std::vector<SortedTriangle> zMaxHighToLow;
 
 		Cutter(StlModel* stlModel, std::vector<double> heights);
 
-		int curLayerIndex;
 		void forward();
 
 	private:
+
+		std::vector<SortedTriangle> zMinLowToHigh;
+		std::vector<SortedTriangle> zMaxHighToLow;
+
+		int curLayerIndex;
 
 		std::multimap<double, Layer*> sortedLayers;
 
