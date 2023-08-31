@@ -91,6 +91,7 @@ namespace nsp {
 		}
 		layers[curLayerIndex].moveUp(preLayer, &zMinLowToHigh, layers[curLayerIndex].plane.P.z);
 		layers[curLayerIndex].link();
+		curLayerIndex++;
 		return true;
 	}
 }

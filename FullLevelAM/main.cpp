@@ -31,7 +31,7 @@ int main() {
 	int r = 1;
 	int g = 0;
 	int b = 0;
-	int t;
+	int t = 0;
 	for (int i = 0; i < c.layers.size(); i++) {
 		for (const Polyline& polyline : c.layers[i].contours) {
 			vtkAdaptor.drawPolyline(polyline)->GetProperty()->SetColor(r, g, b);
