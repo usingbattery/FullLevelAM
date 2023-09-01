@@ -11,7 +11,6 @@ namespace nsp {
 		//}
 		//sortLayers(heights);
 		//cut();
-		//link();
 	}
 
 	void Cutter::sortTriangles(std::vector<Triangle>* triangles) {
@@ -69,9 +68,6 @@ namespace nsp {
 			(*(it->second)).moveUp(preLayer, &zMinLowToHigh, it->first);
 			preLayer = it->second;//step forward
 		}
-	}
-
-	void Cutter::link() {
 		for (int i = 0; i < layers.size(); i++) {
 			//std::cout << layer.plane.P.z << std::endl;
 			layers[i].link();

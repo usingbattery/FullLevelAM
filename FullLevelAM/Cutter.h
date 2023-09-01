@@ -18,7 +18,7 @@ namespace nsp {
 
 		// sort all triangles in stlmodel, by triangle.zMin, from min to max
 		std::vector<SortedTriangle> zMinLowToHigh;
-		// sort all triangles in stlmodel, by triangle.zMaz, from max to min
+		// sort all triangles in stlmodel, by triangle.zMax, from max to min
 		std::vector<SortedTriangle> zMaxHighToLow;
 
 		// the index of the layer in layers, which forward is about to process
@@ -36,10 +36,7 @@ namespace nsp {
 		// get sortedLayers
 		void sortLayers(std::vector<double> heights);
 
-		// get all layer.segement in layers
+		// get all layer.segement and .contours in layers
 		void cut();
-
-		// get all layer.contours in layers
-		void link();
 	};
 }
