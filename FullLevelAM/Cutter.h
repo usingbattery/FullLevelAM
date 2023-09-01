@@ -10,7 +10,7 @@ namespace nsp {
 
 		std::vector<Layer> layers;
 
-		Cutter(StlModel* stlModel, std::vector<double> heights);
+		Cutter(StlModel* stlModel = nullptr, std::vector<double> heights = {});
 
 		bool forward();
 
