@@ -15,7 +15,10 @@ int main() {
 	for (double h = s.bound[2] + 1; h < s.bound[5]; h += 10) {
 		heights.push_back(h);
 	}
-	Cutter c(&s, heights);
+	Cutter c0(&s, heights);
+	while (c0.forward()) {
+		continue;
+	}
 
 	//for (Layer& layer:c.layers) {
 	//	std::cout << layer.plane.P.z << std::endl;
@@ -32,6 +35,8 @@ int main() {
 	int g = 0;
 	int b = 0;
 	int t = 0;
+
+	Cutter c = c0;
 	for (int i = 0; i < c.layers.size(); i++) {
 		for (const Polyline& polyline : c.layers[i].contours) {
 			vtkAdaptor.drawPolyline(polyline)->GetProperty()->SetColor(r, g, b);

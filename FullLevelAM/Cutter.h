@@ -38,5 +38,6 @@ namespace nsp {
 
 		// get all layer.segement and .contours in layers
 		void cut();
+
 	};
 }
