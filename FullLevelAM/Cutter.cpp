@@ -4,6 +4,9 @@
 namespace nsp {
 
 	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights) {
+		if (stlModel == nullptr) {
+			return;
+		}
 		sortTriangles(&((*stlModel).triangles));
 		initLayers(heights);
 		//for (Layer layer : layers) {
@@ -11,9 +14,6 @@ namespace nsp {
 		//}
 		//sortLayers(heights);
 		//cut();
-	}
-
-	Cutter::Cutter() {
 	}
 
 	void Cutter::sortTriangles(std::vector<Triangle>* triangles) {
