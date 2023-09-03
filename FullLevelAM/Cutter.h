@@ -12,6 +12,8 @@ namespace nsp {
 
 		Cutter(StlModel* stlModel = nullptr, std::vector<double> heights = {});
 
+		Cutter();
+
 		bool forward();
 
 	private:

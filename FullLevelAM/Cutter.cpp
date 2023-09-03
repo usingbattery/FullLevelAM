@@ -13,6 +13,9 @@ namespace nsp {
 		//cut();
 	}
 
+	Cutter::Cutter() {
+	}
+
 	void Cutter::sortTriangles(std::vector<Triangle>* triangles) {
 		//sort
 		std::multimap<double, Triangle*> sortZmin;

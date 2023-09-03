@@ -11,12 +11,14 @@ using namespace nsp;
 int main() {
 
 	StlModel s("236.STL");
+
 	std::vector<double> heights /*= {0,100,200}*/;
 	for (double h = s.bound[2] + 1; h < s.bound[5]; h += 10) {
 		heights.push_back(h);
 	}
-	Cutter c0(&s, heights);
-	while (c0.forward()) {
+	Cutter c1;
+	Cutter c(&s, heights);
+	while (c.forward()) {
 		continue;
 	}
 
@@ -36,27 +38,13 @@ int main() {
 	int b = 0;
 	int t = 0;
 
-	Cutter c = c0;
+	VtkAdaptor vtkAdaptor1;
+	vtkAdaptor1.setBackgroundColor(0.95, 0.95, 0.95);
+	vtkAdaptor1.drawAxes();
 	for (int i = 0; i < c.layers.size(); i++) {
-		for (const Polyline& polyline : c.layers[i].contours) {
-			vtkAdaptor.drawPolyline(polyline)->GetProperty()->SetColor(r, g, b);
-			//t = b;
-			//b = g;
-			//g = r;
-			//r = t;
+		for (const Segment& segment : c.layers[i].segments) {
+			vtkAdaptor1.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
 		}
 	}
-	vtkAdaptor.display();
-
-	//Layer clone = c.layers[1].clone();
-
-	//VtkAdaptor vtkAdaptor1;
-	//vtkAdaptor1.setBackgroundColor(0.95, 0.95, 0.95);
-	//vtkAdaptor1.drawAxes();
-	//for (int i = 0; i < c.layers.size(); i++) {
-	//	for (const Segment& segment : c.layers[i].segments) {
-	//		vtkAdaptor1.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
-	//	}
-	//}
-	//vtkAdaptor1.display();
+	vtkAdaptor1.display();
 }
