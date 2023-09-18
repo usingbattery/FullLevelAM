@@ -10,17 +10,15 @@ using namespace nsp;
 
 int main() {
 
-	StlModel s("236.STL");
+	StlModel s("zdd-asc.STL");
 
-	std::vector<double> heights /*= {0,100,200}*/;
+	//std::vector<double> heights = {0,100,200};
+	std::vector<double> heights ;
 	for (double h = s.bound[2] + 1; h < s.bound[5]; h += 10) {
 		heights.push_back(h);
 	}
-	Cutter c1;
 	Cutter c(&s, heights);
-	while (c.forward()) {
-		continue;
-	}
+	while (c.forward());
 
 	//for (Layer& layer:c.layers) {
 	//	std::cout << layer.plane.P.z << std::endl;
@@ -30,21 +28,19 @@ int main() {
 	//	std::cout << "\t" << "..." << std::endl;
 	//}
 
-	VtkAdaptor vtkAdaptor;
-	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
-	vtkAdaptor.drawAxes();
-	int r = 1;
-	int g = 0;
-	int b = 0;
-	int t = 0;
+	//VtkAdaptor vtkAdaptor;
+	//vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
+	//vtkAdaptor.drawAxes();
+	//int r = 1;
+	//int g = 0;
+	//int b = 0;
+	//int t = 0;
+	//for (int i = 0; i < c.layers.size(); i++) {
+	//	for (const Segment& segment : c.layers[i].segments) {
+	//		vtkAdaptor.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
+	//	}
+	//}
+	//vtkAdaptor.display();
 
-	VtkAdaptor vtkAdaptor1;
-	vtkAdaptor1.setBackgroundColor(0.95, 0.95, 0.95);
-	vtkAdaptor1.drawAxes();
-	for (int i = 0; i < c.layers.size(); i++) {
-		for (const Segment& segment : c.layers[i].segments) {
-			vtkAdaptor1.drawSegment(segment)->GetProperty()->SetColor(1, 0, 0);
-		}
-	}
-	vtkAdaptor1.display();
+	drawPrism(c.layers[0].contours[0],10);
 }

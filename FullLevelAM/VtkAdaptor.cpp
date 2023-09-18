@@ -98,3 +98,60 @@ vtkNew<vtkActor> VtkAdaptor::drawPolyline(nsp::Polyline polyline) {
 	renderer->AddActor(actor);
 	return actor;
 }
+
+void drawPrism(nsp::Polyline polyLine, double height){
+	const int pointsNum = 2 * polyLine.points.size();
+	const int facesNum = polyLine.points.size();
+	const int shape = 4;
+
+	std::vector<std::vector<double>> x;
+	x.reserve(pointsNum);
+	for (int i = 0; i < polyLine.points.size(); i++) {
+		x.push_back({ polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z });
+		x.push_back({ polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z+height });
+	}
+
+	std::vector< std::vector<vtkIdType>> faces;
+	faces.reserve(facesNum);
+	for (int i = 0; i < facesNum; i++) {
+		faces.push_back({ 2 * i,2 * i + 1,2 * i + 2,2 * i + 3 });
+	}
+
+	vtkNew<vtkPolyData> geometry;
+	vtkNew<vtkPoints> points;
+	for (size_t i = 0; i < pointsNum; i++) {
+		double t[] = { x[i][0],x[i][1],x[i][2] };
+		points->InsertPoint(i, t);
+	}
+
+	vtkNew<vtkCellArray> strips;
+	strips->InsertNextCell(pointsNum + 2);
+	for (int i = 0; i < pointsNum; i++) {
+		strips->InsertCellPoint(i);
+	}
+	strips->InsertCellPoint(0);
+	strips->InsertCellPoint(1);
+	geometry->SetPoints(points);
+	geometry->SetStrips(strips);
+
+	vtkNew<vtkPolyDataMapper> geometryMapper;
+	geometryMapper->SetInputData(geometry);
+	vtkNew<vtkActor> geometryActor;
+	geometryActor->SetMapper(geometryMapper);
+
+	vtkNew<vtkRenderer> renderer;
+	renderer->AddActor(geometryActor);
+	renderer->ResetCamera();
+	renderer->SetBackground(0, 0, 0);
+
+	vtkNew<vtkRenderWindow> renWin;
+	renWin->AddRenderer(renderer);
+	renWin->SetSize(300, 300);
+
+	vtkNew<vtkRenderWindowInteractor> iren;
+	iren->SetRenderWindow(renWin);
+
+	renWin->Render();
+	iren->Start();
+
+}

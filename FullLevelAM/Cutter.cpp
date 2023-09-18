@@ -5,6 +5,7 @@ namespace nsp {
 
 	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights) {
 		if (stlModel == nullptr) {
+			curLayerIndex = 0;
 			return;
 		}
 		sortTriangles(&((*stlModel).triangles));

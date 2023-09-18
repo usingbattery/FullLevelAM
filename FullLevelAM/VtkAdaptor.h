@@ -44,5 +44,7 @@ public:
 	vtkNew<vtkActor> drawSegment(nsp::Segment seg);
 
 	vtkNew<vtkActor> drawPolyline(nsp::Polyline polyline);
-	
+
 };
+
+void drawPrism(nsp::Polyline polyLine,double height);
