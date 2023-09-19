@@ -101,13 +101,13 @@ vtkNew<vtkActor> VtkAdaptor::drawPolyline(nsp::Polyline polyline) {
 	return actor;
 }
 
-vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double height) {
+vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double thickness) {
 	// geometry structure
 	const int pointsNum = 2 * polyLine.points.size();
 	vtkNew<vtkPoints> points;
 	for (size_t i = 0; i < polyLine.points.size(); i++) {
 		double tem0[] = { polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z };
-		double tem1[] = { polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z + height };
+		double tem1[] = { polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z + thickness };
 		points->InsertPoint(2*i, tem0);
 		points->InsertPoint(2*i+1, tem1);
 	}
@@ -119,14 +119,14 @@ vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double height) {
 	}
 	strips->InsertCellPoint(0);
 	strips->InsertCellPoint(1);
-
-	vtkNew<vtkPolyData> geometry;
-	geometry->SetPoints(points);
-	geometry->SetStrips(strips);
-	vtkNew<vtkPolyDataMapper> geometryMapper;
-	geometryMapper->SetInputData(geometry);
-	vtkNew<vtkActor> geometryActor;
-	geometryActor->SetMapper(geometryMapper);
-	renderer->AddActor(geometryActor);
-	return geometryActor;
+	// environment confige
+	vtkNew<vtkPolyData> source;
+	source->SetPoints(points);
+	source->SetStrips(strips);
+	vtkNew<vtkPolyDataMapper> mapper;
+	mapper->SetInputData(source);
+	vtkNew<vtkActor> actor;
+	actor->SetMapper(mapper);
+	renderer->AddActor(actor);
+	return actor;
 }
