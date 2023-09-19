@@ -101,18 +101,19 @@ vtkNew<vtkActor> VtkAdaptor::drawPolyline(nsp::Polyline polyline) {
 	return actor;
 }
 
-vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double thickness) {
+vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double targetHeight) {
 	// geometry structure
-	const int pointsNum = 2 * polyLine.points.size();
 	vtkNew<vtkPoints> points;
+	double currentHeight = polyLine.points[0].z;
 	for (size_t i = 0; i < polyLine.points.size(); i++) {
-		double tem0[] = { polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z };
-		double tem1[] = { polyLine.points[i].x,polyLine.points[i].y,polyLine.points[i].z + thickness };
+		double tem0[] = { polyLine.points[i].x,polyLine.points[i].y,currentHeight };
+		double tem1[] = { polyLine.points[i].x,polyLine.points[i].y,targetHeight};
 		points->InsertPoint(2*i, tem0);
 		points->InsertPoint(2*i+1, tem1);
 	}
 	// topology structure
 	vtkNew<vtkCellArray> strips;
+	const int pointsNum = 2 * polyLine.points.size();
 	strips->InsertNextCell(pointsNum + 2);
 	for (int i = 0; i < pointsNum; i++) {
 		strips->InsertCellPoint(i);

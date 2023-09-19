@@ -45,5 +45,5 @@ public:
 
 	vtkNew<vtkActor> drawPolyline(nsp::Polyline polyline);
 
-	vtkNew<vtkActor> drawPrism(nsp::Polyline polyLine, double thickness);
+	vtkNew<vtkActor> drawPrism(nsp::Polyline polyLine, double targetHeight);
 };
