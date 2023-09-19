@@ -42,5 +42,7 @@ int main() {
 	//}
 	//vtkAdaptor.display();
 
-	drawPrism(c.layers[0].contours[0],10);
+	VtkAdaptor vtkAdaptor;
+	vtkAdaptor.drawPrism(c.layers[0].contours[0],10);
+	vtkAdaptor.display();
 }
