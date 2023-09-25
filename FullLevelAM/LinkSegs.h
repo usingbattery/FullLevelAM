@@ -34,5 +34,5 @@ namespace nsp {
 		}
 	};
 
-	std::vector<Polyline> linkSegs(std::vector<Segment> segments);
+	std::vector<double> linkSegs(std::vector<Segment> segments, std::vector<Polyline>*);
 }

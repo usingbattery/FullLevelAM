@@ -4,6 +4,7 @@
 #include "Segment.h"
 #include "StlModel.h"
 #include "LinkSegs.h"
+#include "Circle.h"
 
 namespace nsp {
 
@@ -25,6 +26,9 @@ namespace nsp {
 		std::vector<Segment> segments;
 		//intersected one or several Polyline
 		std::vector<Polyline> contours;
+
+		Circle circleOuter;
+		Circle circleInner;
 
 		Layer(Plane plane=Plane()) :plane(plane) {};
 

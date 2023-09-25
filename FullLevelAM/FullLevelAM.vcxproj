@@ -136,6 +136,7 @@
     <Text Include="GCode.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="GCode.h" />
     <ClInclude Include="GeomAlgo.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="VtkAdaptor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="GCode.cpp" />
     <ClCompile Include="GeomAlgo.cpp" />

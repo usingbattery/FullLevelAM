@@ -113,7 +113,7 @@ vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double targetHeig
 	}
 	// topology structure
 	vtkNew<vtkCellArray> strips;
-	const int pointsNum = 2 * polyLine.points.size();
+	int pointsNum = 2 * polyLine.points.size();
 	strips->InsertNextCell(pointsNum + 2);
 	for (int i = 0; i < pointsNum; i++) {
 		strips->InsertCellPoint(i);
