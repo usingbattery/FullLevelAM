@@ -131,6 +131,10 @@ vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double targetHeig
 }
 
 vtkNew<vtkActor> VtkAdaptor::drawCirclePrism(nsp::Circle circle, double targetHeight) {
+	vtkNew<vtkActor> actor;
+	if (circle.selfpl.count() < 1) {
+		return actor;
+	}
 	// geometry structure
 	vtkNew<vtkPoints> points;
 	double currentHeight = circle.selfpl.points[0].z;
@@ -153,7 +157,6 @@ vtkNew<vtkActor> VtkAdaptor::drawCirclePrism(nsp::Circle circle, double targetHe
 	source->SetStrips(strips);
 	vtkNew<vtkPolyDataMapper> mapper;
 	mapper->SetInputData(source);
-	vtkNew<vtkActor> actor;
 	actor->SetMapper(mapper);
 	renderer->AddActor(actor);
 	return actor;
