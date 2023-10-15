@@ -4,7 +4,7 @@
 namespace nsp {
 
 	void Layer::moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height) {
-		std::vector<SortedTriangle*> preTriangles= preLayer->triangles;
+		std::vector<SortedTriangle*> preTriangles = preLayer->triangles;
 		reInit(height);
 		std::vector<Segment> segmentsTem;
 		int border = -1;
@@ -52,7 +52,7 @@ namespace nsp {
 	}
 
 	void Layer::reInit(double height) {
-		this->plane.P.z=height;
+		this->plane.P.z = height;
 		this->triangles.clear();
 		this->segments.clear();
 		this->contours.clear();
@@ -68,14 +68,19 @@ namespace nsp {
 	}
 
 	void Layer::link() {
-		std::vector<double> minXs= linkSegs(this->segments,&(this->contours));
-		if (minXs[0] < minXs[1]) {
+		std::vector<double> minXs = linkSegs(this->segments, &(this->contours));
+		if (minXs.size() == 1) {
 			circleOuter = Circle(this->contours[0]);
-			circleInner = Circle(this->contours[1]);
 		}
-		else {
-			circleOuter = Circle(this->contours[1]);
-			circleInner = Circle(this->contours[0]);
+		else if (minXs.size() > 1) {
+			if (minXs[0] < minXs[1]) {
+				circleOuter = Circle(this->contours[0]);
+				circleInner = Circle(this->contours[1]);
+			}
+			else {
+				circleOuter = Circle(this->contours[1]);
+				circleInner = Circle(this->contours[0]);
+			}
 		}
 	}
 }

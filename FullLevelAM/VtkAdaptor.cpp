@@ -114,12 +114,10 @@ vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double targetHeig
 	// topology structure
 	vtkNew<vtkCellArray> strips;
 	int pointsNum = 2 * polyLine.count();
-	strips->InsertNextCell(pointsNum + 2);
+	strips->InsertNextCell(pointsNum);
 	for (int i = 0; i < pointsNum; i++) {
 		strips->InsertCellPoint(i);
 	}
-	strips->InsertCellPoint(0);
-	strips->InsertCellPoint(1);
 	// environment confige
 	vtkNew<vtkPolyData> source;
 	source->SetPoints(points);
@@ -145,8 +143,8 @@ vtkNew<vtkActor> VtkAdaptor::drawCirclePrism(nsp::Circle circle, double targetHe
 	// topology structure
 	vtkNew<vtkCellArray> strips;
 	int pointsNum = 2 * circle.selfpl.count();
-	strips->InsertNextCell(pointsNum);
-	for (int i = 0; i < pointsNum; i++) {
+	strips->InsertNextCell(pointsNum-2);
+	for (int i = 0; i < pointsNum-2; i++) {
 		strips->InsertCellPoint(i);
 	}
 	// environment confige
