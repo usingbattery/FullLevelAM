@@ -43,6 +43,7 @@ int main() {
 	//vtkAdaptor.display();
 
 	VtkAdaptor vtkAdaptor;
+	//vtkAdaptor.drawPrism(c.layers[0].contours[0], 10);
 	vtkAdaptor.drawCirclePrism(c.layers[0].circleOuter,10);
 	vtkAdaptor.display();
 }
