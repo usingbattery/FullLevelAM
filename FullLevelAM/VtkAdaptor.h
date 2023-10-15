@@ -19,8 +19,10 @@ VTK_MODULE_INIT(vtkInteractionStyle);
 #include <vtkPoints.h>
 #include <vtkNew.h>
 #include <vtkProperty.h>
+#include "Circle.h"
 
 class VtkAdaptor {
+
 public:
 	vtkNew<vtkRenderer> renderer;
 	vtkNew<vtkRenderWindow> window;
@@ -46,4 +48,6 @@ public:
 	vtkNew<vtkActor> drawPolyline(nsp::Polyline polyline);
 
 	vtkNew<vtkActor> drawPrism(nsp::Polyline polyLine, double targetHeight);
+
+	vtkNew<vtkActor> drawCirclePrism(nsp::Circle circle, double targetHeight);
 };

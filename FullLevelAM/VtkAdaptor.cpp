@@ -105,7 +105,7 @@ vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double targetHeig
 	// geometry structure
 	vtkNew<vtkPoints> points;
 	double currentHeight = polyLine.points[0].z;
-	for (size_t i = 0; i < polyLine.points.size(); i++) {
+	for (size_t i = 0; i < polyLine.count(); i++) {
 		double tem0[] = { polyLine.points[i].x,polyLine.points[i].y,currentHeight };
 		double tem1[] = { polyLine.points[i].x,polyLine.points[i].y,targetHeight};
 		points->InsertPoint(2*i, tem0);
@@ -113,13 +113,42 @@ vtkNew<vtkActor> VtkAdaptor::drawPrism(nsp::Polyline polyLine, double targetHeig
 	}
 	// topology structure
 	vtkNew<vtkCellArray> strips;
-	int pointsNum = 2 * polyLine.points.size();
+	int pointsNum = 2 * polyLine.count();
 	strips->InsertNextCell(pointsNum + 2);
 	for (int i = 0; i < pointsNum; i++) {
 		strips->InsertCellPoint(i);
 	}
 	strips->InsertCellPoint(0);
 	strips->InsertCellPoint(1);
+	// environment confige
+	vtkNew<vtkPolyData> source;
+	source->SetPoints(points);
+	source->SetStrips(strips);
+	vtkNew<vtkPolyDataMapper> mapper;
+	mapper->SetInputData(source);
+	vtkNew<vtkActor> actor;
+	actor->SetMapper(mapper);
+	renderer->AddActor(actor);
+	return actor;
+}
+
+vtkNew<vtkActor> VtkAdaptor::drawCirclePrism(nsp::Circle circle, double targetHeight) {
+	// geometry structure
+	vtkNew<vtkPoints> points;
+	double currentHeight = circle.selfpl.points[0].z;
+	for (size_t i = 0; i < circle.selfpl.count(); i++) {
+		double tem0[] = { circle.get(i).x,circle.get(i).y,currentHeight};
+		double tem1[] = { circle.get(i).x,circle.get(i).y,targetHeight };
+		points->InsertPoint(2 * i, tem0);
+		points->InsertPoint(2 * i + 1, tem1);
+	}
+	// topology structure
+	vtkNew<vtkCellArray> strips;
+	int pointsNum = 2 * circle.selfpl.count();
+	strips->InsertNextCell(pointsNum);
+	for (int i = 0; i < pointsNum; i++) {
+		strips->InsertCellPoint(i);
+	}
 	// environment confige
 	vtkNew<vtkPolyData> source;
 	source->SetPoints(points);
