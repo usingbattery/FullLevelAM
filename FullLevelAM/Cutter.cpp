@@ -95,4 +95,15 @@ namespace nsp {
 		return true;
 	}
 
+	void Cutter::moveLayerTo(int i, double targhtHeight) {
+		if (targhtHeight > layers[i].plane.P.z) {
+			layers[i].moveUp(&(layers[i]), &zMinLowToHigh, targhtHeight);
+			layers[i].link();
+		}
+		else if (targhtHeight < layers[i].plane.P.z) {
+			layers[i].moveDown(&(layers[i]), &zMaxHighToLow, targhtHeight);
+			layers[i].link();
+		}
+	}
+
 }

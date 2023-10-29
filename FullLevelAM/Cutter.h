@@ -14,6 +14,8 @@ namespace nsp {
 
 		bool forward();
 
+		void moveLayerTo(int i, double targhtHeight);
+
 	private:
 
 		// sort all triangles in stlmodel, by triangle.zMin, from min to max
