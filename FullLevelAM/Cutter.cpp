@@ -3,10 +3,13 @@
 
 namespace nsp {
 
-	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights) {
+	Cutter::Cutter(StlModel* stlModel, std::vector<double> heights, bool isHeightsSorted) {
 		if (stlModel == nullptr) {
 			curLayerIndex = 0;
 			return;
+		}
+		if (!isHeightsSorted) {
+			sort(heights.begin(), heights.end());
 		}
 		sortTriangles(&((*stlModel).triangles));
 		initLayers(heights);
