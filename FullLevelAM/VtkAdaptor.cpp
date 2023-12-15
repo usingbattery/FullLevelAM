@@ -1,7 +1,6 @@
 #include "VtkAdaptor.h"
 #include "vtkTriangleStrip.h"
 
-
 VtkAdaptor::VtkAdaptor(double r, double g, double b) {
 	renderer->SetBackground(r, g, b);
 	window->AddRenderer(renderer);
@@ -160,4 +159,14 @@ vtkNew<vtkActor> VtkAdaptor::drawCirclePrism(nsp::Circle circle, double targetHe
 	actor->SetMapper(mapper);
 	renderer->AddActor(actor);
 	return actor;
+}
+
+std::vector<vtkNew<vtkActor>> VtkAdaptor::drawThickness(nsp::Thickness thickness)
+{
+	std::vector<vtkNew<vtkActor>> actors;
+	actors.push_back(drawCirclePrism(thickness.layerDown->circleOuter, thickness.layerUp->plane.P.z));
+	if (thickness.layerDown->circleInner.selfpl.count() > 0) {
+		actors.push_back(drawCirclePrism(thickness.layerDown->circleInner, thickness.layerUp->plane.P.z));
+	}
+	return actors;
 }

@@ -20,6 +20,7 @@ VTK_MODULE_INIT(vtkInteractionStyle);
 #include <vtkNew.h>
 #include <vtkProperty.h>
 #include "Circle.h"
+#include "Thickness.h"
 
 class VtkAdaptor {
 
@@ -50,4 +51,7 @@ public:
 	vtkNew<vtkActor> drawPrism(nsp::Polyline polyLine, double targetHeight);
 
 	vtkNew<vtkActor> drawCirclePrism(nsp::Circle circle, double targetHeight);
+
+	std::vector<vtkNew<vtkActor>> drawThickness(nsp::Thickness thickness);
+
 };

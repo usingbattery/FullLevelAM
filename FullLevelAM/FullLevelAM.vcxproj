@@ -150,6 +150,7 @@
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="StlModel.h" />
+    <ClInclude Include="Thickness.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector3D.h" />
     <ClInclude Include="VtkAdaptor.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Segment.cpp" />
     <ClCompile Include="StlModel.cpp" />
+    <ClCompile Include="Thickness.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="VtkAdaptor.cpp" />

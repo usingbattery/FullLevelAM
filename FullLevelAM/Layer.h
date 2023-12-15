@@ -20,8 +20,6 @@ namespace nsp {
 
 		//current layer
 		Plane plane;
-		//intersected triangles
-		std::vector<SortedTriangle*> triangles;
 		//intersected segment
 		std::vector<Segment> segments;
 		//intersected one or several Polyline
@@ -30,20 +28,14 @@ namespace nsp {
 		Circle circleOuter;
 		Circle circleInner;
 
+		Layer() {};
 		Layer(Plane plane=Plane()) :plane(plane) {};
 
-		void moveUp(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmin, double height);
-
-		void moveDown(Layer* preLayer, std::vector <SortedTriangle>* trianglesZmax, double height);
-
-		Layer clone();
+		std::vector<Triangle> intersectStlLayer(std::vector<Triangle> preTriangles, std::multimap <double, Triangle>* triangles, std::multimap <double, Triangle>::iterator* it);
 
 		void link();
 
 	private:
 
-		void reInit(double height);
-
-		void record(std::vector<Segment>* segmentsTem, SortedTriangle* triangleTem);
 	};
 }

@@ -77,6 +77,9 @@
     <ClInclude Include="Circle.h">
       <Filter>头文件\Geom</Filter>
     </ClInclude>
+    <ClInclude Include="Thickness.h">
+      <Filter>头文件\Geom</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,6 +140,9 @@
       <Filter>源文件\Geom</Filter>
     </ClCompile>
     <ClCompile Include="Circle.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Thickness.cpp">
       <Filter>源文件\Geom</Filter>
     </ClCompile>
   </ItemGroup>
