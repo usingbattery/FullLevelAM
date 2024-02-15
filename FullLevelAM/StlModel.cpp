@@ -29,18 +29,25 @@ namespace nsp {
 			hasLeft = stlFile.read(&text);
 			if (text == "normal") {
 				readXYZ(&stlFile, &x, &y, &z);
-				N = Vector3D(x, y, z);
-				pIndex = 0;
+				//avoid (0,0,1) && (0,0,-1)
+				if (x != 0 || y != 0) {
+					N = Vector3D(x, y, z);
+					pIndex = 0;
+				}
 			}
 			else if (text == "vertex") {
-				readXYZ(&stlFile, &x, &y, &z);
-				P[pIndex] = Point3D(x, y, z);
-				pIndex++;
+				if (x != 0 || y != 0) {
+					readXYZ(&stlFile, &x, &y, &z);
+					P[pIndex] = Point3D(x, y, z);
+					pIndex++;
+				}
 			}
 			else if (text == "endfacet") {
-				triangle = Triangle(P[0], P[1], P[2], N);
-				triangles.push_back(triangle);
-				updateBound(P);
+				if (x != 0 || y != 0) {
+					triangle = Triangle(P[0], P[1], P[2], N);
+					triangles.push_back(triangle);
+					updateBound(P);
+				}
 			}
 		}
 	}

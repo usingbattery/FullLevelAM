@@ -22,11 +22,7 @@ namespace nsp {
 			if ((*it)->first > this->plane.P.z) {
 				break;
 			}
-			//<bug>
-			//std::cout << plane.P.z << "\t";
 			segmentsTem = intersect((*it)->second, this->plane);
-			//std::cout << segmentTem.toString() << std::endl;
-			//</bug>
 			if (segmentsTem.size() > 0) {
 				for (const Segment& segment : segmentsTem) {
 					segments.push_back(segment);

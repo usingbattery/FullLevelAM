@@ -14,24 +14,16 @@ int main() {
 
 	//std::vector<double> heights = {0,100,200};
 	std::vector<double> heights ;
-	for (double h = s.bound[2] + 1; h < s.bound[5]; h += 10) {
+	for (double h = s.bound[2] +130; h < s.bound[5]-145; h += 5) {
 		heights.push_back(h);
 	}
-	Cutter c(&s, heights);
-	while (c.forward());
-
-	//for (Layer& layer:c.layers) {
-	//	std::cout << layer.plane.P.z << std::endl;
-	//	for (int j = 0; j<3 && j < layer.segments.size();j++) {
-	//		std::cout << "\t" << layer.segments[j].toString() << std::endl;
-	//	}
-	//	std::cout << "\t" << "..." << std::endl;
-	//}
+	Cutter cutter(&s, heights);
+	while (cutter.forward());
 
 	VtkAdaptor vtkAdaptor;
 	vtkAdaptor.setBackgroundColor(0.95, 0.95, 0.95);
 	vtkAdaptor.drawAxes();
-	for (int i = 0; i < c.thickness.size(); i++) {
+	for (int i = 0; i < cutter.thickness.size(); i++) {
 		std::vector<vtkNew<vtkActor>> actors = vtkAdaptor.drawThickness(c.thickness[i]);
 		actors[0]->GetProperty()->SetColor(0, 0, 1);
 		if (actors.size() > 1) {

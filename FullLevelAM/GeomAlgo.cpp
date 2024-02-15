@@ -176,23 +176,29 @@ namespace nsp {
 			std::shared_ptr<Point3D> pt_B = std::make_shared<Point3D>(B);
 			return { pt_A,pt_B };
 		}
-		Point3D P = plane.P;
+		else if (nearZero(distance(A, plane))) {
+			std::shared_ptr<Point3D> pt_A = std::make_shared<Point3D>(A);
+			return { pt_A };
+		}
+		else if (nearZero(distance(B, plane))) {
+			std::shared_ptr<Point3D> pt_B = std::make_shared<Point3D>(B);
+			return { pt_B };
+		}
 		Vector3D N = plane.N;
 		auto V = A.pointTo(B);
-		auto PA = P.pointTo(A);
 		if (V.dotProduct(N) == 0) {
 			return {};
 		}
-		else {
-			auto t = -(PA.dotProduct(N)) / V.dotProduct(N);
-			if (t >= 0 && t <= 1) {
-				V = V.amplified(t);
-				A.x += V.dx;
-				A.y += V.dy;
-				A.z += V.dz;
-				std::shared_ptr<Point3D> pt = std::make_shared<Point3D>(A);
-				return { pt };
-			}
+		Point3D P = plane.P;
+		auto PA = P.pointTo(A);
+		auto t = -(PA.dotProduct(N)) / V.dotProduct(N);
+		if (t >= 0 && t <= 1) {
+			V = V.amplified(t);
+			A.x += V.dx;
+			A.y += V.dy;
+			A.z += V.dz;
+			std::shared_ptr<Point3D> pt = std::make_shared<Point3D>(A);
+			return { pt };
 		}
 		return {};
 	}
@@ -210,9 +216,9 @@ namespace nsp {
 		if (C1.size() + C2.size() + C3.size() > 4) {
 			return { AB, AC, BC };
 		}
-		if (C1.size() == 2 && C2.size() == 0 && C3.size() == 0) return { AB };
-		if (C1.size() == 0 && C2.size() == 2 && C3.size() == 0) return { AC };
-		if (C1.size() == 0 && C2.size() == 0 && C3.size() == 2) return { AB };
+		if (C1.size() == 2 ) return { AB };
+		if (C2.size() == 2 ) return { AC };
+		if (C3.size() == 2 ) return { BC };
 		std::shared_ptr<Point3D> c1 = nullptr;
 		if (!C1.empty()) c1 = C1[0];
 		std::shared_ptr<Point3D> c2 = nullptr;
