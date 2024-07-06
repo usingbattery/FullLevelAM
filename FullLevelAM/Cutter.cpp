@@ -37,7 +37,7 @@ namespace nsp {
 	void Cutter::initThickness() {
 		thickness.reserve(layers.size() - 1);
 		for (int i = 0; i < layers.size() - 1; i++) {
-			thickness.push_back(Thickness(&(layers[i]), &(layers[i + 1])));
+			thickness.push_back(Thickness(&(layers[i+1]), &(layers[i])));
 		}
 	}
 

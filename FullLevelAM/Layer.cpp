@@ -9,8 +9,10 @@ namespace nsp {
 		for (std::vector<Triangle>::iterator it = preTriangles.begin(); it != preTriangles.end(); it++) {
 			segmentsTem = intersect(*it, this->plane);
 			if (segmentsTem.size() > 0) {
-				for (const Segment& segment : segmentsTem) {
-					segments.push_back(segment);
+				for (Segment segment : segmentsTem) {
+					if (!nearZero(segment.length())) {
+						segments.push_back(segment);
+					}
 				}
 				curTriangles.push_back(*it);
 			}
@@ -24,8 +26,10 @@ namespace nsp {
 			}
 			segmentsTem = intersect((*it)->second, this->plane);
 			if (segmentsTem.size() > 0) {
-				for (const Segment& segment : segmentsTem) {
-					segments.push_back(segment);
+				for (Segment segment : segmentsTem) {
+					if (!nearZero(segment.length())) {
+						segments.push_back(segment);
+					}
 				}
 				curTriangles.push_back((*it)->second);
 			}
@@ -34,7 +38,7 @@ namespace nsp {
 	}
 
 	void Layer::link() {
-		std::vector<double> minXs = linkSegs(this->segments, &(this->contours));
+		std::vector<double> minXs = linkSegs(this->segments, &(this->contours), &(this->polars));
 		if (minXs.size() == 1) {
 			circleOuter = Circle(this->contours[0]);
 		}

@@ -5,6 +5,7 @@
 #include "StlModel.h"
 #include "LinkSegs.h"
 #include "Circle.h"
+#include "Polar.h"
 
 namespace nsp {
 
@@ -24,6 +25,8 @@ namespace nsp {
 		std::vector<Segment> segments;
 		//intersected one or several Polyline
 		std::vector<Polyline> contours;
+		//polar coordinates 
+		std::vector<std::vector<Polar>> polars;
 
 		Circle circleOuter;
 		Circle circleInner;

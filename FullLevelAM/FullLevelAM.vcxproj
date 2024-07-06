@@ -146,6 +146,7 @@
     <ClInclude Include="LinkSegs.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="Polar.h" />
     <ClInclude Include="Polyline.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Segment.h" />

@@ -80,6 +80,9 @@
     <ClInclude Include="Thickness.h">
       <Filter>头文件\Geom</Filter>
     </ClInclude>
+    <ClInclude Include="Polar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

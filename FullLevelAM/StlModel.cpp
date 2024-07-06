@@ -29,7 +29,6 @@ namespace nsp {
 			hasLeft = stlFile.read(&text);
 			if (text == "normal") {
 				readXYZ(&stlFile, &x, &y, &z);
-				//avoid (0,0,1) && (0,0,-1)
 				if (x != 0 || y != 0) {
 					N = Vector3D(x, y, z);
 					pIndex = 0;

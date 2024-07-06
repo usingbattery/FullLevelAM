@@ -4,6 +4,7 @@
 #include "Segment.h"
 #include "Ray.h"
 #include "Polyline.h"
+#include "Polar.h"
 
 namespace nsp {
 
@@ -34,5 +35,6 @@ namespace nsp {
 		}
 	};
 
-	std::vector<double> linkSegs(std::vector<Segment> segments, std::vector<Polyline>*);
+	std::vector<double> linkSegs(std::vector<Segment> segments, std::vector<Polyline>* polylines, std::vector<std::vector<Polar>>* polars);
+	Polar point3DXYZToPolar(Point3D point);
 }
